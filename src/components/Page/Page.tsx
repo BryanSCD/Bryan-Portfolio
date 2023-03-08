@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Heading,
   Image,
   StackProps,
@@ -7,23 +8,56 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
+import { useRef } from "react";
+
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+
 export interface PageProps extends StackProps {
   childrenPaddingX?: SystemProps["padding"];
   childrenPaddingY?: SystemProps["padding"];
   separator?: string;
+  separatorCloud?: string;
+  separatorCloudsBackground?: string;
   separatorColor?: SystemProps["color"];
   separatorSpacing?: SystemProps["margin"];
 }
 
 export function Page({
-  separator,
   children,
   childrenPaddingX = "28",
   childrenPaddingY = "20",
+  separator,
+  separatorCloud,
+  separatorCloudsBackground,
   separatorColor = "black",
   separatorSpacing = "0",
   ...rest
 }: PageProps) {
+  const separatorRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: separatorRef,
+    offset: ["start end", "end start"],
+  });
+
+  const smoothScrollYProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const translateXCloud = useTransform(
+    smoothScrollYProgress,
+    [0, 1],
+    ["-10%", "10%"]
+  );
+
+  const translateXHeading = useTransform(
+    smoothScrollYProgress,
+    [0, 1],
+    ["-30%", "30%"]
+  );
+
   return (
     <VStack
       {...rest}
@@ -33,53 +67,50 @@ export function Page({
       spacing={separatorSpacing}
     >
       {separator && (
-        <Box
+        <VStack
           width='100%'
           height='80'
           position='relative'
-          display='inline-block'
-          alignItems='center'
-          justifyContent='center'
+          overflow='hidden'
+          ref={separatorRef}
         >
           <Image
-            src='./cloud_separator_cover.png'
+            as={motion.img}
+            src={separatorCloudsBackground}
             alt='cloud separator cover'
             position='absolute'
-            top='50%'
-            left='50%'
-            transform='translate(-50%, -50%)'
-            textAlign='center'
-            display='inline-block'
-            zIndex={3}
+            opacity='0.3'
+            style={{ x: translateXCloud }}
+            zIndex={40}
+            width='2048px'
+            height='320px'
           />
-          <Heading
-            fontSize='6xl'
-            color={separatorColor}
-            position='absolute'
-            top='50%'
-            left='50%'
-            transform='translate(-50%, -50%)'
-            textAlign='center'
-            display='inline-block'
-            zIndex={2}
-          >
-            {separator}
-          </Heading>
-
+          <Flex as={motion.div} justify='center' align='center' height='100%'>
+            <Heading
+              as={motion.h1}
+              fontSize='6xl'
+              color={separatorColor}
+              textAlign='center'
+              display='inline-block'
+              zIndex={30}
+              position='absolute'
+              style={{ x: translateXHeading }}
+            >
+              {separator}
+            </Heading>
+          </Flex>
           <Image
-            src='./cloud_separator.png'
+            as={motion.img}
+            src={separatorCloud}
             alt='cloud separator'
-            position='absolute'
-            top='50%'
-            left='50%'
-            transform='translate(-50%, -50%)'
-            textAlign='center'
-            display='inline-block'
+            width='1024px'
+            height='320px'
             objectFit='fill'
-            width='100%'
-            zIndex={1}
+            zIndex={20}
+            position='absolute'
+            style={{ x: translateXCloud }}
           />
-        </Box>
+        </VStack>
       )}
       <Box
         paddingX={childrenPaddingX}

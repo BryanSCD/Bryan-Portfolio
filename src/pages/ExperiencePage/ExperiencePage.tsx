@@ -40,9 +40,11 @@ export function ExperiencePage({
 }: ExperiencePageProps) {
   return (
     <Page
-      separator='Experience Page'
+      separator='Experience'
       separatorSpacing='-40'
       separatorColor={separatorColor}
+      separatorCloud="./experience/cloud.png"
+      separatorCloudsBackground="./experience/clouds_background.png"
       {...rest}
     >
       {experience.map((value, index) => {

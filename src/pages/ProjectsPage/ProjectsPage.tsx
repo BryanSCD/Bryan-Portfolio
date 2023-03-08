@@ -29,7 +29,13 @@ export interface ProjectsPageProps extends StackProps {
 
 export function ProjectsPage({ separatorColor, ...rest }: ProjectsPageProps) {
   return (
-    <Page separator='Projects Page' separatorColor={separatorColor} {...rest}>
+    <Page
+      separator='Projects'
+      separatorColor={separatorColor}
+      separatorCloud='./main_projects/cloud.png'
+      separatorCloudsBackground='./main_projects/clouds_background.png'
+      {...rest}
+    >
       <VStack spacing='2'>
         <ProjectsComponent
           imageLocation='right'

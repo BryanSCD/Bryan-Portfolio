@@ -17,7 +17,13 @@ export interface StudiesPageProps extends StackProps {
 
 export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
   return (
-    <Page separator='Studies' separatorColor={separatorColor} {...rest}>
+    <Page
+      separator='Studies'
+      separatorColor={separatorColor}
+      separatorCloud='./studies/cloud.png'
+      separatorCloudsBackground='./studies/clouds_background.png'
+      {...rest}
+    >
       <VStack spacing='28'>
         <Heading fontSize='5xl' color='white'>
           Degree in Software Engineering

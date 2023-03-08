@@ -11,6 +11,8 @@ export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
     <Page
       separator='Contact'
       separatorColor={separatorColor}
+      separatorCloud='./contact/cloud.png'
+      separatorCloudsBackground='./contact/clouds_background.png'
       childrenPaddingX='0'
       childrenPaddingY='0'
       separatorSpacing='-40'
