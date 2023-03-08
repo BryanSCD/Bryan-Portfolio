@@ -1,4 +1,4 @@
-import { StackProps, VStack } from "@chakra-ui/react";
+import { StackProps, SystemProps, VStack } from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ProjectsComponent, ProjectsProps } from "./ProjectsComponent";
 
@@ -24,7 +24,7 @@ const projects: { [key: string]: ProjectsProps } = {
 };
 
 export interface ProjectsPageProps extends StackProps {
-  separatorColor: string;
+  separatorColor: SystemProps["color"];
 }
 
 export function ProjectsPage({ separatorColor, ...rest }: ProjectsPageProps) {

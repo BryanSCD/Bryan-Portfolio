@@ -1,4 +1,4 @@
-import { StackProps } from "@chakra-ui/react";
+import { StackProps, SystemProps } from "@chakra-ui/react";
 import { Page } from "../../components";
 import {
   ExperienceTimelineComponent,
@@ -31,7 +31,7 @@ const experience: ExperienceTimelineProps[] = [
 ];
 
 export interface ExperiencePageProps extends StackProps {
-  separatorColor: string;
+  separatorColor: SystemProps["color"];
 }
 
 export function ExperiencePage({

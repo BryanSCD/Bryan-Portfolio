@@ -3,6 +3,7 @@ import {
   HStack,
   ListItem,
   StackProps,
+  SystemProps,
   Text,
   UnorderedList,
   VStack,
@@ -11,7 +12,7 @@ import { Page } from "../../components";
 import { StudiesComponent } from "./StudiesComponent";
 
 export interface StudiesPageProps extends StackProps {
-  separatorColor: string;
+  separatorColor: SystemProps["color"];
 }
 
 export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {

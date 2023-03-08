@@ -1,9 +1,9 @@
-import { StackProps, VStack } from "@chakra-ui/react";
+import { StackProps, SystemProps, VStack } from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ContactComponent } from "./ContactComponent";
 
 export interface ContactPageProps extends StackProps {
-  separatorColor: string;
+  separatorColor: SystemProps["color"];
 }
 
 export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
