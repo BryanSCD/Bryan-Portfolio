@@ -59,13 +59,7 @@ export function Page({
   );
 
   return (
-    <VStack
-      {...rest}
-      justify='flex-start'
-      align='flex-start'
-      alignSelf='stretch'
-      spacing={separatorSpacing}
-    >
+    <VStack {...rest} spacing={separatorSpacing}>
       {separator && (
         <VStack
           width='100%'
@@ -73,6 +67,7 @@ export function Page({
           position='relative'
           overflow='hidden'
           ref={separatorRef}
+          zIndex={50}
         >
           <Image
             as={motion.img}
@@ -117,6 +112,7 @@ export function Page({
         paddingY={childrenPaddingY}
         overflow='hidden'
         width='100%'
+        zIndex={10}
       >
         {children}
       </Box>
