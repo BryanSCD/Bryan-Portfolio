@@ -6,13 +6,13 @@ function App() {
   return (
     <Box
       className='App'
-      bgGradient='linear-gradient(180deg, #09090b 0%, #021120 33%, #CDDEE8 90%)'
+      bgGradient='linear-gradient(180deg, #09090b 0%, #021120 33%, #665cb2 80%)'
     >
       <MainPage />
       <ExperiencePage separatorColor='black' />
-      <ProjectsPage separatorColor='#293B4C' marginTop='-40' />
-      <StudiesPage separatorColor='#556B7F' />
-      <ContactPage separatorColor='#BACFE2' />
+      <ProjectsPage separatorColor='#030F1B' marginTop='-40' />
+      <StudiesPage separatorColor='#282E58' />
+      <ContactPage separatorColor='#564EA2' />
     </Box>
   );
 }

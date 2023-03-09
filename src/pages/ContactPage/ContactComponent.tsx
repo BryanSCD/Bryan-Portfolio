@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   HStack,
+  IconButton,
   Image,
   StackProps,
   Textarea,
@@ -40,14 +41,14 @@ export function ContactComponent({}: ContactProps) {
       paddingX='14'
       paddingY='9'
       width='container.lg'
-      bgColor='whiteAlpha.500'
+      bgColor='blackAlpha.700'
       overflow='hidden'
     >
       <CardHeader pt='0'>
-        <Heading fontSize='3xl' color='black'>
+        <Heading fontSize='3xl' color='white'>
           Hire me!
         </Heading>
-        <Text fontSize='lg' color='gray.600'>
+        <Text fontSize='lg' color='whiteAlpha.900'>
           Fill up the form below to contact
         </Text>
       </CardHeader>
@@ -61,13 +62,32 @@ export function ContactComponent({}: ContactProps) {
               objectFit='scale-down'
               objectPosition='center'
             ></Image>
+            <HStack spacing='2.5' color='white'>
+              <IconButton
+                aria-label='Github'
+                isRound
+                size='md'
+                variant='solid'
+                bgColor='whiteAlpha.50'
+                colorScheme='purple'
+                icon={<IoLogoGithub />}
+              ></IconButton>
+              <IconButton
+                aria-label='Linkedin'
+                isRound
+                size='md'
+                variant='solid'
+                bgColor='whiteAlpha.50'
+                colorScheme='purple'
+                icon={<IoLogoLinkedin />}
+              ></IconButton>
+            </HStack>
             <Button
               leftIcon={<Icon as={IoMailSharp} />}
               size='md'
               variant='solid'
-              colorScheme='whiteAlpha'
-              backgroundColor='whiteAlpha.700'
-              color='black'
+              bgColor='whiteAlpha.50'
+              colorScheme='purple'
               width='100%'
             >
               bryanscduran@gmail.com
@@ -76,9 +96,8 @@ export function ContactComponent({}: ContactProps) {
               leftIcon={<Icon as={IoCallSharp} />}
               size='md'
               variant='solid'
-              colorScheme='whiteAlpha'
-              backgroundColor='whiteAlpha.700'
-              color='black'
+              bgColor='whiteAlpha.50'
+              colorScheme='purple'
               width='100%'
             >
               (+34) 695 54 97 91
@@ -87,6 +106,7 @@ export function ContactComponent({}: ContactProps) {
               leftIcon={<Icon as={HiCake} />}
               size='md'
               variant='unstyled'
+              color='white'
               width='100%'
               cursor='default'
             >
@@ -98,43 +118,46 @@ export function ContactComponent({}: ContactProps) {
               width='100%'
               variant='unstyled'
               cursor='default'
+              color='white'
             >
               Munich, Germany
             </Button>
-            <HStack spacing='2.5'>
-              <Icon as={IoLogoGithub} height='8' width='8' />
-              <Icon as={IoLogoLinkedin} height='8' width='8' />
-            </HStack>
           </VStack>
 
           <VStack spacing='0' width='100%'>
-            <Card width='100%' bgColor='whiteAlpha.900'>
+            <Card width='100%' bgColor='blackAlpha.500'>
               <CardBody p='0'>
-                <VStack padding='4' spacing='2.5' width='100%' align='start'>
-                  <Heading fontSize='md' color='black'>
-                    Your name / Your company
-                  </Heading>
+                <VStack
+                  padding='4'
+                  spacing='2.5'
+                  width='100%'
+                  align='start'
+                  color='white'
+                >
+                  <Heading fontSize='md'>Your name / Your company</Heading>
                   <InputGroup>
                     <InputLeftElement children={<IoPersonOutline />} />
-                    <Input type='text' />
+                    <Input type='text' focusBorderColor='#665cb2' />
                   </InputGroup>
 
-                  <Heading fontSize='md' color='black'>
-                    Email
-                  </Heading>
+                  <Heading fontSize='md'>Email</Heading>
                   <InputGroup>
                     <InputLeftElement children={<IoMailOutline />} />
-                    <Input type='text' />
+                    <Input type='text' focusBorderColor='#665cb2' />
                   </InputGroup>
 
-                  <Heading fontSize='md' color='black'>
-                    Message
-                  </Heading>
+                  <Heading fontSize='md'>Message</Heading>
 
-                  <Textarea placeholder='Hello!' />
+                  <Textarea placeholder='Hello!' focusBorderColor='#665cb2' />
 
                   <Flex height='100%' width='100%' justifyContent='end'>
-                    <Button colorScheme='blue'>Send message!</Button>
+                    <Button
+                      color='white'
+                      bgColor='whiteAlpha.500'
+                      colorScheme='purple'
+                    >
+                      Send message!
+                    </Button>
                   </Flex>
                 </VStack>
               </CardBody>
@@ -144,7 +167,7 @@ export function ContactComponent({}: ContactProps) {
               <Heading
                 margin='auto'
                 fontSize='2xl'
-                color='black'
+                color='white'
                 textAlign='center'
                 pt='8'
                 pb='4'

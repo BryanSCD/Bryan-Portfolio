@@ -19,7 +19,7 @@ export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
       {...rest}
     >
       <VStack
-        bg='url(/contacts_bg.jpg)'
+        bg='url(/contact/background.png)'
         backgroundSize='cover'
         backgroundPosition='center'
         pt='80'
