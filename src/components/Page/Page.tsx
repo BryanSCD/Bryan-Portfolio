@@ -8,7 +8,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { useRef } from "react";
+import { CSSProperties, useRef } from "react";
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -55,7 +55,7 @@ export function Page({
   const translateXHeading = useTransform(
     smoothScrollYProgress,
     [0, 1],
-    ["-30%", "30%"]
+    ["-20%", "20%"]
   );
 
   return (
@@ -69,42 +69,63 @@ export function Page({
           ref={separatorRef}
           zIndex={50}
         >
-          <Image
-            as={motion.img}
-            src={separatorCloudsBackground}
-            alt='cloud separator cover'
-            position='absolute'
-            opacity='0.3'
-            style={{ x: translateXCloud }}
-            zIndex={40}
-            width='2048px'
-            height='320px'
-          />
-          <Flex as={motion.div} justify='center' align='center' height='100%'>
+          <motion.div
+            style={{
+              x: translateXCloud,
+              position: "absolute",
+              zIndex: "40",
+              margin: 0,
+            }}
+          >
+            <Image
+              as={motion.img}
+              src={separatorCloudsBackground}
+              alt='cloud separator cover'
+              opacity='0.3'
+              width='2048px'
+              height='320px'
+            />
+          </motion.div>
+
+          <motion.div
+            style={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              x: translateXHeading,
+              position: "absolute",
+              zIndex: 30,
+              margin: 0,
+            }}
+          >
             <Heading
               as={motion.h1}
               fontSize='6xl'
               color={separatorColor}
               textAlign='center'
               display='inline-block'
-              zIndex={30}
-              position='absolute'
-              style={{ x: translateXHeading }}
             >
               {separator}
             </Heading>
-          </Flex>
-          <Image
-            as={motion.img}
-            src={separatorCloud}
-            alt='cloud separator'
-            width='1024px'
-            height='320px'
-            objectFit='fill'
-            zIndex={20}
-            position='absolute'
-            style={{ x: translateXCloud }}
-          />
+          </motion.div>
+          <motion.div
+            style={{
+              x: translateXCloud,
+              position: "absolute",
+              zIndex: "20",
+              margin: 0,
+            }}
+          >
+            <Image
+              as={motion.img}
+              src={separatorCloud}
+              alt='cloud separator'
+              width='1024px'
+              height='320px'
+              objectFit='fill'
+            />
+          </motion.div>
         </VStack>
       )}
       <Box
