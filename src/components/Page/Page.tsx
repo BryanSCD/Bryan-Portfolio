@@ -1,14 +1,14 @@
 import {
   Box,
-  Flex,
   Heading,
   Image,
   StackProps,
   SystemProps,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 
-import { CSSProperties, useRef } from "react";
+import { useRef } from "react";
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -24,8 +24,8 @@ export interface PageProps extends StackProps {
 
 export function Page({
   children,
-  childrenPaddingX = "28",
-  childrenPaddingY = "20",
+  childrenPaddingX,
+  childrenPaddingY,
   separator,
   separatorCloud,
   separatorCloudsBackground,
@@ -33,6 +33,17 @@ export function Page({
   separatorSpacing = "0",
   ...rest
 }: PageProps) {
+  // const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMobile = true;
+
+  if (!childrenPaddingX) {
+    childrenPaddingX = isMobile ? "14" : "28";
+  }
+
+  if (!childrenPaddingY) {
+    childrenPaddingY = isMobile ? "10" : "20";
+  }
+
   const separatorRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -75,6 +86,8 @@ export function Page({
               position: "absolute",
               zIndex: "40",
               margin: 0,
+              width: "128rem",
+              height: "20rem",
             }}
           >
             <Image
@@ -82,8 +95,9 @@ export function Page({
               src={separatorCloudsBackground}
               alt='cloud separator cover'
               opacity='0.3'
-              width='2048px'
-              height='320px'
+              width='100%'
+              height='100%'
+              objectFit='fill'
             />
           </motion.div>
 
@@ -115,14 +129,16 @@ export function Page({
               position: "absolute",
               zIndex: "20",
               margin: 0,
+              width: "64rem",
+              height: "20rem",
             }}
           >
             <Image
               as={motion.img}
               src={separatorCloud}
               alt='cloud separator'
-              width='1024px'
-              height='320px'
+              width='100%'
+              height='100%'
               objectFit='fill'
             />
           </motion.div>
