@@ -33,8 +33,7 @@ export function Page({
   separatorSpacing = "0",
   ...rest
 }: PageProps) {
-  // const isMobile = useBreakpointValue({ base: true, md: false });
-  const isMobile = true;
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   if (!childrenPaddingX) {
     childrenPaddingX = isMobile ? "14" : "28";
