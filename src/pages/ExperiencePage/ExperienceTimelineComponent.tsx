@@ -52,8 +52,11 @@ export function ExperienceTimelineComponent({
   bottomDivider,
   extraBottomDivider,
 }: ExperienceTimelineComponentProps) {
+  // const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMobile = true;
   return (
     <VStack spacing='0'>
+      {/* Extra upper divider */}
       {extraUpperDivider && (
         <HStack justify='center' align='center' spacing='20'>
           <Box width='64'></Box>
@@ -70,7 +73,13 @@ export function ExperienceTimelineComponent({
         </HStack>
       )}
 
-      <HStack justify='center' align='center' spacing='20'>
+      {/* Dot divider */}
+      <Stack
+        direction={isMobile ? "column" : "row"}
+        justify='center'
+        align='center'
+        spacing='20'
+      >
         <VStack justify='flex-start' align='center' spacing='4' width='64'>
           <Heading fontSize='xl' color='white' textAlign='center'>
             {title}
@@ -80,13 +89,15 @@ export function ExperienceTimelineComponent({
           </Text>
         </VStack>
 
-        <Stack justify='center' align='center' spacing='0'>
-          <Divider orientation='vertical' height='44' {...upperDivider} />
-          <Circle size='8' background='white' {...circleProps} />
-          <Divider orientation='vertical' height='44' {...bottomDivider} />
-        </Stack>
+        {!isMobile && (
+          <Stack justify='center' align='center' spacing='0'>
+            <Divider orientation='vertical' height='44' {...upperDivider} />
+            <Circle size='8' background='white' {...circleProps} />
+            <Divider orientation='vertical' height='44' {...bottomDivider} />
+          </Stack>
+        )}
 
-        <Card background='#FFFFFF' boxShadow='base' width='xl'>
+        <Card background='#FFFFFF' boxShadow='base' width={isMobile ? "100%" : "xl"}>
           <CardHeader>
             <Stack justify='center' align='center' spacing='0'>
               <Image
@@ -99,7 +110,8 @@ export function ExperienceTimelineComponent({
             </Stack>
           </CardHeader>
           <CardBody>
-            <HStack
+            <Stack
+              direction={isMobile ? "column" : "row"}
               justify='center'
               align='center'
               spacing='5'
@@ -126,16 +138,14 @@ export function ExperienceTimelineComponent({
                   <ListItem key={index}>{value}</ListItem>
                 ))}
               </UnorderedList>
-            </HStack>
+            </Stack>
           </CardBody>
           <CardFooter>
-            <Text fontSize='sm' color='gray.500' textAlign='right' width='100%'>
-              Expand for details
-            </Text>
           </CardFooter>
         </Card>
-      </HStack>
+      </Stack>
 
+      {/* Extra bottom divider */}
       {extraBottomDivider && (
         <HStack justify='center' align='center' spacing='20'>
           <Box width='64'></Box>
