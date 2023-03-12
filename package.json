@@ -12,12 +12,22 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fireworks-js/react": "^2.10.2",
+    "@react-three/drei": "^9.57.1",
+    "@react-three/fiber": "^8.12.0",
+    "@readyplayerme/visage": "^3.5.2",
     "framer-motion": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-particles": "^2.9.3",
     "react-router-dom": "^6.8.2",
-    "react-scroll-parallax": "^3.3.2"
+    "react-scroll-parallax": "^3.3.2",
+    "suspend-react": "^0.0.9",
+    "three": "^0.150.1",
+    "three-stdlib": "^2.21.8",
+    "tsparticles": "^2.9.3",
+    "tsparticles-engine": "^2.9.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
