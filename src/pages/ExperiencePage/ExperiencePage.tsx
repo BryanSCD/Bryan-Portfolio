@@ -1,4 +1,4 @@
-import { StackProps, SystemProps } from "@chakra-ui/react";
+import { StackProps, SystemProps, useBreakpointValue, VStack } from "@chakra-ui/react";
 import { Page } from "../../components";
 import {
   ExperienceTimelineComponent,
@@ -12,7 +12,7 @@ const experience: ExperienceTimelineProps[] = [
     description:
       "As a Back-end developer, my role was to contribute to the project's objective of revolutionizing the vehicle purchasing process by addressing a significant technological challenge.",
     skills: ["Database Design", "Back-End Web Development"],
-    logo: "./logo_tum.png",
+    logo: "./experience/tum_logo.png",
   },
   {
     title: "IT Consulting & Architect",
@@ -26,7 +26,7 @@ const experience: ExperienceTimelineProps[] = [
       "Database Design",
       "Full-Stack Development",
     ],
-    logo: "./logo_interimage.png",
+    logo: "./experience/interimage_logo.png",
   },
 ];
 
@@ -38,38 +38,41 @@ export function ExperiencePage({
   separatorColor,
   ...rest
 }: ExperiencePageProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <Page
       separator='Experience'
-      separatorSpacing='-40'
+      separatorSpacing={isMobile ? 0 : "-40"}
       separatorColor={separatorColor}
-      separatorCloud="./experience/cloud.png"
-      separatorCloudsBackground="./experience/clouds_background.png"
+      separatorCloud='./experience/cloud.png'
+      separatorCloudsBackground='./experience/clouds_background.png'
       {...rest}
     >
-      {experience.map((value, index) => {
-        if (index == 0) {
-          return (
-            <ExperienceTimelineComponent
-              {...value}
-              key={index}
-              extraUpperDivider={{ variant: "dashed" }}
-              upperDivider={{ variant: "dashed" }}
-            />
-          );
-        } else if (index == experience.length - 1) {
-          return (
-            <ExperienceTimelineComponent
-              {...value}
-              key={index}
-              bottomDivider={{ variant: "dashed" }}
-              extraBottomDivider={{ variant: "dashed" }}
-            />
-          );
-        } else {
-          return <ExperienceTimelineComponent {...value} key={index} />;
-        }
-      })}
+      <VStack spacing={isMobile ? "20" : "0"}>
+        {experience.map((value, index) => {
+          if (index == 0) {
+            return (
+              <ExperienceTimelineComponent
+                {...value}
+                key={index}
+                extraUpperDivider={{ variant: "dashed" }}
+                upperDivider={{ variant: "dashed" }}
+              />
+            );
+          } else if (index == experience.length - 1) {
+            return (
+              <ExperienceTimelineComponent
+                {...value}
+                key={index}
+                bottomDivider={{ variant: "dashed" }}
+                extraBottomDivider={{ variant: "dashed" }}
+              />
+            );
+          } else {
+            return <ExperienceTimelineComponent {...value} key={index} />;
+          }
+        })}
+      </VStack>
     </Page>
   );
 }

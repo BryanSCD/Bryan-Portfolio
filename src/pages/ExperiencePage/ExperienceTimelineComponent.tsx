@@ -17,6 +17,7 @@ import {
   StackProps,
   Text,
   UnorderedList,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 
@@ -52,12 +53,11 @@ export function ExperienceTimelineComponent({
   bottomDivider,
   extraBottomDivider,
 }: ExperienceTimelineComponentProps) {
-  // const isMobile = useBreakpointValue({ base: true, md: false });
-  const isMobile = true;
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
-    <VStack spacing='0'>
+    <VStack spacing='0' width='100%'>
       {/* Extra upper divider */}
-      {extraUpperDivider && (
+      {extraUpperDivider && !isMobile && (
         <HStack justify='center' align='center' spacing='20'>
           <Box width='64'></Box>
 
@@ -79,8 +79,14 @@ export function ExperienceTimelineComponent({
         justify='center'
         align='center'
         spacing='20'
+        width='100%'
       >
-        <VStack justify='flex-start' align='center' spacing='4' width='64'>
+        <VStack
+          justify='flex-start'
+          align='center'
+          spacing='4'
+          width={isMobile ? "70%" : "64"}
+        >
           <Heading fontSize='xl' color='white' textAlign='center'>
             {title}
           </Heading>
@@ -97,14 +103,18 @@ export function ExperienceTimelineComponent({
           </Stack>
         )}
 
-        <Card background='#FFFFFF' boxShadow='base' width={isMobile ? "100%" : "xl"}>
+        <Card
+          background='#FFFFFF'
+          boxShadow='base'
+          width={isMobile ? "100%" : "xl"}
+        >
           <CardHeader>
             <Stack justify='center' align='center' spacing='0'>
               <Image
-                width='36'
+                width='100%'
                 height='8'
                 src={logo}
-                objectFit='cover'
+                objectFit="scale-down"
                 objectPosition='center'
               />
             </Stack>
@@ -121,7 +131,7 @@ export function ExperienceTimelineComponent({
               <Text
                 fontSize='md'
                 color='gray.800'
-                width='60'
+                width={isMobile ? "100%" : "60"}
                 textAlign='center'
               >
                 {description}
@@ -130,7 +140,7 @@ export function ExperienceTimelineComponent({
               <UnorderedList
                 fontSize='md'
                 color='black'
-                width='60'
+                width={isMobile ? "100%" : "60"}
                 textAlign='center'
                 listStylePos='inside'
               >
@@ -140,13 +150,12 @@ export function ExperienceTimelineComponent({
               </UnorderedList>
             </Stack>
           </CardBody>
-          <CardFooter>
-          </CardFooter>
+          <CardFooter></CardFooter>
         </Card>
       </Stack>
 
       {/* Extra bottom divider */}
-      {extraBottomDivider && (
+      {extraBottomDivider && !isMobile && (
         <HStack justify='center' align='center' spacing='20'>
           <Box width='64'></Box>
 
