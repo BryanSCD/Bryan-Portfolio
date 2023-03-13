@@ -4,7 +4,9 @@ import {
   Heading,
   HStack,
   Image,
+  Stack,
   StackProps,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 
@@ -27,21 +29,27 @@ export function StudiesComponent({
   children,
   ...rest
 }: ProjectsComponentProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
-    <Card width='container.sm' {...rest}>
-      <CardBody px='12' py='16'>
+    <Card width={isMobile ? '100%' : 'container.sm'} {...rest}>
+      <CardBody px={isMobile ? "6" : "12"} py={isMobile ? "10" : "16"}>
         <VStack>
-          <HStack spacing='8'>
+          <Stack
+            direction={isMobile ? "column" : "row"}
+            spacing={isMobile ? "4" : "8"}
+            align='center'
+          >
             {imageSrc && (
               <Image
-                width='52'
-                height='52'
+                width={isMobile ? "100%" : "48"}
+                height={isMobile ? "32" : "48"}
                 src={imageSrc}
                 objectPosition='center'
+                objectFit='scale-down'
               />
             )}
             <VStack spacing='2.5'>
-              <Heading fontSize='3xl' textAlign='center'>
+              <Heading fontSize={isMobile ? '2xl' : '3xl'} textAlign='center'>
                 {title}
               </Heading>
               {subtitle && (
@@ -51,7 +59,7 @@ export function StudiesComponent({
               )}
               {children}
             </VStack>
-          </HStack>
+          </Stack>
         </VStack>
       </CardBody>
     </Card>

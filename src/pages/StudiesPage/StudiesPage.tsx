@@ -2,10 +2,12 @@ import {
   Heading,
   HStack,
   ListItem,
+  Stack,
   StackProps,
   SystemProps,
   Text,
   UnorderedList,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 import { Page } from "../../components";
@@ -16,6 +18,7 @@ export interface StudiesPageProps extends StackProps {
 }
 
 export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <Page
       separator='Studies'
@@ -24,8 +27,8 @@ export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
       separatorCloudsBackground='./studies/clouds_background.png'
       {...rest}
     >
-      <VStack spacing='28'>
-        <Heading fontSize='5xl' color='white'>
+      <VStack spacing={isMobile ? "14" : "28"}>
+        <Heading fontSize={isMobile ? '4xl' : '5xl'} color='white' textAlign='center'>
           Degree in Software Engineering
         </Heading>
         <StudiesComponent
@@ -35,10 +38,11 @@ export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
           backgroundColor='#3070B3'
           imageSrc='./logo_tum_white.png'
           alignSelf='start'
-          width='50%'
+          width={isMobile ? "100%" : "50%"}
         >
           <Text fontSize='md' align='center'>
-            Remarkable grades: <br /> Patterns in Software Engineering: 1.0
+            <strong>Remarkable grades:</strong>
+            <br /> Patterns in Software Engineering: 1.0
           </Text>
         </StudiesComponent>
 
@@ -47,7 +51,7 @@ export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
           subtitle='2019-2022 (6 semesters)'
           imageSrc='./logo_upm.png'
           alignSelf='end'
-          width='60%'
+          width={isMobile ? "100%" : "60%"}
         >
           <Text fontSize='lg' textAlign='center'>
             <strong>Academic Excellence Scholarship 2020</strong>
@@ -68,10 +72,15 @@ export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
             <ListItem>Security Essentials</ListItem>
           </UnorderedList>
         </StudiesComponent>
-        <Heading fontSize='4xl' color='white'>
+
+        <Heading fontSize={isMobile ? '3xl' : '4xl'} color='white'>
           Complementary
         </Heading>
-        <HStack>
+
+        <Stack
+          direction={isMobile ? "column" : "row"}
+          spacing={isMobile ? "14" : "28"}
+        >
           <StudiesComponent
             title='Languages'
             color='white'
@@ -94,7 +103,7 @@ export function StudiesPage({ separatorColor, ...rest }: StudiesPageProps) {
           >
             <Text>European B</Text>
           </StudiesComponent>
-        </HStack>
+        </Stack>
       </VStack>
     </Page>
   );
