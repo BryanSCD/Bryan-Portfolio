@@ -1,12 +1,28 @@
-import { StackProps, SystemProps, VStack } from "@chakra-ui/react";
+import {
+  StackProps,
+  SystemProps,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ContactComponent } from "./ContactComponent";
+
+const contactDetails = {
+  github: "https://github.com/BryanSCD",
+  linkedin: "https://www.linkedin.com/in/bryansduran/",
+  email: "bryanscduran@gmail.com",
+  number: "+34695549791",
+  numberLabel: "(+34) 695 54 97 91",
+  whatsappLink:
+    "https://api.whatsapp.com/send?phone=34695549791&text=Hey%20Bryan!",
+};
 
 export interface ContactPageProps extends StackProps {
   separatorColor: SystemProps["color"];
 }
 
 export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <Page
       separator='Contact'
@@ -15,7 +31,7 @@ export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
       separatorCloudsBackground='./contact/clouds_background.png'
       childrenPaddingX='0'
       childrenPaddingY='0'
-      separatorSpacing='-40'
+      separatorSpacing={isMobile ? "-60" : "-40"}
       {...rest}
     >
       <VStack
@@ -25,7 +41,7 @@ export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
         pt='80'
         pb='20'
       >
-        <ContactComponent />
+        <ContactComponent {...contactDetails} />
       </VStack>
     </Page>
   );

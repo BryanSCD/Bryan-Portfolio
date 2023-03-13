@@ -1,46 +1,66 @@
 import {
-  Box,
+  Button,
+  ButtonGroup,
   Card,
   CardBody,
   CardHeader,
   Flex,
   Heading,
   HStack,
+  Icon,
   IconButton,
   Image,
-  StackProps,
-  Textarea,
-  VStack,
-} from "@chakra-ui/react";
-import {
-  Stack,
-  Text,
-  Avatar,
-  Icon,
-  InputGroup,
   Input,
+  InputGroup,
   InputLeftElement,
-  Button,
+  Link,
+  Stack,
+  StackProps,
+  Text,
+  Textarea,
+  useBreakpointValue,
+  useClipboard,
+  VStack,
 } from "@chakra-ui/react";
 import { HiCake } from "react-icons/hi";
 import {
-  IoMailSharp,
   IoCallSharp,
+  IoClipboardSharp,
   IoLocationSharp,
   IoLogoGithub,
   IoLogoLinkedin,
-  IoPersonOutline,
   IoMailOutline,
+  IoMailSharp,
+  IoPersonOutline,
 } from "react-icons/io5";
 
-export interface ContactProps extends StackProps {}
+export interface ContactProps extends StackProps {
+  github: string;
+  linkedin: string;
+  email: string;
+  number: string;
+  numberLabel: string;
+  whatsappLink: string;
+}
 
-export function ContactComponent({}: ContactProps) {
+export function ContactComponent({
+  github,
+  linkedin,
+  email,
+  number,
+  numberLabel,
+  whatsappLink,
+}: ContactProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
+  const clipboardEmail = useClipboard(email);
+  const clipboardNumber = useClipboard(number);
+
   return (
     <Card
-      paddingX='14'
-      paddingY='9'
-      width='container.lg'
+      paddingX={isMobile ? "0" : "14"}
+      paddingY={isMobile ? "4" : "9"}
+      width={isMobile ? "90%" : "container.lg"}
       bgColor='blackAlpha.700'
       overflow='hidden'
     >
@@ -53,7 +73,12 @@ export function ContactComponent({}: ContactProps) {
         </Text>
       </CardHeader>
       <CardBody pb='0'>
-        <HStack spacing='4' width='100%' align='top'>
+        <Stack
+          spacing='4'
+          width='100%'
+          align='top'
+          direction={isMobile ? "column" : "row"}
+        >
           <VStack spacing='2.5' width='100%'>
             <Image
               width='100%'
@@ -61,67 +86,125 @@ export function ContactComponent({}: ContactProps) {
               src='./avatar.png'
               objectFit='scale-down'
               objectPosition='center'
-            ></Image>
-            <HStack spacing='2.5' color='white'>
-              <IconButton
-                aria-label='Github'
-                isRound
-                size='md'
-                variant='solid'
-                bgColor='whiteAlpha.50'
-                colorScheme='purple'
-                icon={<IoLogoGithub />}
-              ></IconButton>
-              <IconButton
-                aria-label='Linkedin'
-                isRound
-                size='md'
-                variant='solid'
-                bgColor='whiteAlpha.50'
-                colorScheme='purple'
-                icon={<IoLogoLinkedin />}
-              ></IconButton>
+            />
+
+            <Text fontSize='md' width='100%' color='white' textAlign='center'>
+              <strong>Bryan Smith</strong>, Collazos Duran
+            </Text>
+            <HStack spacing='2.5'>
+              <Link href={github} isExternal>
+                <IconButton
+                  aria-label='Github'
+                  isRound
+                  size='md'
+                  variant='solid'
+                  bgColor='whiteAlpha.50'
+                  color='white'
+                  colorScheme='purple'
+                  icon={<IoLogoGithub />}
+                />
+              </Link>
+
+              <Link href={linkedin} isExternal>
+                <IconButton
+                  aria-label='Linkedin'
+                  isRound
+                  size='md'
+                  variant='solid'
+                  bgColor='whiteAlpha.50'
+                  color='white'
+                  colorScheme='purple'
+                  icon={<IoLogoLinkedin />}
+                />
+              </Link>
             </HStack>
-            <Button
-              leftIcon={<Icon as={IoMailSharp} />}
-              size='md'
-              variant='solid'
-              bgColor='whiteAlpha.50'
-              colorScheme='purple'
+
+            <ButtonGroup isAttached width='100%'>
+              <Button
+                as='a'
+                href={`mailto:${email}`}
+                target='_blank'
+                rel='external'
+                leftIcon={<Icon as={IoMailSharp} />}
+                size='md'
+                variant='solid'
+                bgColor='whiteAlpha.50'
+                color='white'
+                colorScheme='purple'
+                width='100%'
+              >
+                {clipboardEmail.hasCopied ? "Copied!" : email}
+              </Button>
+
+              <IconButton
+                as='a'
+                href='javascript:void(0)'
+                aria-label='Clipboard'
+                size='md'
+                variant='solid'
+                bgColor='whiteAlpha.50'
+                color='white'
+                colorScheme='green'
+                icon={<IoClipboardSharp />}
+                onClick={() => {
+                  clipboardEmail.onCopy();
+                }}
+              />
+            </ButtonGroup>
+
+            <ButtonGroup isAttached width='100%'>
+              <Button
+                as='a'
+                href={whatsappLink}
+                target='_blank'
+                rel='external'
+                leftIcon={<Icon as={IoCallSharp} />}
+                size='md'
+                variant='solid'
+                bgColor='whiteAlpha.50'
+                color='white'
+                colorScheme='purple'
+                width='100%'
+              >
+                {clipboardNumber.hasCopied ? "Copied!" : numberLabel}
+              </Button>
+              <IconButton
+                as='a'
+                href='javascript:void(0)'
+                aria-label='Clipboard'
+                size='md'
+                variant='solid'
+                bgColor='whiteAlpha.50'
+                color='white'
+                colorScheme='green'
+                icon={<IoClipboardSharp />}
+                onClick={() => {
+                  clipboardNumber.onCopy();
+                }}
+              />
+            </ButtonGroup>
+            <Flex
+              justifyContent='center'
+              alignItems='center'
               width='100%'
-            >
-              bryanscduran@gmail.com
-            </Button>
-            <Button
-              leftIcon={<Icon as={IoCallSharp} />}
-              size='md'
-              variant='solid'
-              bgColor='whiteAlpha.50'
-              colorScheme='purple'
-              width='100%'
-            >
-              (+34) 695 54 97 91
-            </Button>
-            <Button
-              leftIcon={<Icon as={HiCake} />}
-              size='md'
-              variant='unstyled'
               color='white'
-              width='100%'
-              cursor='default'
+              p='1'
             >
-              29/09/2001 (21 yo)
-            </Button>
-            <Button
-              leftIcon={<Icon as={IoLocationSharp} />}
-              size='md'
+              <Icon as={HiCake} mr='2' />
+              <Text fontSize='md'>29/09/2001 (21 yo)</Text>
+            </Flex>
+            <Flex
+              justifyContent='center'
+              alignItems='center'
               width='100%'
-              variant='unstyled'
-              cursor='default'
               color='white'
+              p='1'
             >
-              Munich, Germany
-            </Button>
+              <Icon as={IoLocationSharp} mr='2' />
+              <Text fontSize='md'>
+                Munich, <strong>Germany</strong>
+              </Text>
+            </Flex>
           </VStack>
 
           <VStack spacing='0' width='100%'>
@@ -148,7 +231,10 @@ export function ContactComponent({}: ContactProps) {
 
                   <Heading fontSize='md'>Message</Heading>
 
-                  <Textarea placeholder='Hello!' focusBorderColor='#665cb2' />
+                  <Textarea
+                    placeholder='Hey Bryan!'
+                    focusBorderColor='#665cb2'
+                  />
 
                   <Flex height='100%' width='100%' justifyContent='end'>
                     <Button
@@ -176,7 +262,7 @@ export function ContactComponent({}: ContactProps) {
               </Heading>
             </Flex>
           </VStack>
-        </HStack>
+        </Stack>
       </CardBody>
     </Card>
   );
