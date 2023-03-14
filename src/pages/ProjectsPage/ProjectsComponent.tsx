@@ -10,10 +10,12 @@ import {
   HStack,
   Image,
   ListItem,
+  Stack,
   StackProps,
   Text,
   ThemeTypings,
   UnorderedList,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 import { useMemo } from "react";
@@ -55,6 +57,8 @@ export function ProjectsComponent({
   screenSrc,
   ...rest
 }: ProjectsComponentProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   const renderImage = useMemo(
     () => (
       <Image
@@ -69,15 +73,16 @@ export function ProjectsComponent({
     [imageOrientation, screenSrc]
   );
   return (
-    <HStack
+    <Stack
       height={imageOrientation == "vertical" ? "container.sm" : "md"}
       spacing='0'
+      direction={isMobile ? "column" : "row"}
       {...rest}
     >
       {imageLocation == "left" && renderImage}
       <Card
         size='sm'
-        width='xl'
+        width={isMobile ? "100%" : "xl"}
         height='fit-content'
         borderRightRadius={imageLocation == "left" ? "2rem" : "none"}
         borderLeftRadius={imageLocation == "right" ? "2rem" : "none"}
@@ -125,6 +130,6 @@ export function ProjectsComponent({
       </Card>
 
       {imageLocation == "right" && renderImage}
-    </HStack>
+    </Stack>
   );
 }
