@@ -36,7 +36,7 @@ export function Page({
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   if (!childrenPaddingX) {
-    childrenPaddingX = isMobile ? "14" : "28";
+    childrenPaddingX = isMobile ? "8" : "28";
   }
 
   if (!childrenPaddingY) {
