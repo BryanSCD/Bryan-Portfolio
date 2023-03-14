@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Card,
   CardBody,
@@ -7,7 +6,6 @@ import {
   CardHeader,
   Flex,
   Heading,
-  HStack,
   Image,
   ListItem,
   Stack,
@@ -62,48 +60,80 @@ export function ProjectsComponent({
   const renderImage = useMemo(
     () => (
       <Image
-        width={imageOrientation == "vertical" ? "72" : "container.sm"}
-        height='100%'
+        width={
+          isMobile
+            ? imageOrientation == "vertical"
+              ? "80%"
+              : "95%"
+            : imageOrientation == "vertical"
+            ? "18rem"
+            : "48rem"
+        }
+        height={
+          isMobile ? "auto" : imageOrientation == "vertical" ? "34rem" : "31rem"
+        }
         borderStyle='none'
-        objectFit='cover'
-        objectPosition={imageLocation == "left" ? "right" : "left"}
+        objectFit='contain'
+        objectPosition={
+          isMobile ? "center" : imageLocation == "left" ? "right" : "left"
+        }
         src={screenSrc}
+        zIndex='20'
       />
     ),
-    [imageOrientation, screenSrc]
+    [imageOrientation, screenSrc, isMobile]
   );
   return (
     <Stack
-      height={imageOrientation == "vertical" ? "container.sm" : "md"}
-      spacing='0'
+      height='fit-content'
+      spacing={
+        !isMobile ? "-5" : imageOrientation == "vertical" ? "-72" : "-20"
+      }
       direction={isMobile ? "column" : "row"}
+      align='center'
       {...rest}
     >
-      {imageLocation == "left" && renderImage}
+      {((!isMobile && imageLocation == "left") || isMobile) && renderImage}
       <Card
         size='sm'
-        width={isMobile ? "100%" : "xl"}
+        width={isMobile ? "100%" : "container.sm"}
         height='fit-content'
-        borderRightRadius={imageLocation == "left" ? "2rem" : "none"}
-        borderLeftRadius={imageLocation == "right" ? "2rem" : "none"}
+        borderRightRadius={
+          imageLocation == "left" || isMobile ? "2rem" : "none"
+        }
+        borderLeftRadius={
+          imageLocation == "right" || isMobile ? "2rem" : "none"
+        }
         overflow='hidden'
         bgColor={bgHexColor}
         color='white'
+        zIndex='10'
+        pl={isMobile ? "0" : imageLocation == "left" ? "4" : "0"}
+        pr={isMobile ? "0" : imageLocation == "right" ? "4" : "0"}
       >
         <CardHeader>
-          <Heading fontSize='3xl' pt='2.5' px='2.5'>
+          <Heading
+            fontSize='3xl'
+            pt={
+              !isMobile ? "2.5" : imageOrientation == "vertical" ? "72" : "20"
+            }
+            px='2.5'
+          >
             {title}
           </Heading>
         </CardHeader>
         <CardBody>
           <VStack spacing='4' p='2.5'>
-            <Text width='100%' fontSize='md' noOfLines={3}>
+            <Text width='100%' fontSize='md' noOfLines={isMobile ? 0 : 4}>
               {description}
             </Text>
 
-            <HStack spacing='4' width='100%'>
-              <Image minW='32' minH='32' src={logoSrc} />
-
+            <Stack
+              spacing='4'
+              width='100%'
+              direction={isMobile ? "column" : "row"}
+              alignItems='center'
+            >
               <UnorderedList
                 fontSize='md'
                 width='100%'
@@ -114,10 +144,13 @@ export function ProjectsComponent({
                   <strong>Architecture:</strong> {architecture}
                 </ListItem>
                 <ListItem>
-                  <strong>Main technologies:</strong> {mainTechnologies}
+                  <strong>Main technologies:</strong>{" "}
+                  {mainTechnologies.join(", ")}
                 </ListItem>
               </UnorderedList>
-            </HStack>
+
+              <Image maxW='32' maxH='32' src={logoSrc} />
+            </Stack>
           </VStack>
         </CardBody>
         <CardFooter bgColor='blackAlpha.400'>
@@ -129,7 +162,7 @@ export function ProjectsComponent({
         </CardFooter>
       </Card>
 
-      {imageLocation == "right" && renderImage}
+      {imageLocation == "right" && !isMobile && renderImage}
     </Stack>
   );
 }

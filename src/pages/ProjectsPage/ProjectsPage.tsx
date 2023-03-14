@@ -1,4 +1,9 @@
-import { StackProps, SystemProps, VStack } from "@chakra-ui/react";
+import {
+  StackProps,
+  SystemProps,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ProjectsComponent, ProjectsProps } from "./ProjectsComponent";
 
@@ -8,18 +13,23 @@ const projects: { [key: string]: ProjectsProps } = {
     description:
       "At the begining of COVID pandemic the Madrid's governors ordered to confine people by areas, without giving quality information to the citizens. That is the reason why I created Zona Restringida - Madrid.",
     architecture: "Client-Server",
-    mainTechnologies: ["Android, ", "JAVA"],
-    logoSrc: "./logo_zrmadrid.png",
-    screenSrc: "./screen_zrmadrid.png",
+    mainTechnologies: [
+      "Android Studio",
+      "JAVA",
+      "Adobe Photoshop (design)",
+      "Adobe After Effects (marketing)",
+    ],
+    logoSrc: "./main_projects/zrmadrid_logo.png",
+    screenSrc: "./main_projects/zrmadrid_screenshot.gif",
   },
   wcourier: {
     title: "WCourier",
     description:
       "Nowadays everything needs to be automated. WCourier is a tool (bot) that would help companies to send messages via Whatsapp automatically. Messages are queued and sent in the background.",
     architecture: "TCP",
-    mainTechnologies: ["CSharp, ", "WinForms"],
-    logoSrc: "./logo_wcourier.png",
-    screenSrc: "./screen_wcourier.png",
+    mainTechnologies: ["CSharp", "C#", "WinForms", "JavaScript"],
+    logoSrc: "./main_projects/wcourier_logo.png",
+    screenSrc: "./main_projects/wcourier_screenshot.png",
   },
 };
 
@@ -28,6 +38,7 @@ export interface ProjectsPageProps extends StackProps {
 }
 
 export function ProjectsPage({ separatorColor, ...rest }: ProjectsPageProps) {
+  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <Page
       separator='Projects'
@@ -36,7 +47,7 @@ export function ProjectsPage({ separatorColor, ...rest }: ProjectsPageProps) {
       separatorCloudsBackground='./main_projects/clouds_background.png'
       {...rest}
     >
-      <VStack spacing='2'>
+      <VStack spacing='20'>
         <ProjectsComponent
           imageLocation='right'
           imageOrientation='vertical'
