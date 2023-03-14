@@ -2,7 +2,7 @@ import {
   StackProps,
   SystemProps,
   useBreakpointValue,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ContactComponent } from "./ContactComponent";
@@ -29,18 +29,15 @@ export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
       separatorColor={separatorColor}
       separatorCloud='./contact/cloud.png'
       separatorCloudsBackground='./contact/clouds_background.png'
+      bg='url(/contact/background.png)'
+      backgroundSize='cover'
+      backgroundPosition='center'
       childrenPaddingX='0'
       childrenPaddingY='0'
       separatorSpacing={isMobile ? "-60" : "-40"}
       {...rest}
     >
-      <VStack
-        bg='url(/contact/background.png)'
-        backgroundSize='cover'
-        backgroundPosition='center'
-        pt='80'
-        pb='20'
-      >
+      <VStack boxSizing='border-box' pt='80' pb='20'>
         <ContactComponent {...contactDetails} />
       </VStack>
     </Page>

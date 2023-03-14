@@ -10,17 +10,13 @@ import {
   Icon,
   IconButton,
   Image,
-  Input,
-  InputGroup,
-  InputLeftElement,
   Link,
   Stack,
   StackProps,
   Text,
-  Textarea,
   useBreakpointValue,
   useClipboard,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { HiCake } from "react-icons/hi";
 import {
@@ -29,10 +25,9 @@ import {
   IoLocationSharp,
   IoLogoGithub,
   IoLogoLinkedin,
-  IoMailOutline,
-  IoMailSharp,
-  IoPersonOutline,
+  IoMailSharp
 } from "react-icons/io5";
+import ContactForm from "./ContactForm";
 
 export interface ContactProps extends StackProps {
   github: string;
@@ -88,7 +83,7 @@ export function ContactComponent({
               objectPosition='center'
             />
 
-            <Text fontSize='md' width='100%' color='white' textAlign='center'>
+            <Text fontSize='lg' width='100%' color='white' textAlign='center'>
               <strong>Bryan Smith</strong>, Collazos Duran
             </Text>
             <HStack spacing='2.5'>
@@ -208,44 +203,9 @@ export function ContactComponent({
           </VStack>
 
           <VStack spacing='0' width='100%'>
-            <Card width='100%' bgColor='blackAlpha.500'>
+            <Card width='100%' bgColor='blackAlpha.500' height='100%'>
               <CardBody p='0'>
-                <VStack
-                  padding='4'
-                  spacing='2.5'
-                  width='100%'
-                  align='start'
-                  color='white'
-                >
-                  <Heading fontSize='md'>Your name / Your company</Heading>
-                  <InputGroup>
-                    <InputLeftElement children={<IoPersonOutline />} />
-                    <Input type='text' focusBorderColor='#665cb2' />
-                  </InputGroup>
-
-                  <Heading fontSize='md'>Email</Heading>
-                  <InputGroup>
-                    <InputLeftElement children={<IoMailOutline />} />
-                    <Input type='text' focusBorderColor='#665cb2' />
-                  </InputGroup>
-
-                  <Heading fontSize='md'>Message</Heading>
-
-                  <Textarea
-                    placeholder='Hey Bryan!'
-                    focusBorderColor='#665cb2'
-                  />
-
-                  <Flex height='100%' width='100%' justifyContent='end'>
-                    <Button
-                      color='white'
-                      bgColor='whiteAlpha.500'
-                      colorScheme='purple'
-                    >
-                      Send message!
-                    </Button>
-                  </Flex>
-                </VStack>
+                <ContactForm />
               </CardBody>
             </Card>
 
