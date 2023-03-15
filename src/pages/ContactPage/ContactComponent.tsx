@@ -16,7 +16,7 @@ import {
   Text,
   useBreakpointValue,
   useClipboard,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import { HiCake } from "react-icons/hi";
 import {
@@ -25,7 +25,7 @@ import {
   IoLocationSharp,
   IoLogoGithub,
   IoLogoLinkedin,
-  IoMailSharp
+  IoMailSharp,
 } from "react-icons/io5";
 import ContactForm from "./ContactForm";
 
@@ -133,7 +133,7 @@ export function ContactComponent({
 
               <IconButton
                 as='a'
-                href='javascript:void(0)'
+                href='#'
                 aria-label='Clipboard'
                 size='md'
                 variant='solid'
@@ -141,8 +141,9 @@ export function ContactComponent({
                 color='white'
                 colorScheme='green'
                 icon={<IoClipboardSharp />}
-                onClick={() => {
+                onClick={(e) => {
                   clipboardEmail.onCopy();
+                  e.preventDefault();
                 }}
               />
             </ButtonGroup>
@@ -165,7 +166,7 @@ export function ContactComponent({
               </Button>
               <IconButton
                 as='a'
-                href='javascript:void(0)'
+                href='#'
                 aria-label='Clipboard'
                 size='md'
                 variant='solid'
@@ -173,8 +174,9 @@ export function ContactComponent({
                 color='white'
                 colorScheme='green'
                 icon={<IoClipboardSharp />}
-                onClick={() => {
+                onClick={(e) => {
                   clipboardNumber.onCopy();
+                  e.preventDefault();
                 }}
               />
             </ButtonGroup>
