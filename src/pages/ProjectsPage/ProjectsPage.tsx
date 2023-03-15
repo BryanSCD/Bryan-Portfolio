@@ -19,8 +19,11 @@ const projects: { [key: string]: ProjectsProps } = {
       "Adobe Photoshop (design)",
       "Adobe After Effects (marketing)",
     ],
+    platforms: ["Android"],
     logoSrc: "./main_projects/zrmadrid_logo.png",
     screenSrc: "./main_projects/zrmadrid_screenshot.gif",
+    videoURL: "https://www.youtube.com/watch?v=v4A88dVV1UA",
+    websiteURL: "https://sites.google.com/view/zonarestringidamadrid/",
   },
   wcourier: {
     title: "WCourier",
@@ -28,6 +31,7 @@ const projects: { [key: string]: ProjectsProps } = {
       "Nowadays everything needs to be automated. WCourier is a tool (bot) that would help companies to send messages via Whatsapp automatically. Messages are queued and sent in the background.",
     architecture: "TCP",
     mainTechnologies: ["CSharp", "C#", "WinForms", "JavaScript"],
+    platforms: ["Windows"],
     logoSrc: "./main_projects/wcourier_logo.png",
     screenSrc: "./main_projects/wcourier_screenshot.png",
   },
@@ -38,7 +42,6 @@ export interface ProjectsPageProps extends StackProps {
 }
 
 export function ProjectsPage({ separatorColor, ...rest }: ProjectsPageProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <Page
       separator='Projects'

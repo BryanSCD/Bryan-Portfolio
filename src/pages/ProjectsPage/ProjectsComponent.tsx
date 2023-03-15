@@ -7,6 +7,7 @@ import {
   Flex,
   Heading,
   Image,
+  Link,
   ListItem,
   Stack,
   StackProps,
@@ -17,14 +18,26 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useMemo } from "react";
+import {
+  IoApps,
+  IoLogoChrome,
+  IoLogoGithub,
+  IoLogoWebComponent,
+  IoLogoYoutube,
+} from "react-icons/io5";
 
 export interface ProjectsProps {
   title: string;
   description: string;
   architecture: string;
   mainTechnologies: string[];
+  platforms: string[];
   logoSrc: string;
   screenSrc: string;
+  githubURL?: string;
+  videoURL?: string;
+  websiteURL?: string;
+  showMe?: boolean;
 }
 
 export type ImageLocation = "left" | "right";
@@ -47,8 +60,13 @@ export function ProjectsComponent({
   description,
   architecture,
   mainTechnologies,
+  platforms,
   imageLocation,
   imageOrientation,
+  githubURL,
+  videoURL,
+  websiteURL,
+  showMe,
   bgHexColor = "#FFFFFF",
   colorScheme = "purple",
   logoSrc,
@@ -141,11 +159,15 @@ export function ProjectsComponent({
                 alignSelf='stretch'
               >
                 <ListItem>
-                  <strong>Architecture:</strong> {architecture}
+                  <strong>Architecture: </strong> {architecture}
                 </ListItem>
                 <ListItem>
-                  <strong>Main technologies:</strong>{" "}
+                  <strong>Main technologies: </strong>
                   {mainTechnologies.join(", ")}
+                </ListItem>
+                <ListItem>
+                  <strong>Platforms: </strong>
+                  {platforms.join(", ")}
                 </ListItem>
               </UnorderedList>
 
@@ -153,11 +175,65 @@ export function ProjectsComponent({
             </Stack>
           </VStack>
         </CardBody>
-        <CardFooter bgColor='blackAlpha.400'>
-          <Flex justifyContent='flex-end' width='100%' p='2.5'>
-            <Button variant='solid' colorScheme={colorScheme} size='sm'>
-              Learn more
-            </Button>
+        <CardFooter bgColor='blackAlpha.400' p='0'>
+          <Flex
+            justifyContent={isMobile ? "center" : "flex-end"}
+            width='100%'
+            p='2.5'
+            flexWrap='wrap'
+          >
+            {videoURL && (
+              <Link href={videoURL} isExternal>
+                <Button
+                  as='a'
+                  variant='solid'
+                  colorScheme='red'
+                  size='md'
+                  m='1'
+                  leftIcon={<IoLogoYoutube />}
+                >
+                  Video
+                </Button>
+              </Link>
+            )}
+            {websiteURL && (
+              <Link href={websiteURL} isExternal>
+                <Button
+                  variant='solid'
+                  colorScheme={colorScheme}
+                  size='md'
+                  m='1'
+                  leftIcon={<IoLogoChrome />}
+                >
+                  Website
+                </Button>
+              </Link>
+            )}
+            {githubURL && (
+              <Link href={githubURL} isExternal>
+                <Button
+                  variant='solid'
+                  colorScheme='gray'
+                  color='black'
+                  size='md'
+                  m='1'
+                  leftIcon={<IoLogoGithub />}
+                >
+                  Github
+                </Button>
+              </Link>
+            )}
+            {showMe && (
+              <Button
+                variant='solid'
+                colorScheme={colorScheme}
+                size='md'
+                m='1'
+                width={isMobile ? "100%" : "auto"}
+              >
+                Show me!
+              </Button>
+            )}
           </Flex>
         </CardFooter>
       </Card>
