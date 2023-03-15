@@ -1,4 +1,4 @@
-import { IOptions, RecursivePartial, Size, SizeMode } from "tsparticles-engine";
+import { IOptions, RecursivePartial } from "tsparticles-engine";
 
 export const particlesJSON: RecursivePartial<IOptions> = {
   fpsLimit: 120,

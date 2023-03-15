@@ -1,5 +1,10 @@
-import { StackProps, SystemProps, useBreakpointValue, VStack } from "@chakra-ui/react";
-import { Page } from "../../components";
+import {
+  forwardRef,
+  SystemProps,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
+import { Page, PageProps } from "../../components";
 import {
   ExperienceTimelineComponent,
   ExperienceTimelineProps,
@@ -30,49 +35,49 @@ const experience: ExperienceTimelineProps[] = [
   },
 ];
 
-export interface ExperiencePageProps extends StackProps {
+export type ExperiencePageProps = {
   separatorColor: SystemProps["color"];
-}
+} & PageProps;
 
-export function ExperiencePage({
-  separatorColor,
-  ...rest
-}: ExperiencePageProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
-  return (
-    <Page
-      separator='Experience'
-      separatorSpacing={isMobile ? 0 : "-40"}
-      separatorColor={separatorColor}
-      separatorCloud='./experience/cloud.png'
-      separatorCloudsBackground='./experience/clouds_background.png'
-      {...rest}
-    >
-      <VStack spacing={isMobile ? "20" : "0"}>
-        {experience.map((value, index) => {
-          if (index == 0) {
-            return (
-              <ExperienceTimelineComponent
-                {...value}
-                key={index}
-                extraUpperDivider={{ variant: "dashed" }}
-                upperDivider={{ variant: "dashed" }}
-              />
-            );
-          } else if (index == experience.length - 1) {
-            return (
-              <ExperienceTimelineComponent
-                {...value}
-                key={index}
-                bottomDivider={{ variant: "dashed" }}
-                extraBottomDivider={{ variant: "dashed" }}
-              />
-            );
-          } else {
-            return <ExperienceTimelineComponent {...value} key={index} />;
-          }
-        })}
-      </VStack>
-    </Page>
-  );
-}
+export const ExperiencePage = forwardRef<ExperiencePageProps, "div">(
+  ({ separatorColor, ...rest }, ref) => {
+    const isMobile = useBreakpointValue({ base: true, md: false });
+    return (
+      <Page
+        ref={ref}
+        separator='Experience'
+        separatorSpacing={isMobile ? 0 : "-40"}
+        separatorColor={separatorColor}
+        separatorCloud='./experience/cloud.png'
+        separatorCloudsBackground='./experience/clouds_background.png'
+        {...rest}
+      >
+        <VStack spacing={isMobile ? "20" : "0"}>
+          {experience.map((value, index) => {
+            if (index == 0) {
+              return (
+                <ExperienceTimelineComponent
+                  {...value}
+                  key={index}
+                  extraUpperDivider={{ variant: "dashed" }}
+                  upperDivider={{ variant: "dashed" }}
+                />
+              );
+            } else if (index == experience.length - 1) {
+              return (
+                <ExperienceTimelineComponent
+                  {...value}
+                  key={index}
+                  bottomDivider={{ variant: "dashed" }}
+                  extraBottomDivider={{ variant: "dashed" }}
+                />
+              );
+            } else {
+              return <ExperienceTimelineComponent {...value} key={index} />;
+            }
+          })}
+        </VStack>
+      </Page>
+    );
+  }
+);

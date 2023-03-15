@@ -1,8 +1,9 @@
 import {
+  forwardRef,
   StackProps,
   SystemProps,
   useBreakpointValue,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ContactComponent } from "./ContactComponent";
@@ -17,29 +18,32 @@ const contactDetails = {
     "https://api.whatsapp.com/send?phone=34695549791&text=Hey%20Bryan!",
 };
 
-export interface ContactPageProps extends StackProps {
+export type ContactPageProps = {
   separatorColor: SystemProps["color"];
-}
+} & StackProps;
 
-export function ContactPage({ separatorColor, ...rest }: ContactPageProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
-  return (
-    <Page
-      separator='Contact'
-      separatorColor={separatorColor}
-      separatorCloud='./contact/cloud.png'
-      separatorCloudsBackground='./contact/clouds_background.png'
-      bg='url(/contact/background.png)'
-      backgroundSize='cover'
-      backgroundPosition='center'
-      childrenPaddingX='0'
-      childrenPaddingY='0'
-      separatorSpacing={isMobile ? "-60" : "-40"}
-      {...rest}
-    >
-      <VStack boxSizing='border-box' pt='80' pb='20'>
-        <ContactComponent {...contactDetails} />
-      </VStack>
-    </Page>
-  );
-}
+export const ContactPage = forwardRef<ContactPageProps, "div">(
+  ({ separatorColor, ...rest }, ref) => {
+    const isMobile = useBreakpointValue({ base: true, md: false });
+    return (
+      <Page
+        ref={ref}
+        separator='Contact'
+        separatorColor={separatorColor}
+        separatorCloud='./contact/cloud.png'
+        separatorCloudsBackground='./contact/clouds_background.png'
+        bg='url(/contact/background.png)'
+        backgroundSize='cover'
+        backgroundPosition='center'
+        childrenPaddingX='0'
+        childrenPaddingY='0'
+        separatorSpacing={isMobile ? "-60" : "-40"}
+        {...rest}
+      >
+        <VStack boxSizing='border-box' pt='80' pb='20'>
+          <ContactComponent {...contactDetails} />
+        </VStack>
+      </Page>
+    );
+  }
+);

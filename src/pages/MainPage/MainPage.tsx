@@ -5,14 +5,14 @@ import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanne
 import { FireworksHandlers } from "@fireworks-js/react";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Page } from "../../components";
-import { Box, StackProps } from "@chakra-ui/react";
+import { Box, forwardRef } from "@chakra-ui/react";
 import Particles from "react-particles";
 import { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import { particlesJSON } from "./Particles";
+import { Page, PageProps } from "../../components";
 
-export const MainPage = ({ ...rest }: StackProps) => {
+export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
   const fireworks = useRef<FireworksHandlers>(null);
   const divAvatar = useRef<HTMLDivElement>(null);
   const divFireworks = useRef<HTMLDivElement>(null);
@@ -92,11 +92,11 @@ export const MainPage = ({ ...rest }: StackProps) => {
   };
 
   return (
-    <Page {...rest} childrenPaddingX='0' childrenPaddingY='0'>
+    <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
       <ParallaxBanner
         layers={[fireworksLayer, avatar, touchLayer]}
         style={{ height: "100vh" }}
       />
     </Page>
   );
-};
+});

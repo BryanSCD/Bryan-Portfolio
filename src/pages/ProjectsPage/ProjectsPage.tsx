@@ -1,9 +1,4 @@
-import {
-  StackProps,
-  SystemProps,
-  useBreakpointValue,
-  VStack,
-} from "@chakra-ui/react";
+import { forwardRef, StackProps, SystemProps, VStack } from "@chakra-ui/react";
 import { Page } from "../../components";
 import { ProjectsComponent, ProjectsProps } from "./ProjectsComponent";
 
@@ -37,36 +32,39 @@ const projects: { [key: string]: ProjectsProps } = {
   },
 };
 
-export interface ProjectsPageProps extends StackProps {
+export type ProjectsPageProps = {
   separatorColor: SystemProps["color"];
-}
+} & StackProps;
 
-export function ProjectsPage({ separatorColor, ...rest }: ProjectsPageProps) {
-  return (
-    <Page
-      separator='Projects'
-      separatorColor={separatorColor}
-      separatorCloud='./main_projects/cloud.png'
-      separatorCloudsBackground='./main_projects/clouds_background.png'
-      {...rest}
-    >
-      <VStack spacing='20'>
-        <ProjectsComponent
-          imageLocation='right'
-          imageOrientation='vertical'
-          bgHexColor='#5216D7'
-          alignSelf='start'
-          {...projects.zrmadrid}
-        />
-        <ProjectsComponent
-          imageLocation='left'
-          imageOrientation='horizontal'
-          bgHexColor='#01675B'
-          colorScheme='green'
-          alignSelf='end'
-          {...projects.wcourier}
-        />
-      </VStack>
-    </Page>
-  );
-}
+export const ProjectsPage = forwardRef<ProjectsPageProps, "div">(
+  ({ separatorColor, ...rest }, ref) => {
+    return (
+      <Page
+        ref={ref}
+        separator='Projects'
+        separatorColor={separatorColor}
+        separatorCloud='./main_projects/cloud.png'
+        separatorCloudsBackground='./main_projects/clouds_background.png'
+        {...rest}
+      >
+        <VStack spacing='20'>
+          <ProjectsComponent
+            imageLocation='right'
+            imageOrientation='vertical'
+            bgHexColor='#5216D7'
+            alignSelf='start'
+            {...projects.zrmadrid}
+          />
+          <ProjectsComponent
+            imageLocation='left'
+            imageOrientation='horizontal'
+            bgHexColor='#01675B'
+            colorScheme='green'
+            alignSelf='end'
+            {...projects.wcourier}
+          />
+        </VStack>
+      </Page>
+    );
+  }
+);
