@@ -185,7 +185,6 @@ export function ProjectsComponent({
             {videoURL && (
               <Link href={videoURL} isExternal>
                 <Button
-                  as='a'
                   variant='solid'
                   colorScheme='red'
                   size='md'
