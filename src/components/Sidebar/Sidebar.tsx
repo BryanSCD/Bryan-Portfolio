@@ -1,4 +1,6 @@
 import {
+  Box,
+  Flex,
   Stack,
   StackProps,
   useBreakpointValue,
@@ -11,23 +13,23 @@ export function Sidebar({ children, ...rest }: SidebarProps) {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Stack
+    <Flex
       {...rest}
       pos='fixed'
-      direction={isMobile ? "row" : "column"}
       right={isMobile ? "auto" : "5"}
       top={isMobile ? "auto" : "50%"}
       bottom={isMobile ? "5" : "auto"}
       left={isMobile ? "50%" : "auto"}
       transform={isMobile ? "translate(-50%, 0)" : "translate(0, -50%)"}
+      flexDirection={isMobile ? "row" : "column"}
       py='4'
       px='2'
-      spacing='4'
+      gap='4'
       bgColor='white'
       alignContent='center'
       rounded='3xl'
     >
       {children}
-    </Stack>
+    </Flex>
   );
 }
