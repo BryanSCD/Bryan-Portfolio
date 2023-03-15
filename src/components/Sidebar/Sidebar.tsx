@@ -1,4 +1,9 @@
-import { StackProps, useBreakpointValue, VStack } from "@chakra-ui/react";
+import {
+  Stack,
+  StackProps,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
 
 export interface SidebarProps extends StackProps {}
 
@@ -6,12 +11,15 @@ export function Sidebar({ children, ...rest }: SidebarProps) {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <VStack
+    <Stack
       {...rest}
       pos='fixed'
-      right='5'
-      top='50%'
-      transform='translate(0, -50%)'
+      direction={isMobile ? "row" : "column"}
+      right={isMobile ? "auto" : "5"}
+      top={isMobile ? "auto" : "50%"}
+      bottom={isMobile ? "5" : "auto"}
+      left={isMobile ? "50%" : "auto"}
+      transform={isMobile ? "translate(-50%, 0)" : "translate(0, -50%)"}
       py='4'
       px='2'
       spacing='4'
@@ -20,6 +28,6 @@ export function Sidebar({ children, ...rest }: SidebarProps) {
       rounded='3xl'
     >
       {children}
-    </VStack>
+    </Stack>
   );
 }

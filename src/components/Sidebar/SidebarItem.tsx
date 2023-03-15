@@ -15,12 +15,10 @@ import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 export interface SidebarItemProps extends StackProps {
   icon: ReactJSXElement;
   label: string;
+  onButtonClick: Function;
 }
 
-export function SidebarItem({
-  icon,
-  label,
-}: SidebarItemProps) {
+export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   const { isOpen, onToggle } = useDisclosure();
@@ -28,7 +26,7 @@ export function SidebarItem({
   return (
     <>
       <Popover
-        placement='left'
+        placement={isMobile ? "bottom" : "left"}
         isOpen={isOpen}
         autoFocus={false}
         returnFocusOnClose={false}
@@ -37,17 +35,21 @@ export function SidebarItem({
           <IconButton
             aria-label={label}
             icon={icon}
+            color='black'
             colorScheme='gray'
-            size='lg'
+            size={isMobile ? "md" : "lg"}
             variant='outline'
-            onPointerEnter={onToggle}
-            onPointerLeave={onToggle}
+            onPointerEnter={!isOpen ? onToggle : () => {}}
+            onPointerLeave={isOpen ? onToggle : () => {}}
+            onClick={() => {
+              onButtonClick();
+            }}
           />
         </PopoverTrigger>
         <PopoverContent bgColor='whiteAlpha.900'>
           <PopoverArrow />
           <PopoverBody py='8'>
-            <Heading size='md' textAlign='center'>
+            <Heading size='md' textAlign='center' color='black'>
               {label}
             </Heading>
           </PopoverBody>
