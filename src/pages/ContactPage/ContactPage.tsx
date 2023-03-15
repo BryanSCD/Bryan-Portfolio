@@ -35,6 +35,7 @@ export const ContactPage = forwardRef<ContactPageProps, "div">(
         bg='url(/contact/background.png)'
         backgroundSize='cover'
         backgroundPosition='center'
+        backgroundRepeat='no-repeat'
         childrenPaddingX='0'
         childrenPaddingY='0'
         separatorSpacing={isMobile ? "-60" : "-40"}
