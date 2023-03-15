@@ -53,7 +53,7 @@ export const particlesJSON: RecursivePartial<IOptions> = {
         enable: true,
         area: 1000,
       },
-      limit: 100,
+      limit: 60,
       value: 80,
     },
     opacity: {
@@ -67,4 +67,5 @@ export const particlesJSON: RecursivePartial<IOptions> = {
     },
   },
   detectRetina: true,
+  pauseOnOutsideViewport: true,
 };

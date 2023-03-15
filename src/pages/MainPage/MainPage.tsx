@@ -2,7 +2,6 @@ import { Avatar } from "@readyplayerme/visage";
 import { ParallaxBanner } from "react-scroll-parallax";
 import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types";
 
-import { FireworksHandlers } from "@fireworks-js/react";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Box, forwardRef } from "@chakra-ui/react";
@@ -13,9 +12,9 @@ import { particlesJSON } from "./Particles";
 import { Page, PageProps } from "../../components";
 
 export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
-  const fireworks = useRef<FireworksHandlers>(null);
+  const particles = useRef<Particles>(null);
   const divAvatar = useRef<HTMLDivElement>(null);
-  const divFireworks = useRef<HTMLDivElement>(null);
+  const divParticles = useRef<HTMLDivElement>(null);
 
   const [optimize, setOptimize] = useState<boolean>(true);
 
@@ -23,19 +22,14 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
     await loadFull(engine);
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      fireworks.current?.updateOptions({ intensity: 1 });
-    }, 4000);
-  }, []);
-
-  const fireworksLayer: BannerLayer = {
+  const particlesLayer: BannerLayer = {
     children: (
-      <motion.div ref={divFireworks} hidden={!optimize}>
+      <motion.div ref={divParticles}>
         <Particles
           id='tsparticles'
           options={particlesJSON}
           init={particlesInit}
+          ref={particles}
         />
       </motion.div>
     ),
@@ -76,12 +70,12 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
     onClickCapture: (e) => {
       const event = new MouseEvent("click", e.nativeEvent);
       divAvatar.current?.lastChild?.dispatchEvent(event);
-      divFireworks.current?.lastChild?.lastChild?.dispatchEvent(event);
+      divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
     },
     onPointerMoveCapture: (e) => {
       const event = new PointerEvent("pointermove", e.nativeEvent);
       divAvatar.current?.lastChild?.dispatchEvent(event);
-      divFireworks.current?.lastChild?.lastChild?.dispatchEvent(event);
+      divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
     },
     onEnter: () => {
       setOptimize(true);
@@ -94,7 +88,7 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
   return (
     <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
       <ParallaxBanner
-        layers={[fireworksLayer, avatar, touchLayer]}
+        layers={[particlesLayer, avatar, touchLayer]}
         style={{ height: "100vh" }}
       />
     </Page>
