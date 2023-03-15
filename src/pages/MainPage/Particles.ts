@@ -51,7 +51,7 @@ export const particlesJSON: RecursivePartial<IOptions> = {
     number: {
       density: {
         enable: true,
-        area: 1000,
+        area: 0.5,
       },
       limit: 60,
       value: 80,
