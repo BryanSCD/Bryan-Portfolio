@@ -6,13 +6,13 @@ import { FireworksHandlers } from "@fireworks-js/react";
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Page } from "../../components";
-import { Box } from "@chakra-ui/react";
+import { Box, StackProps } from "@chakra-ui/react";
 import Particles from "react-particles";
 import { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 import { particlesJSON } from "./Particles";
 
-export const MainPage = () => {
+export const MainPage = ({ ...rest }: StackProps) => {
   const fireworks = useRef<FireworksHandlers>(null);
   const divAvatar = useRef<HTMLDivElement>(null);
   const divFireworks = useRef<HTMLDivElement>(null);
@@ -31,14 +31,11 @@ export const MainPage = () => {
 
   const fireworksLayer: BannerLayer = {
     children: (
-      <motion.div
-        ref={divFireworks}
-        hidden={!optimize}
-      >
+      <motion.div ref={divFireworks} hidden={!optimize}>
         <Particles
           id='tsparticles'
           options={particlesJSON}
-          init={particlesInit}  
+          init={particlesInit}
         />
       </motion.div>
     ),
@@ -95,7 +92,7 @@ export const MainPage = () => {
   };
 
   return (
-    <Page childrenPaddingX='0' childrenPaddingY='0'>
+    <Page {...rest} childrenPaddingX='0' childrenPaddingY='0'>
       <ParallaxBanner
         layers={[fireworksLayer, avatar, touchLayer]}
         style={{ height: "100vh" }}
