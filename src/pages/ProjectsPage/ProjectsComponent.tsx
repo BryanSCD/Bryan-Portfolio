@@ -15,15 +15,12 @@ import {
   ThemeTypings,
   UnorderedList,
   useBreakpointValue,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
-  IoApps,
   IoLogoChrome,
-  IoLogoGithub,
-  IoLogoWebComponent,
-  IoLogoYoutube,
+  IoLogoGithub, IoLogoYoutube
 } from "react-icons/io5";
 
 export interface ProjectsProps {
@@ -121,7 +118,7 @@ export function ProjectsComponent({
         zIndex='20'
       />
     );
-  }, [cardHorizontal]);
+  }, [imageLocation, imageOrientation, screenSrc, cardHorizontal]);
 
   return (
     <Stack

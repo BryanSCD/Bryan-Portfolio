@@ -48,8 +48,6 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
           dirLightIntensity={5}
           headMovement
           modelSrc='/main_page/bryanavatar.glb'
-          onLoaded={function noRefCheck() {}}
-          onLoading={function noRefCheck() {}}
           scale={1}
           spotLightAngle={0.314}
           spotLightColor='#fff5b6'

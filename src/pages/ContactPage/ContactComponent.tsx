@@ -220,7 +220,7 @@ export function ContactComponent({
                 pt='8'
                 pb='4'
               >
-                Let's make it work.
+                {"Let's make it work."}
               </Heading>
             </Flex>
           </VStack>

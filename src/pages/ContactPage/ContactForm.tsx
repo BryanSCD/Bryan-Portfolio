@@ -43,7 +43,9 @@ function ContactForm() {
             Your name / Your company
           </FormLabel>
           <InputGroup>
-            <InputLeftElement children={<IoPersonOutline />} />
+            <InputLeftElement>
+              <IoPersonOutline />
+            </InputLeftElement>
             <Input
               type='text'
               focusBorderColor='#665cb2'
@@ -66,7 +68,9 @@ function ContactForm() {
         <FormControl isInvalid={!!errors.email} isRequired>
           <FormLabel fontSize='md'>Email</FormLabel>
           <InputGroup>
-            <InputLeftElement children={<IoMailOutline />} />
+            <InputLeftElement>
+              <IoMailOutline />
+            </InputLeftElement>
             <Input
               type='email'
               focusBorderColor='#665cb2'

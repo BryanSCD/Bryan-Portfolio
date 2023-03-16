@@ -1,8 +1,6 @@
 import {
   forwardRef,
-  SystemProps,
-  useBreakpointValue,
-  VStack,
+  SystemProps, VStack
 } from "@chakra-ui/react";
 import { Page, PageProps } from "../../components";
 import { ContactComponent } from "./ContactComponent";

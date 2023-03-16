@@ -15,7 +15,7 @@ import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 export interface SidebarItemProps extends StackProps {
   icon: ReactJSXElement;
   label: string;
-  onButtonClick: Function;
+  onButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
@@ -39,10 +39,10 @@ export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
             colorScheme='gray'
             size={isSmall ? "md" : "lg"}
             variant='outline'
-            onPointerEnter={!isOpen ? onToggle : () => {}}
-            onPointerLeave={isOpen ? onToggle : () => {}}
-            onClick={() => {
-              onButtonClick();
+            onPointerEnter={!isOpen ? onToggle : undefined}
+            onPointerLeave={isOpen ? onToggle : undefined}
+            onClick={(e) => {
+              onButtonClick(e);
             }}
           />
         </PopoverTrigger>

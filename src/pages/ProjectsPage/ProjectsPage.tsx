@@ -1,4 +1,4 @@
-import { forwardRef, StackProps, SystemProps, VStack } from "@chakra-ui/react";
+import { forwardRef, SystemProps, VStack } from "@chakra-ui/react";
 import { Page, PageProps } from "../../components";
 import { ProjectsComponent, ProjectsProps } from "./ProjectsComponent";
 

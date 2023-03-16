@@ -2,7 +2,6 @@ import {
   Card,
   CardBody,
   Heading,
-  HStack,
   Image,
   Stack,
   StackProps,
@@ -16,11 +15,7 @@ export interface StudiesProps {
   imageSrc?: string;
 }
 
-export interface StudiesComponentCustomProps {}
-
-export type ProjectsComponentProps = StudiesProps &
-  StudiesComponentCustomProps &
-  StackProps;
+export type ProjectsComponentProps = StudiesProps & StackProps;
 
 export function StudiesComponent({
   imageSrc,
@@ -31,7 +26,7 @@ export function StudiesComponent({
 }: ProjectsComponentProps) {
   const isMedium = useBreakpointValue({ base: true, lg: false });
   return (
-    <Card width={isMedium ? '100%' : '40%'} {...rest}>
+    <Card width={isMedium ? "100%" : "40%"} {...rest}>
       <CardBody px={isMedium ? "6" : "12"} py={isMedium ? "10" : "16"}>
         <VStack>
           <Stack
@@ -49,7 +44,7 @@ export function StudiesComponent({
               />
             )}
             <VStack spacing='2.5'>
-              <Heading fontSize={isMedium ? '2xl' : '3xl'} textAlign='center'>
+              <Heading fontSize={isMedium ? "2xl" : "3xl"} textAlign='center'>
                 {title}
               </Heading>
               {subtitle && (

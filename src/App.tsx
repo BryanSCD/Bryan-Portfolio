@@ -38,7 +38,7 @@ function App() {
     } else {
       setSidebarOffsetWidth("8");
     }
-  }, [isSmall, sidebarRef.current]);
+  }, [isSmall, sidebarRef]);
 
   return (
     <>
