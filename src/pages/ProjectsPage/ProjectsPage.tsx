@@ -41,10 +41,12 @@ export const ProjectsPage = forwardRef<ProjectsPageProps, "div">(
     return (
       <Page
         ref={ref}
-        separator='Projects'
-        separatorColor={separatorColor}
-        separatorCloud='./main_projects/cloud.png'
-        separatorCloudsBackground='./main_projects/clouds_background.png'
+        separatorProps={{
+          separatorLabel: "Projects",
+          separatorCloud: "./main_projects/cloud.png",
+          separatorCloudsBackground: "./main_projects/clouds_background.png",
+          separatorColor,
+        }}
         {...rest}
       >
         <VStack spacing='20'>

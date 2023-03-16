@@ -28,17 +28,19 @@ export const ContactPage = forwardRef<ContactPageProps, "div">(
     return (
       <Page
         ref={ref}
-        separator='Contact'
-        separatorColor={separatorColor}
-        separatorCloud='./contact/cloud.png'
-        separatorCloudsBackground='./contact/clouds_background.png'
+        separatorProps={{
+          separatorLabel: "Contact",
+          separatorCloud: "./contact/cloud.png",
+          separatorCloudsBackground: "./contact/clouds_background.png",
+          separatorColor,
+        }}
         bg='url(/contact/background.png)'
         backgroundSize='cover'
         backgroundPosition='center'
         backgroundRepeat='no-repeat'
         childrenPaddingX='0'
         childrenPaddingY='0'
-        separatorSpacing={isMobile ? "-60" : "-40"}
+        childrenSeparatorSpacing={isMobile ? "-60" : "-40"}
         {...rest}
       >
         <VStack boxSizing='border-box' pt='80' pb='20'>

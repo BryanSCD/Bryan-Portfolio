@@ -23,10 +23,12 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
     return (
       <Page
         ref={ref}
-        separator='Studies'
-        separatorColor={separatorColor}
-        separatorCloud='./studies/cloud.png'
-        separatorCloudsBackground='./studies/clouds_background.png'
+        separatorProps={{
+          separatorLabel: "Studies",
+          separatorCloud: "./studies/cloud.png",
+          separatorCloudsBackground: "./studies/clouds_background.png",
+          separatorColor,
+        }}
         {...rest}
       >
         <VStack spacing={isMobile ? "14" : "28"}>

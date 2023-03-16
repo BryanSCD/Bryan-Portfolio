@@ -45,11 +45,13 @@ export const ExperiencePage = forwardRef<ExperiencePageProps, "div">(
     return (
       <Page
         ref={ref}
-        separator='Experience'
-        separatorSpacing={isMobile ? 0 : "-40"}
-        separatorColor={separatorColor}
-        separatorCloud='./experience/cloud.png'
-        separatorCloudsBackground='./experience/clouds_background.png'
+        childrenSeparatorSpacing={isMobile ? 0 : "-40"}
+        separatorProps={{
+          separatorLabel: "Experience",
+          separatorColor,
+          separatorCloud: "./experience/cloud.png",
+          separatorCloudsBackground: "./experience/clouds_background.png",
+        }}
         {...rest}
       >
         <VStack spacing={isMobile ? "20" : "0"}>
