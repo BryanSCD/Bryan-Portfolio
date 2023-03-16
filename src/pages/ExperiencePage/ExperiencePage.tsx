@@ -45,7 +45,7 @@ export const ExperiencePage = forwardRef<ExperiencePageProps, "div">(
     return (
       <Page
         ref={ref}
-        childrenSeparatorSpacing={isLarge ? 0 : "-40"}
+        childrenSeparatorSpacing={isLarge ? "8" : "-40"}
         separatorProps={{
           separatorLabel: "Experience",
           separatorColor,

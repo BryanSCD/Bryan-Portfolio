@@ -52,6 +52,7 @@ export const Page = forwardRef<PageProps, "div">(
         <Box
           paddingLeft={childrenPaddingLeft}
           paddingRight={childrenPaddingRight}
+          paddingY={childrenPaddingY}
           overflow='hidden'
           width='100%'
           zIndex={10}

@@ -13,6 +13,7 @@ import { ContactPage } from "./pages/ContactPage";
 
 function App() {
   const isSmall = useBreakpointValue({ base: true, md: false });
+  const isLarge = useBreakpointValue({ base: true, xl: false });
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -117,7 +118,7 @@ function App() {
         <ProjectsPage
           ref={projectsPageRef}
           separatorColor='#030F1B'
-          marginTop={isSmall ? "0" : "-40"}
+          marginTop={isLarge ? "0" : "-40"}
           childrenPaddingRight={sidebarOffsetWidth}
         />
         <StudiesPage
