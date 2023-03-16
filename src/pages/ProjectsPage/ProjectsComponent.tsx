@@ -73,20 +73,21 @@ export function ProjectsComponent({
   screenSrc,
   ...rest
 }: ProjectsComponentProps) {
-  const isMedium = useBreakpointValue({
-    base: true,
-    sm: true,
-    md: true,
-    lg: false,
-  });
+  const isMedium = useBreakpointValue(
+    {
+      base: true,
+      lg: false,
+    },
+    { ssr: false }
+  );
 
-  const isExtraLarge = useBreakpointValue({
-    base: false,
-    sm: false,
-    md: false,
-    lg: false,
-    xl: true,
-  });
+  const isExtraLarge = useBreakpointValue(
+    {
+      base: false,
+      xl: true,
+    },
+    { ssr: false }
+  );
 
   const cardHorizontal =
     imageOrientation == "vertical" ? !!isMedium : !isExtraLarge;
