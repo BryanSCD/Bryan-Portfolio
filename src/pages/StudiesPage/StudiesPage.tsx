@@ -2,18 +2,16 @@ import {
   forwardRef,
   Heading,
   ListItem,
-  Stack,
-  StackProps,
-  SystemProps,
+  Stack, SystemProps,
   Text,
   UnorderedList,
   useBreakpointValue,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
-import { Page } from "../../components";
+import { Page, PageProps } from "../../components";
 import { StudiesComponent } from "./StudiesComponent";
 
-export interface StudiesPageProps extends StackProps {
+export interface StudiesPageProps extends PageProps {
   separatorColor: SystemProps["color"];
 }
 

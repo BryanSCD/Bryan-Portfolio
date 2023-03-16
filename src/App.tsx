@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, useBreakpointValue } from "@chakra-ui/react";
 import { Sidebar, SidebarItem } from "./components";
 import {
@@ -14,15 +14,43 @@ import { ContactPage } from "./pages/ContactPage";
 function App() {
   const isSmall = useBreakpointValue({ base: true, md: false });
 
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
   const mainPageRef = useRef<HTMLDivElement>(null);
   const experiencePageRef = useRef<HTMLDivElement>(null);
   const projectsPageRef = useRef<HTMLDivElement>(null);
   const studiesPageRef = useRef<HTMLDivElement>(null);
   const contactPageRef = useRef<HTMLDivElement>(null);
 
+  const [sidebarOffsetWidth, setSidebarOffsetWidth] = useState<string>("8");
+
+  useEffect(() => {
+    if (!isSmall && sidebarRef.current) {
+      setSidebarOffsetWidth(
+        `${
+          (window.innerWidth -
+            sidebarRef.current?.getBoundingClientRect().right) *
+            2 +
+          sidebarRef.current?.clientWidth
+        }px`
+      );
+    } else {
+      setSidebarOffsetWidth("8");
+    }
+  }, [isSmall, sidebarRef.current]);
+
   return (
     <>
-      <Sidebar zIndex='1000'>
+      <Sidebar
+        ref={sidebarRef}
+        right={isSmall ? "auto" : "4"}
+        top={isSmall ? "auto" : "50%"}
+        bottom={isSmall ? "4" : "auto"}
+        left={isSmall ? "50%" : "auto"}
+        transform={isSmall ? "translate(-50%, 0)" : "translate(0, -50%)"}
+        direction={isSmall ? "row" : "column"}
+        zIndex='1000'
+      >
         <SidebarItem
           icon={<IoHappy />}
           label='Main'
@@ -84,14 +112,24 @@ function App() {
           ref={experiencePageRef}
           separatorColor='black'
           marginTop='-20'
+          childrenPaddingRight={sidebarOffsetWidth}
         />
         <ProjectsPage
           ref={projectsPageRef}
           separatorColor='#030F1B'
           marginTop={isSmall ? "0" : "-40"}
+          childrenPaddingRight={sidebarOffsetWidth}
         />
-        <StudiesPage ref={studiesPageRef} separatorColor='#282E58' />
-        <ContactPage ref={contactPageRef} separatorColor='#564EA2' />
+        <StudiesPage
+          ref={studiesPageRef}
+          separatorColor='#282E58'
+          childrenPaddingRight={sidebarOffsetWidth}
+        />
+        <ContactPage
+          ref={contactPageRef}
+          separatorColor='#564EA2'
+          childrenPaddingRight={sidebarOffsetWidth}
+        />
       </Box>
     </>
   );

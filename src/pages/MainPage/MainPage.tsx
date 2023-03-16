@@ -2,14 +2,14 @@ import { Avatar } from "@readyplayerme/visage";
 import { ParallaxBanner } from "react-scroll-parallax";
 import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types";
 
-import { motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
 import { Box, forwardRef } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useCallback, useRef, useState } from "react";
 import Particles from "react-particles";
-import { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
-import { particlesJSON } from "./Particles";
+import { Engine } from "tsparticles-engine";
 import { Page, PageProps } from "../../components";
+import { particlesJSON } from "./Particles";
 
 export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
   const particles = useRef<Particles>(null);

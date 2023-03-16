@@ -1,5 +1,5 @@
 import { forwardRef, StackProps, SystemProps, VStack } from "@chakra-ui/react";
-import { Page } from "../../components";
+import { Page, PageProps } from "../../components";
 import { ProjectsComponent, ProjectsProps } from "./ProjectsComponent";
 
 const projects: { [key: string]: ProjectsProps } = {
@@ -34,7 +34,7 @@ const projects: { [key: string]: ProjectsProps } = {
 
 export type ProjectsPageProps = {
   separatorColor: SystemProps["color"];
-} & StackProps;
+} & PageProps;
 
 export const ProjectsPage = forwardRef<ProjectsPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {

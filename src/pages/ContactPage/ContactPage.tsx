@@ -1,11 +1,9 @@
 import {
-  forwardRef,
-  StackProps,
-  SystemProps,
+  forwardRef, SystemProps,
   useBreakpointValue,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
-import { Page } from "../../components";
+import { Page, PageProps } from "../../components";
 import { ContactComponent } from "./ContactComponent";
 
 const contactDetails = {
@@ -20,7 +18,7 @@ const contactDetails = {
 
 export type ContactPageProps = {
   separatorColor: SystemProps["color"];
-} & StackProps;
+} & PageProps;
 
 export const ContactPage = forwardRef<ContactPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {

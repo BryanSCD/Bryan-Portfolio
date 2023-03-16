@@ -26,8 +26,8 @@ export const Page = forwardRef<PageProps, "div">(
     {
       children,
       childrenPaddingX,
-      childrenPaddingLeft = 8,
-      childrenPaddingRight = 8,
+      childrenPaddingLeft = "8",
+      childrenPaddingRight = "8",
       childrenPaddingY,
       childrenSeparatorSpacing = "0",
       separatorProps,
