@@ -23,7 +23,7 @@ export const Page = forwardRef<PageProps, "div">(
   (
     {
       children,
-      childrenPaddingX,
+      childrenPaddingX = "8",
       childrenPaddingY,
       childrenSeparatorSpacing = "0",
       separatorProps,
@@ -32,10 +32,6 @@ export const Page = forwardRef<PageProps, "div">(
     ref
   ) => {
     const isMobile = useBreakpointValue({ base: true, md: false });
-
-    if (!childrenPaddingX) {
-      childrenPaddingX = isMobile ? "8" : "28";
-    }
 
     if (!childrenPaddingY) {
       childrenPaddingY = isMobile ? "10" : "20";
