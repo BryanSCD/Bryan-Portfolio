@@ -110,6 +110,7 @@ export function ProjectsComponent({
             ? "34rem"
             : "31rem"
         }
+        maxHeight={imageOrientation == "vertical" ? "34rem" : "31rem"}
         borderStyle='none'
         objectFit='contain'
         objectPosition={
