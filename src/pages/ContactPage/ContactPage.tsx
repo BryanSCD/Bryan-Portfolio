@@ -24,7 +24,7 @@ export type ContactPageProps = {
 
 export const ContactPage = forwardRef<ContactPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
-    const isMobile = useBreakpointValue({ base: true, md: false });
+    const isSmall = useBreakpointValue({ base: true, md: false });
     return (
       <Page
         ref={ref}
@@ -38,7 +38,7 @@ export const ContactPage = forwardRef<ContactPageProps, "div">(
         backgroundSize='cover'
         backgroundPosition='center'
         backgroundRepeat='no-repeat'
-        childrenSeparatorSpacing={isMobile ? "-60" : "-40"}
+        childrenSeparatorSpacing={isSmall ? "-60" : "-40"}
         {...rest}
       >
         <VStack boxSizing='border-box' pt='80' pb='20'>

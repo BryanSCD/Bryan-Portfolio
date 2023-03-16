@@ -29,27 +29,27 @@ export function StudiesComponent({
   children,
   ...rest
 }: ProjectsComponentProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isSmall = useBreakpointValue({ base: true, md: false });
   return (
-    <Card width={isMobile ? '100%' : 'container.sm'} {...rest}>
-      <CardBody px={isMobile ? "6" : "12"} py={isMobile ? "10" : "16"}>
+    <Card width={isSmall ? '100%' : 'container.sm'} {...rest}>
+      <CardBody px={isSmall ? "6" : "12"} py={isSmall ? "10" : "16"}>
         <VStack>
           <Stack
-            direction={isMobile ? "column" : "row"}
-            spacing={isMobile ? "4" : "8"}
+            direction={isSmall ? "column" : "row"}
+            spacing={isSmall ? "4" : "8"}
             align='center'
           >
             {imageSrc && (
               <Image
-                width={isMobile ? "100%" : "48"}
-                height={isMobile ? "32" : "48"}
+                width={isSmall ? "100%" : "48"}
+                height={isSmall ? "32" : "48"}
                 src={imageSrc}
                 objectPosition='center'
                 objectFit='scale-down'
               />
             )}
             <VStack spacing='2.5'>
-              <Heading fontSize={isMobile ? '2xl' : '3xl'} textAlign='center'>
+              <Heading fontSize={isSmall ? '2xl' : '3xl'} textAlign='center'>
                 {title}
               </Heading>
               {subtitle && (

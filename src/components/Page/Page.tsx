@@ -35,7 +35,7 @@ export const Page = forwardRef<PageProps, "div">(
     },
     ref
   ) => {
-    const isMobile = useBreakpointValue({ base: true, md: false });
+    const isSmall = useBreakpointValue({ base: true, md: false });
 
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;
@@ -43,7 +43,7 @@ export const Page = forwardRef<PageProps, "div">(
     }
 
     if (!childrenPaddingY) {
-      childrenPaddingY = isMobile ? "10" : "20";
+      childrenPaddingY = isSmall ? "10" : "20";
     }
 
     return (

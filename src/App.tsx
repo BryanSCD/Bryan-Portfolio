@@ -12,7 +12,7 @@ import { ExperiencePage, MainPage, ProjectsPage, StudiesPage } from "./pages";
 import { ContactPage } from "./pages/ContactPage";
 
 function App() {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isSmall = useBreakpointValue({ base: true, md: false });
 
   const mainPageRef = useRef<HTMLDivElement>(null);
   const experiencePageRef = useRef<HTMLDivElement>(null);
@@ -88,7 +88,7 @@ function App() {
         <ProjectsPage
           ref={projectsPageRef}
           separatorColor='#030F1B'
-          marginTop={isMobile ? "0" : "-40"}
+          marginTop={isSmall ? "0" : "-40"}
         />
         <StudiesPage ref={studiesPageRef} separatorColor='#282E58' />
         <ContactPage ref={contactPageRef} separatorColor='#564EA2' />

@@ -46,16 +46,16 @@ export function ContactComponent({
   numberLabel,
   whatsappLink,
 }: ContactProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isSmall = useBreakpointValue({ base: true, md: false });
 
   const clipboardEmail = useClipboard(email);
   const clipboardNumber = useClipboard(number);
 
   return (
     <Card
-      paddingX={isMobile ? "0" : "14"}
-      paddingY={isMobile ? "4" : "9"}
-      width={isMobile ? "90%" : "container.lg"}
+      paddingX={isSmall ? "0" : "14"}
+      paddingY={isSmall ? "4" : "9"}
+      width={isSmall ? "90%" : "container.lg"}
       bgColor='blackAlpha.700'
       overflow='hidden'
     >
@@ -72,7 +72,7 @@ export function ContactComponent({
           spacing='4'
           width='100%'
           align='top'
-          direction={isMobile ? "column" : "row"}
+          direction={isSmall ? "column" : "row"}
         >
           <VStack spacing='2.5' width='100%'>
             <Image

@@ -19,7 +19,7 @@ export interface StudiesPageProps extends StackProps {
 
 export const StudiesPage = forwardRef<StudiesPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
-    const isMobile = useBreakpointValue({ base: true, md: false });
+    const isSmall = useBreakpointValue({ base: true, md: false });
     return (
       <Page
         ref={ref}
@@ -31,9 +31,9 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
         }}
         {...rest}
       >
-        <VStack spacing={isMobile ? "14" : "28"}>
+        <VStack spacing={isSmall ? "14" : "28"}>
           <Heading
-            fontSize={isMobile ? "4xl" : "5xl"}
+            fontSize={isSmall ? "4xl" : "5xl"}
             color='white'
             textAlign='center'
           >
@@ -46,7 +46,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             backgroundColor='#3070B3'
             imageSrc='./logo_tum_white.png'
             alignSelf='start'
-            width={isMobile ? "100%" : "50%"}
+            width={isSmall ? "100%" : "50%"}
           >
             <Text fontSize='md' align='center'>
               <strong>Remarkable grades:</strong>
@@ -59,7 +59,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             subtitle='2019-2022 (6 semesters)'
             imageSrc='./logo_upm.png'
             alignSelf='end'
-            width={isMobile ? "100%" : "60%"}
+            width={isSmall ? "100%" : "60%"}
           >
             <Text fontSize='lg' textAlign='center'>
               <strong>Academic Excellence Scholarship 2020</strong>
@@ -81,13 +81,13 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             </UnorderedList>
           </StudiesComponent>
 
-          <Heading fontSize={isMobile ? "3xl" : "4xl"} color='white'>
+          <Heading fontSize={isSmall ? "3xl" : "4xl"} color='white'>
             Complementary
           </Heading>
 
           <Stack
-            direction={isMobile ? "column" : "row"}
-            spacing={isMobile ? "14" : "28"}
+            direction={isSmall ? "column" : "row"}
+            spacing={isSmall ? "14" : "28"}
           >
             <StudiesComponent
               title='Languages'

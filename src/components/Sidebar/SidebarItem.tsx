@@ -19,14 +19,14 @@ export interface SidebarItemProps extends StackProps {
 }
 
 export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isSmall = useBreakpointValue({ base: true, md: false });
 
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <>
       <Popover
-        placement={isMobile ? "bottom" : "left"}
+        placement={isSmall ? "bottom" : "left"}
         isOpen={isOpen}
         autoFocus={false}
         returnFocusOnClose={false}
@@ -37,7 +37,7 @@ export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
             icon={icon}
             color='black'
             colorScheme='gray'
-            size={isMobile ? "md" : "lg"}
+            size={isSmall ? "md" : "lg"}
             variant='outline'
             onPointerEnter={!isOpen ? onToggle : () => {}}
             onPointerLeave={isOpen ? onToggle : () => {}}

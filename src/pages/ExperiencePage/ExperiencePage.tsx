@@ -41,11 +41,11 @@ export type ExperiencePageProps = {
 
 export const ExperiencePage = forwardRef<ExperiencePageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
-    const isMobile = useBreakpointValue({ base: true, xl: false });
+    const isLarge = useBreakpointValue({ base: true, xl: false });
     return (
       <Page
         ref={ref}
-        childrenSeparatorSpacing={isMobile ? 0 : "-40"}
+        childrenSeparatorSpacing={isLarge ? 0 : "-40"}
         separatorProps={{
           separatorLabel: "Experience",
           separatorColor,
@@ -54,7 +54,7 @@ export const ExperiencePage = forwardRef<ExperiencePageProps, "div">(
         }}
         {...rest}
       >
-        <VStack spacing={isMobile ? "20" : "0"}>
+        <VStack spacing={isLarge ? "20" : "0"}>
           {experience.map((value, index) => {
             if (index == 0) {
               return (
