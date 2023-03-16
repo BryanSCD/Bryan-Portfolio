@@ -14,6 +14,8 @@ import {
 
 export type PageProps = {
   childrenPaddingX?: SystemProps["padding"];
+  childrenPaddingLeft?: SystemProps["padding"];
+  childrenPaddingRight?: SystemProps["padding"];
   childrenPaddingY?: SystemProps["padding"];
   childrenSeparatorSpacing?: SystemProps["margin"];
   separatorProps?: SeparatorComponentProps;
@@ -23,7 +25,9 @@ export const Page = forwardRef<PageProps, "div">(
   (
     {
       children,
-      childrenPaddingX = "8",
+      childrenPaddingX,
+      childrenPaddingLeft = 8,
+      childrenPaddingRight = 8,
       childrenPaddingY,
       childrenSeparatorSpacing = "0",
       separatorProps,
@@ -33,6 +37,11 @@ export const Page = forwardRef<PageProps, "div">(
   ) => {
     const isMobile = useBreakpointValue({ base: true, md: false });
 
+    if (childrenPaddingX) {
+      childrenPaddingLeft = childrenPaddingX;
+      childrenPaddingRight = childrenPaddingX;
+    }
+
     if (!childrenPaddingY) {
       childrenPaddingY = isMobile ? "10" : "20";
     }
@@ -41,8 +50,8 @@ export const Page = forwardRef<PageProps, "div">(
       <VStack ref={ref} spacing={childrenSeparatorSpacing} {...rest}>
         {separatorProps && <SeparatorComponent {...separatorProps} />}
         <Box
-          paddingX={childrenPaddingX}
-          paddingY={childrenPaddingY}
+          paddingLeft={childrenPaddingLeft}
+          paddingRight={childrenPaddingRight}
           overflow='hidden'
           width='100%'
           zIndex={10}
