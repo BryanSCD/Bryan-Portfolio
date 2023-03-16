@@ -29,7 +29,7 @@ function App() {
     if (!isSmall && sidebarRef.current) {
       setSidebarOffsetWidth(
         `${
-          (window.innerWidth -
+          (document.documentElement.clientWidth -
             sidebarRef.current?.getBoundingClientRect().right) *
             2 +
           sidebarRef.current?.clientWidth
@@ -129,7 +129,7 @@ function App() {
         <ContactPage
           ref={contactPageRef}
           separatorColor='#564EA2'
-          childrenPaddingRight={sidebarOffsetWidth}
+          childrenPaddingRight={isLarge ? sidebarOffsetWidth : ""}
         />
       </Box>
     </>
