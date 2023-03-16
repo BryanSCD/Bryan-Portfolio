@@ -41,7 +41,7 @@ export type ExperiencePageProps = {
 
 export const ExperiencePage = forwardRef<ExperiencePageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
-    const isMobile = useBreakpointValue({ base: true, md: false });
+    const isMobile = useBreakpointValue({ base: true, xl: false });
     return (
       <Page
         ref={ref}

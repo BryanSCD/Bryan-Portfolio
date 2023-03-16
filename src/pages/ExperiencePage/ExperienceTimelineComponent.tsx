@@ -53,7 +53,7 @@ export function ExperienceTimelineComponent({
   bottomDivider,
   extraBottomDivider,
 }: ExperienceTimelineComponentProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false }, { ssr: false });
+  const isMobile = useBreakpointValue({ base: true, xl: false }, { ssr: false });
   return (
     <VStack spacing='0' width='100%'>
       {/* Extra upper divider */}
