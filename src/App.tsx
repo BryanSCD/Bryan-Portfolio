@@ -130,6 +130,7 @@ function App() {
           ref={contactPageRef}
           separatorColor='#564EA2'
           childrenPaddingRight={isLarge ? sidebarOffsetWidth : ""}
+          paddingBottom={isSmall ? "20" : ""}
         />
       </Box>
     </>
