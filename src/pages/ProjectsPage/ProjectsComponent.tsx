@@ -90,8 +90,6 @@ export function ProjectsComponent({
   const cardHorizontal =
     imageOrientation == "vertical" ? !!isMedium : !isExtraLarge;
 
-  console.log("render");
-
   const renderImage = useMemo(() => {
     return (
       <Image
