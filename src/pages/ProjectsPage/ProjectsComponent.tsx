@@ -17,7 +17,7 @@ import {
   useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   IoApps,
   IoLogoChrome,
@@ -73,13 +73,30 @@ export function ProjectsComponent({
   screenSrc,
   ...rest
 }: ProjectsComponentProps) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMedium = useBreakpointValue({
+    base: true,
+    sm: true,
+    md: true,
+  });
 
-  const renderImage = useMemo(
-    () => (
+  const isExtraLarge = useBreakpointValue({
+    base: false,
+    sm: false,
+    md: false,
+    lg: false,
+    xl: true,
+  });
+
+  const cardHorizontal =
+    imageOrientation == "vertical" ? !!isMedium : !isExtraLarge;
+
+  console.log("render");
+
+  const renderImage = useMemo(() => {
+    return (
       <Image
         width={
-          isMobile
+          cardHorizontal
             ? imageOrientation == "vertical"
               ? "80%"
               : "95%"
@@ -88,52 +105,61 @@ export function ProjectsComponent({
             : "48rem"
         }
         height={
-          isMobile ? "auto" : imageOrientation == "vertical" ? "34rem" : "31rem"
+          cardHorizontal
+            ? "auto"
+            : imageOrientation == "vertical"
+            ? "34rem"
+            : "31rem"
         }
         borderStyle='none'
         objectFit='contain'
         objectPosition={
-          isMobile ? "center" : imageLocation == "left" ? "right" : "left"
+          cardHorizontal ? "center" : imageLocation == "left" ? "right" : "left"
         }
         src={screenSrc}
         zIndex='20'
       />
-    ),
-    [imageOrientation, screenSrc, isMobile]
-  );
+    );
+  }, [cardHorizontal]);
+
   return (
     <Stack
       height='fit-content'
       spacing={
-        !isMobile ? "-5" : imageOrientation == "vertical" ? "-72" : "-20"
+        !cardHorizontal ? "-5" : imageOrientation == "vertical" ? "-72" : "-20"
       }
-      direction={isMobile ? "column" : "row"}
+      direction={cardHorizontal ? "column" : "row"}
       align='center'
       {...rest}
     >
-      {((!isMobile && imageLocation == "left") || isMobile) && renderImage}
+      {((!cardHorizontal && imageLocation == "left") || cardHorizontal) &&
+        renderImage}
       <Card
         size='sm'
-        width={isMobile ? "100%" : "container.sm"}
+        width={cardHorizontal ? "100%" : "container.sm"}
         height='fit-content'
         borderRightRadius={
-          imageLocation == "left" || isMobile ? "2rem" : "none"
+          imageLocation == "left" || cardHorizontal ? "2rem" : "none"
         }
         borderLeftRadius={
-          imageLocation == "right" || isMobile ? "2rem" : "none"
+          imageLocation == "right" || cardHorizontal ? "2rem" : "none"
         }
         overflow='hidden'
         bgColor={bgHexColor}
         color='white'
         zIndex='10'
-        pl={isMobile ? "0" : imageLocation == "left" ? "4" : "0"}
-        pr={isMobile ? "0" : imageLocation == "right" ? "4" : "0"}
+        pl={cardHorizontal ? "0" : imageLocation == "left" ? "4" : "0"}
+        pr={cardHorizontal ? "0" : imageLocation == "right" ? "4" : "0"}
       >
         <CardHeader>
           <Heading
             fontSize='3xl'
             pt={
-              !isMobile ? "2.5" : imageOrientation == "vertical" ? "72" : "20"
+              !cardHorizontal
+                ? "2.5"
+                : imageOrientation == "vertical"
+                ? "72"
+                : "20"
             }
             px='2.5'
           >
@@ -142,14 +168,14 @@ export function ProjectsComponent({
         </CardHeader>
         <CardBody>
           <VStack spacing='4' p='2.5'>
-            <Text width='100%' fontSize='md' noOfLines={isMobile ? 0 : 4}>
+            <Text width='100%' fontSize='md' noOfLines={cardHorizontal ? 0 : 4}>
               {description}
             </Text>
 
             <Stack
               spacing='4'
               width='100%'
-              direction={isMobile ? "column" : "row"}
+              direction={cardHorizontal ? "column" : "row"}
               alignItems='center'
             >
               <UnorderedList
@@ -177,7 +203,7 @@ export function ProjectsComponent({
         </CardBody>
         <CardFooter bgColor='blackAlpha.400' p='0'>
           <Flex
-            justifyContent={isMobile ? "center" : "flex-end"}
+            justifyContent={cardHorizontal ? "center" : "flex-end"}
             width='100%'
             p='2.5'
             flexWrap='wrap'
@@ -228,7 +254,7 @@ export function ProjectsComponent({
                 colorScheme={colorScheme}
                 size='md'
                 m='1'
-                width={isMobile ? "100%" : "auto"}
+                width={cardHorizontal ? "100%" : "auto"}
               >
                 Show me!
               </Button>
@@ -237,7 +263,7 @@ export function ProjectsComponent({
         </CardFooter>
       </Card>
 
-      {imageLocation == "right" && !isMobile && renderImage}
+      {imageLocation == "right" && !cardHorizontal && renderImage}
     </Stack>
   );
 }
