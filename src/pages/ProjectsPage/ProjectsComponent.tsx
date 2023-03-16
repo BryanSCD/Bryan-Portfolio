@@ -77,6 +77,7 @@ export function ProjectsComponent({
     base: true,
     sm: true,
     md: true,
+    lg: false,
   });
 
   const isExtraLarge = useBreakpointValue({
