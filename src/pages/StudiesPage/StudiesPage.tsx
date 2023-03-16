@@ -2,11 +2,12 @@ import {
   forwardRef,
   Heading,
   ListItem,
-  Stack, SystemProps,
+  Stack,
+  SystemProps,
   Text,
   UnorderedList,
   useBreakpointValue,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import { Page, PageProps } from "../../components";
 import { StudiesComponent } from "./StudiesComponent";
@@ -17,7 +18,7 @@ export interface StudiesPageProps extends PageProps {
 
 export const StudiesPage = forwardRef<StudiesPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
-    const isSmall = useBreakpointValue({ base: true, md: false });
+    const isMedium = useBreakpointValue({ base: true, lg: false });
     return (
       <Page
         ref={ref}
@@ -29,9 +30,9 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
         }}
         {...rest}
       >
-        <VStack spacing={isSmall ? "14" : "28"}>
+        <VStack spacing={isMedium ? "14" : "28"}>
           <Heading
-            fontSize={isSmall ? "4xl" : "5xl"}
+            fontSize={isMedium ? "4xl" : "5xl"}
             color='white'
             textAlign='center'
           >
@@ -44,7 +45,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             backgroundColor='#3070B3'
             imageSrc='./logo_tum_white.png'
             alignSelf='start'
-            width={isSmall ? "100%" : "50%"}
+            width={isMedium ? "100%" : "50%"}
           >
             <Text fontSize='md' align='center'>
               <strong>Remarkable grades:</strong>
@@ -57,7 +58,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             subtitle='2019-2022 (6 semesters)'
             imageSrc='./logo_upm.png'
             alignSelf='end'
-            width={isSmall ? "100%" : "60%"}
+            width={isMedium ? "100%" : "60%"}
           >
             <Text fontSize='lg' textAlign='center'>
               <strong>Academic Excellence Scholarship 2020</strong>
@@ -79,13 +80,16 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             </UnorderedList>
           </StudiesComponent>
 
-          <Heading fontSize={isSmall ? "3xl" : "4xl"} color='white'>
+          <Heading fontSize={isMedium ? "3xl" : "4xl"} color='white'>
             Complementary
           </Heading>
 
           <Stack
-            direction={isSmall ? "column" : "row"}
-            spacing={isSmall ? "14" : "28"}
+            direction={isMedium ? "column" : "row"}
+            spacing={isMedium ? "14" : "28"}
+            width='100%'
+            alignItems='center'
+            justifyContent='center'
           >
             <StudiesComponent
               title='Languages'
