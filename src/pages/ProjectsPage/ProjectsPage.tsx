@@ -36,6 +36,7 @@ export const ProjectsPage = forwardRef<ProjectsPageProps, "div">(
           {projects.map((element, index) => {
             return (
               <ProjectsComponent
+                maxW='100%'
                 key={element.title}
                 imageLocation={index % 2 == 0 ? "right" : "left"}
                 alignSelf={
