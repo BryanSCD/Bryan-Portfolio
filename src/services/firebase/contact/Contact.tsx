@@ -1,7 +1,7 @@
 import ReactDOMServer from "react-dom/server";
 import { addDoc, collection } from "firebase/firestore";
 import ContactBody from "./ContactHTMLBody";
-import { db } from "../Firebase";
+import { db } from "../firebase";
 
 export const addContact = (
   emailTo: string,
