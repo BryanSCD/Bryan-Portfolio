@@ -1,6 +1,5 @@
 import {
-  Box,
-  Card,
+  Box, Card,
   CardBody,
   CardFooter,
   CardHeader,
@@ -9,8 +8,7 @@ import {
   DividerProps,
   Heading,
   HStack,
-  Image,
-  ListItem,
+  Image, ListItem,
   SquareProps,
   Stack,
   StackDivider,
@@ -18,8 +16,9 @@ import {
   Text,
   UnorderedList,
   useBreakpointValue,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 export interface ExperienceTimelineProps {
   title: string;
@@ -27,6 +26,7 @@ export interface ExperienceTimelineProps {
   description: string;
   skills: string[];
   logo: string;
+  footer?: ReactJSXElement;
 }
 
 export interface ExperienceTimelineCustomProps {
@@ -47,6 +47,7 @@ export function ExperienceTimelineComponent({
   description,
   skills,
   logo,
+  footer,
   extraUpperDivider,
   upperDivider,
   circleProps,
@@ -114,7 +115,7 @@ export function ExperienceTimelineComponent({
                 width='100%'
                 height='8'
                 src={logo}
-                objectFit="scale-down"
+                objectFit='scale-down'
                 objectPosition='center'
               />
             </Stack>
@@ -150,7 +151,9 @@ export function ExperienceTimelineComponent({
               </UnorderedList>
             </Stack>
           </CardBody>
-          <CardFooter></CardFooter>
+          <CardFooter justifyContent='flex-end'>
+            {!!footer && footer}
+          </CardFooter>
         </Card>
       </Stack>
 
