@@ -23,7 +23,9 @@ function App() {
   const studiesPageRef = useRef<HTMLDivElement>(null);
   const contactPageRef = useRef<HTMLDivElement>(null);
 
-  const [sidebarOffsetWidth, setSidebarOffsetWidth] = useState<string>("8");
+  const [sidebarOffsetWidth, setSidebarOffsetWidth] = useState<
+    string | undefined
+  >(undefined);
 
   useEffect(() => {
     if (!isSmall && sidebarRef.current) {
@@ -36,7 +38,7 @@ function App() {
         }px`
       );
     } else {
-      setSidebarOffsetWidth("8");
+      setSidebarOffsetWidth(undefined);
     }
   }, [isSmall, sidebarRef]);
 
@@ -129,8 +131,8 @@ function App() {
         <ContactPage
           ref={contactPageRef}
           separatorColor='#564EA2'
-          childrenPaddingRight={isLarge ? sidebarOffsetWidth : ""}
-          paddingBottom={isSmall ? "20" : ""}
+          childrenPaddingRight={isLarge ? sidebarOffsetWidth : undefined}
+          paddingBottom={isSmall ? "20" : undefined}
         />
       </Box>
     </>

@@ -49,7 +49,7 @@ export function ContactComponent({
     <Card
       paddingX={isLarge ? "0" : "14"}
       paddingY={isLarge ? "4" : "9"}
-      width={isLarge ? "90%" : "container.lg"}
+      width={isLarge ? "100%" : "container.lg"}
       bgColor='blackAlpha.700'
       overflow='hidden'
     >
