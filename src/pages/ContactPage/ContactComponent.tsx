@@ -70,11 +70,14 @@ export function ContactComponent({
         >
           <VStack spacing='2.5' width='100%'>
             <Image
-              width='100%'
+              width='auto'
               height='64'
-              src='./avatar.png'
+              src='./contact/BryanSCD.png'
               objectFit='scale-down'
               objectPosition='center'
+              bgColor='whiteAlpha.800'
+              rounded="xl"
+              shadow="xl"
             />
 
             <Text fontSize='lg' width='100%' color='white' textAlign='center'>
