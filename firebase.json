@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "predeploy": ["cd client && yarn build"],
+    "predeploy": ["yarn build"],
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
