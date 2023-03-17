@@ -43,7 +43,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             subtitle='2022-2023 (2 semesters)'
             color='white'
             backgroundColor='#3070B3'
-            imageSrc='./logo_tum_white.png'
+            imageSrc='./studies/logo_tum_white.png'
             alignSelf='start'
             width={isMedium ? "100%" : "50%"}
           >
@@ -56,7 +56,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
           <StudiesComponent
             title='Universidad Politécnica de Madrid'
             subtitle='2019-2022 (6 semesters)'
-            imageSrc='./logo_upm.png'
+            imageSrc='./studies/logo_upm.png'
             alignSelf='end'
             width={isMedium ? "100%" : "60%"}
           >
