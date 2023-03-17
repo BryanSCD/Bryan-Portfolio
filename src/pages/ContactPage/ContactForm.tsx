@@ -8,18 +8,17 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
 import { IoMailOutline, IoPersonOutline } from "react-icons/io5";
+import { addContact } from "../../services/firebase";
 
-function onSubmit(values: FieldValues): Promise<void> {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      resolve();
-    }, 3000);
-  });
+interface formValues {
+  name: string;
+  email: string;
+  message: string;
 }
 
 function ContactForm() {
@@ -29,8 +28,40 @@ function ContactForm() {
     formState: { errors, isSubmitting, isDirty, isValid },
   } = useForm({ mode: "onChange" });
 
+  const toast = useToast();
+
+  const onSubmitForm = (values: FieldValues): Promise<void> => {
+    return new Promise<void>((resolve) => {
+      const formValues = values as formValues;
+      addContact(formValues.name, formValues.email, formValues.message)
+        .then(() => {
+          {
+            toast({
+              title: "Message sent!",
+              description: "I will contact you as soon as posible!",
+              status: "success",
+              duration: 9000,
+              isClosable: true,
+            });
+            resolve();
+          }
+        })
+        .catch(() => {
+          toast({
+            title: "This is frustrating... Something went wrong",
+            description:
+              "Highly probably I forgot something. Please, contact me through other way!",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+          resolve();
+        });
+    });
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitForm)}>
       <VStack
         padding='4'
         spacing='2.5'
