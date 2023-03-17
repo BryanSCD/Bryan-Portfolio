@@ -27,16 +27,10 @@ import {
   IoLogoLinkedin,
   IoMailSharp,
 } from "react-icons/io5";
+import { ContactProps } from "./ContactDetails";
 import ContactForm from "./ContactForm";
 
-export interface ContactProps extends StackProps {
-  github: string;
-  linkedin: string;
-  email: string;
-  number: string;
-  numberLabel: string;
-  whatsappLink: string;
-}
+export type ContactcomponentProps = ContactProps & StackProps;
 
 export function ContactComponent({
   github,
@@ -45,7 +39,7 @@ export function ContactComponent({
   number,
   numberLabel,
   whatsappLink,
-}: ContactProps) {
+}: ContactcomponentProps) {
   const isLarge = useBreakpointValue({ base: true, xl: false });
 
   const clipboardEmail = useClipboard(email);

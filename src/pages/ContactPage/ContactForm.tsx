@@ -14,6 +14,7 @@ import {
 import { FieldValues, useForm } from "react-hook-form";
 import { IoMailOutline, IoPersonOutline } from "react-icons/io5";
 import { addContact } from "../../services/firebase";
+import { BryanContactDetails } from "./ContactDetails";
 
 interface formValues {
   name: string;
@@ -33,7 +34,12 @@ function ContactForm() {
   const onSubmitForm = (values: FieldValues): Promise<void> => {
     return new Promise<void>((resolve) => {
       const formValues = values as formValues;
-      addContact(formValues.name, formValues.email, formValues.message)
+      addContact(
+        BryanContactDetails.email,
+        formValues.name,
+        formValues.email,
+        formValues.message
+      )
         .then(() => {
           {
             toast({
@@ -48,7 +54,7 @@ function ContactForm() {
         })
         .catch(() => {
           toast({
-            title: "This is frustrating... Something went wrong",
+            title: "This is embarrasing... Something went wrong",
             description:
               "Highly probably I forgot something. Please, contact me through other way!",
             status: "error",
