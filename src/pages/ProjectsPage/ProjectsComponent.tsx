@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Card,
   CardBody,
@@ -11,8 +12,6 @@ import {
   ListItem,
   Stack,
   StackProps,
-  Text,
-  ThemeTypings,
   UnorderedList,
   useBreakpointValue,
   VStack
@@ -20,33 +19,16 @@ import {
 import { useMemo } from "react";
 import {
   IoLogoChrome,
-  IoLogoGithub, IoLogoYoutube
+  IoLogoFigma,
+  IoLogoGithub,
+  IoLogoYoutube
 } from "react-icons/io5";
-
-export interface ProjectsProps {
-  title: string;
-  description: string;
-  architecture: string;
-  mainTechnologies: string[];
-  platforms: string[];
-  logoSrc: string;
-  screenSrc: string;
-  githubURL?: string;
-  videoURL?: string;
-  websiteURL?: string;
-  showMe?: boolean;
-}
+import { ProjectsProps } from "./Projects";
 
 export type ImageLocation = "left" | "right";
-
-export type ImageOrientation = "vertical" | "horizontal";
-
-export interface ProjectsComponentCustomProps {
+export type ProjectsComponentCustomProps = {
   imageLocation: ImageLocation;
-  imageOrientation: ImageOrientation;
-  bgHexColor?: string;
-  colorScheme?: ThemeTypings["colorSchemes"];
-}
+};
 
 export type ProjectsComponentProps = ProjectsProps &
   ProjectsComponentCustomProps &
@@ -57,17 +39,18 @@ export function ProjectsComponent({
   description,
   architecture,
   mainTechnologies,
-  platforms,
+  platform,
   imageLocation,
-  imageOrientation,
   githubURL,
+  figmaURL,
   videoURL,
   websiteURL,
   showMe,
-  bgHexColor = "#FFFFFF",
-  colorScheme = "purple",
+  mainHexColor,
+  colorScheme,
   logoSrc,
   screenSrc,
+  screenSrcOrientation,
   ...rest
 }: ProjectsComponentProps) {
   const isMedium = useBreakpointValue(
@@ -87,28 +70,28 @@ export function ProjectsComponent({
   );
 
   const cardHorizontal =
-    imageOrientation == "vertical" ? !!isMedium : !isExtraLarge;
+    screenSrcOrientation == "vertical" ? !!isMedium : !isExtraLarge;
 
   const renderImage = useMemo(() => {
     return (
       <Image
         width={
           cardHorizontal
-            ? imageOrientation == "vertical"
+            ? screenSrcOrientation == "vertical"
               ? "80%"
               : "95%"
-            : imageOrientation == "vertical"
+            : screenSrcOrientation == "vertical"
             ? "18rem"
             : "48rem"
         }
         height={
           cardHorizontal
             ? "auto"
-            : imageOrientation == "vertical"
+            : screenSrcOrientation == "vertical"
             ? "34rem"
             : "31rem"
         }
-        maxHeight={imageOrientation == "vertical" ? "34rem" : "31rem"}
+        maxHeight={screenSrcOrientation == "vertical" ? "34rem" : "31rem"}
         borderStyle='none'
         objectFit='contain'
         objectPosition={
@@ -118,13 +101,13 @@ export function ProjectsComponent({
         zIndex='20'
       />
     );
-  }, [imageLocation, imageOrientation, screenSrc, cardHorizontal]);
+  }, [imageLocation, screenSrcOrientation, screenSrc, cardHorizontal]);
 
   return (
     <Stack
       height='fit-content'
       spacing={
-        !cardHorizontal ? "-5" : imageOrientation == "vertical" ? "-72" : "-20"
+        !cardHorizontal ? "-5" : screenSrcOrientation == "vertical" ? "-72" : "-20"
       }
       direction={cardHorizontal ? "column" : "row"}
       align='center'
@@ -143,7 +126,7 @@ export function ProjectsComponent({
           imageLocation == "right" || cardHorizontal ? "2rem" : "none"
         }
         overflow='hidden'
-        bgColor={bgHexColor}
+        bgColor={mainHexColor}
         color='white'
         zIndex='10'
         pl={cardHorizontal ? "0" : imageLocation == "left" ? "4" : "0"}
@@ -155,7 +138,7 @@ export function ProjectsComponent({
             pt={
               !cardHorizontal
                 ? "2.5"
-                : imageOrientation == "vertical"
+                : screenSrcOrientation == "vertical"
                 ? "72"
                 : "20"
             }
@@ -164,11 +147,9 @@ export function ProjectsComponent({
             {title}
           </Heading>
         </CardHeader>
-        <CardBody>
+        <CardBody width='100%'>
           <VStack spacing='4' p='2.5'>
-            <Text width='100%' fontSize='md' noOfLines={cardHorizontal ? 0 : 4}>
-              {description}
-            </Text>
+            <Box width='100%'>{description}</Box>
 
             <Stack
               spacing='4'
@@ -190,8 +171,8 @@ export function ProjectsComponent({
                   {mainTechnologies.join(", ")}
                 </ListItem>
                 <ListItem>
-                  <strong>Platforms: </strong>
-                  {platforms.join(", ")}
+                  <strong>Platform: </strong>
+                  {platform}
                 </ListItem>
               </UnorderedList>
 
@@ -241,6 +222,20 @@ export function ProjectsComponent({
                   size='md'
                   m='1'
                   leftIcon={<IoLogoGithub />}
+                >
+                  Github
+                </Button>
+              </Link>
+            )}
+            {figmaURL && (
+              <Link href={figmaURL} isExternal>
+                <Button
+                  variant='solid'
+                  colorScheme='purple'
+                  color='white'
+                  size='md'
+                  m='1'
+                  leftIcon={<IoLogoFigma />}
                 >
                   Github
                 </Button>
