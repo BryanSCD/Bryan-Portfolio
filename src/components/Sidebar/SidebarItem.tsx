@@ -15,10 +15,11 @@ import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 export interface SidebarItemProps extends StackProps {
   icon: ReactJSXElement;
   label: string;
+  isRound?: boolean;
   onButtonClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
+export function SidebarItem({ icon, label, isRound, onButtonClick }: SidebarItemProps) {
   const isSmall = useBreakpointValue({ base: true, md: false });
 
   const { isOpen, onToggle } = useDisclosure();
@@ -39,6 +40,7 @@ export function SidebarItem({ icon, label, onButtonClick }: SidebarItemProps) {
             colorScheme='gray'
             size={isSmall ? "md" : "lg"}
             variant='outline'
+            isRound={!!isRound}
             onPointerEnter={!isOpen ? onToggle : undefined}
             onPointerLeave={isOpen ? onToggle : undefined}
             onClick={(e) => {

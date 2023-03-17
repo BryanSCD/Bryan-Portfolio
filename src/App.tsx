@@ -1,13 +1,7 @@
+import { Box, Image, useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import { Box, useBreakpointValue } from "@chakra-ui/react";
+import { IoBag, IoBook, IoFolderOpen, IoHappy } from "react-icons/io5";
 import { Sidebar, SidebarItem } from "./components";
-import {
-  IoBag,
-  IoBook,
-  IoFolderOpen,
-  IoHappy,
-  IoPerson,
-} from "react-icons/io5";
 import { ExperiencePage, MainPage, ProjectsPage, StudiesPage } from "./pages";
 import { ContactPage } from "./pages/ContactPage";
 
@@ -96,7 +90,17 @@ function App() {
         />
 
         <SidebarItem
-          icon={<IoPerson />}
+          icon={
+            <Image
+              width='100%'
+              height='100%'
+              src='./sidebar/BryanSCD.png'
+              objectFit='scale-down'
+              objectPosition='center'
+              rounded='full'
+            />
+          }
+          isRound
           label='Contact'
           onButtonClick={() =>
             window.scrollTo({
