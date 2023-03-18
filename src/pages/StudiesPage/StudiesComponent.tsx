@@ -24,7 +24,7 @@ export function StudiesComponent({
   children,
   ...rest
 }: ProjectsComponentProps) {
-  const isMedium = useBreakpointValue({ base: true, lg: false });
+  const isMedium = useBreakpointValue({ base: true, lg: false }, { ssr: false });
   return (
     <Card width={isMedium ? "100%" : "40%"} {...rest}>
       <CardBody px={isMedium ? "6" : "12"} py={isMedium ? "10" : "16"}>

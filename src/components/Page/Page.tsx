@@ -35,7 +35,7 @@ export const Page = forwardRef<PageProps, "div">(
     },
     ref
   ) => {
-    const isSmall = useBreakpointValue({ base: true, md: false });
+    const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
 
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;

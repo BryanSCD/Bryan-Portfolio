@@ -40,7 +40,7 @@ export function ContactComponent({
   numberLabel,
   whatsappLink,
 }: ContactcomponentProps) {
-  const isLarge = useBreakpointValue({ base: true, xl: false });
+  const isLarge = useBreakpointValue({ base: true, xl: false }, { ssr: false });
 
   const clipboardEmail = useClipboard(email);
   const clipboardNumber = useClipboard(number);

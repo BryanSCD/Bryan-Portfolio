@@ -20,7 +20,7 @@ export interface SidebarItemProps extends StackProps {
 }
 
 export function SidebarItem({ icon, label, isRound, onButtonClick }: SidebarItemProps) {
-  const isSmall = useBreakpointValue({ base: true, md: false });
+  const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
 
   const { isOpen, onToggle } = useDisclosure();
 

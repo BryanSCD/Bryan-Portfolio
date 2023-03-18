@@ -6,8 +6,8 @@ import { ExperiencePage, MainPage, ProjectsPage, StudiesPage } from "./pages";
 import { ContactPage } from "./pages/ContactPage";
 
 function App() {
-  const isSmall = useBreakpointValue({ base: true, md: false });
-  const isLarge = useBreakpointValue({ base: true, xl: false });
+  const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
+  const isLarge = useBreakpointValue({ base: true, xl: false }, { ssr: false });
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
