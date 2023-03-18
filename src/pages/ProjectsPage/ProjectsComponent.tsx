@@ -78,7 +78,6 @@ export function ProjectsComponent({
   }, [screenSrcOrientation, isMedium, isLarge]);
 
   const renderImage = useMemo(() => {
-    console.log(cardVertical);
     return (
       <Image
         width={
@@ -88,7 +87,7 @@ export function ProjectsComponent({
               : "95%"
             : screenSrcOrientation == "vertical"
             ? "18rem"
-            : "52rem"
+            : "54rem"
         }
         height='auto'
         maxHeight={screenSrcOrientation == "vertical" ? "34rem" : "31rem"}
@@ -103,12 +102,23 @@ export function ProjectsComponent({
     );
   }, [imageLocation, screenSrcOrientation, screenSrc, cardVertical]);
 
+  const cardChildPaddingLeft = cardVertical
+    ? "4"
+    : imageLocation == "left"
+    ? "8"
+    : "4";
+  const cardChildPaddingRight = cardVertical
+    ? "4"
+    : imageLocation == "right"
+    ? "8"
+    : "4";
+
   return (
     <Stack
       height='fit-content'
       spacing={
         !cardVertical
-          ? "-5"
+          ? "-8"
           : screenSrcOrientation == "vertical"
           ? "-72"
           : "-20"
@@ -123,20 +133,13 @@ export function ProjectsComponent({
         size='sm'
         width={cardVertical ? "100%" : "container.sm"}
         height='fit-content'
-        borderRightRadius={
-          imageLocation == "left" || cardVertical ? "2rem" : "none"
-        }
-        borderLeftRadius={
-          imageLocation == "right" || cardVertical ? "2rem" : "none"
-        }
+        borderRadius='2rem'
         overflow='hidden'
         bgColor={mainHexColor}
         color='white'
         zIndex='10'
-        pl={cardVertical ? "0" : imageLocation == "left" ? "4" : "0"}
-        pr={cardVertical ? "0" : imageLocation == "right" ? "4" : "0"}
       >
-        <CardHeader>
+        <CardHeader pl={cardChildPaddingLeft} pr={cardChildPaddingRight}>
           <Heading
             fontSize='3xl'
             pt={
@@ -151,7 +154,12 @@ export function ProjectsComponent({
             {title}
           </Heading>
         </CardHeader>
-        <CardBody width='100%'>
+        <CardBody
+          width='100%'
+          pt='0'
+          pl={cardChildPaddingLeft}
+          pr={cardChildPaddingRight}
+        >
           <VStack spacing='4' p='2.5'>
             <Box width='100%'>{description}</Box>
 
@@ -184,7 +192,12 @@ export function ProjectsComponent({
             </Stack>
           </VStack>
         </CardBody>
-        <CardFooter bgColor='blackAlpha.400' p='0'>
+        <CardFooter
+          bgColor='blackAlpha.400'
+          py='0'
+          pl={cardChildPaddingLeft}
+          pr={cardChildPaddingRight}
+        >
           <Flex
             justifyContent={cardVertical ? "center" : "flex-end"}
             width='100%'
@@ -241,7 +254,7 @@ export function ProjectsComponent({
                   m='1'
                   leftIcon={<IoLogoFigma />}
                 >
-                  Github
+                  Figma
                 </Button>
               </Link>
             )}
