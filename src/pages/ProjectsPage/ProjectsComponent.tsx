@@ -14,14 +14,14 @@ import {
   StackProps,
   UnorderedList,
   useBreakpointValue,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   IoLogoChrome,
   IoLogoFigma,
   IoLogoGithub,
-  IoLogoYoutube
+  IoLogoYoutube,
 } from "react-icons/io5";
 import { ProjectsProps } from "./Projects";
 
@@ -61,82 +61,86 @@ export function ProjectsComponent({
     { ssr: false }
   );
 
-  const isExtraLarge = useBreakpointValue(
+  const isLarge = useBreakpointValue(
     {
-      base: false,
-      xl: true,
+      base: true,
+      xl: false,
     },
     { ssr: false }
   );
 
-  const cardHorizontal =
-    screenSrcOrientation == "vertical" ? !!isMedium : !isExtraLarge;
+  const [cardVertical, setCardVertical] = useState(false);
+
+  useEffect(() => {
+    setCardVertical(
+      screenSrcOrientation == "vertical" ? !!isMedium : !!isLarge
+    );
+  }, [screenSrcOrientation, isMedium, isLarge]);
 
   const renderImage = useMemo(() => {
+    console.log(cardVertical);
     return (
       <Image
         width={
-          cardHorizontal
+          cardVertical
             ? screenSrcOrientation == "vertical"
               ? "80%"
               : "95%"
             : screenSrcOrientation == "vertical"
             ? "18rem"
-            : "48rem"
+            : "52rem"
         }
-        height={
-          cardHorizontal
-            ? "auto"
-            : screenSrcOrientation == "vertical"
-            ? "34rem"
-            : "31rem"
-        }
+        height='auto'
         maxHeight={screenSrcOrientation == "vertical" ? "34rem" : "31rem"}
         borderStyle='none'
         objectFit='contain'
         objectPosition={
-          cardHorizontal ? "center" : imageLocation == "left" ? "right" : "left"
+          cardVertical ? "center" : imageLocation == "left" ? "right" : "left"
         }
         src={screenSrc}
         zIndex='20'
       />
     );
-  }, [imageLocation, screenSrcOrientation, screenSrc, cardHorizontal]);
+  }, [imageLocation, screenSrcOrientation, screenSrc, cardVertical]);
 
   return (
     <Stack
       height='fit-content'
       spacing={
-        !cardHorizontal ? "-5" : screenSrcOrientation == "vertical" ? "-72" : "-20"
+        !cardVertical
+          ? "-5"
+          : screenSrcOrientation == "vertical"
+          ? "-72"
+          : "-20"
       }
-      direction={cardHorizontal ? "column" : "row"}
+      direction={cardVertical ? "column" : "row"}
       align='center'
       {...rest}
     >
-      {((!cardHorizontal && imageLocation == "left") || cardHorizontal) &&
+      {((!cardVertical && imageLocation == "left") || cardVertical) &&
         renderImage}
       <Card
         size='sm'
-        width={cardHorizontal ? "100%" : "container.sm"}
+        width={cardVertical ? "100%" : "container.sm"}
         height='fit-content'
         borderRightRadius={
-          imageLocation == "left" || cardHorizontal ? "2rem" : "none"
+          imageLocation == "left" || cardVertical ? "2rem" : "none"
         }
         borderLeftRadius={
-          imageLocation == "right" || cardHorizontal ? "2rem" : "none"
+          imageLocation == "right" || cardVertical ? "2rem" : "none"
         }
         overflow='hidden'
         bgColor={mainHexColor}
         color='white'
         zIndex='10'
-        pl={cardHorizontal ? "0" : imageLocation == "left" ? "4" : "0"}
-        pr={cardHorizontal ? "0" : imageLocation == "right" ? "4" : "0"}
+        pl={cardVertical ? "0" : imageLocation == "left" ? "4" : "0"}
+        pr={cardVertical ? "0" : imageLocation == "right" ? "4" : "0"}
       >
         <CardHeader>
           <Heading
             fontSize='3xl'
             pt={
-              !cardHorizontal
+              !cardVertical
                 ? "2.5"
                 : screenSrcOrientation == "vertical"
                 ? "72"
@@ -154,7 +158,7 @@ export function ProjectsComponent({
             <Stack
               spacing='4'
               width='100%'
-              direction={cardHorizontal ? "column" : "row"}
+              direction={cardVertical ? "column" : "row"}
               alignItems='center'
             >
               <UnorderedList
@@ -182,7 +186,7 @@ export function ProjectsComponent({
         </CardBody>
         <CardFooter bgColor='blackAlpha.400' p='0'>
           <Flex
-            justifyContent={cardHorizontal ? "center" : "flex-end"}
+            justifyContent={cardVertical ? "center" : "flex-end"}
             width='100%'
             p='2.5'
             flexWrap='wrap'
@@ -247,7 +251,7 @@ export function ProjectsComponent({
                 colorScheme={colorScheme}
                 size='md'
                 m='1'
-                width={cardHorizontal ? "100%" : "auto"}
+                width={cardVertical ? "100%" : "auto"}
               >
                 Show me!
               </Button>
@@ -256,7 +260,7 @@ export function ProjectsComponent({
         </CardFooter>
       </Card>
 
-      {imageLocation == "right" && !cardHorizontal && renderImage}
+      {imageLocation == "right" && !cardVertical && renderImage}
     </Stack>
   );
 }
