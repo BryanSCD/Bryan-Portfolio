@@ -8,9 +8,10 @@ import {
 } from "@chakra-ui/react";
 
 import {
-  SeparatorComponent,
-  SeparatorComponentProps,
-} from "./SeparatorComponent";
+  SeparatorDesktopComponent,
+  SeparatorDesktopComponentProps,
+} from "./SeparatorDesktopComponent";
+import { SeparatorMobileComponent } from "./SeparatorMobileComponent";
 
 export type PageProps = {
   childrenPaddingX?: SystemProps["padding"];
@@ -18,7 +19,7 @@ export type PageProps = {
   childrenPaddingRight?: SystemProps["padding"];
   childrenPaddingY?: SystemProps["padding"];
   childrenSeparatorSpacing?: SystemProps["margin"];
-  separatorProps?: SeparatorComponentProps;
+  separatorProps?: SeparatorDesktopComponentProps;
 } & StackProps;
 
 export const Page = forwardRef<PageProps, "div">(
@@ -35,7 +36,10 @@ export const Page = forwardRef<PageProps, "div">(
     },
     ref
   ) => {
-    const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
+    const isSmall = useBreakpointValue(
+      { base: true, md: false },
+      { ssr: false }
+    );
 
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;
@@ -48,7 +52,13 @@ export const Page = forwardRef<PageProps, "div">(
 
     return (
       <VStack ref={ref} spacing={childrenSeparatorSpacing} {...rest}>
-        {separatorProps && <SeparatorComponent {...separatorProps} />}
+        {separatorProps && !isSmall && (
+          <SeparatorDesktopComponent {...separatorProps} />
+        )}
+
+        {separatorProps && isSmall && (
+          <SeparatorMobileComponent {...separatorProps} />
+        )}
         <Box
           paddingLeft={childrenPaddingLeft}
           paddingRight={childrenPaddingRight}

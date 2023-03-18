@@ -1,4 +1,4 @@
-import { Box, Image, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Image, useBreakpointValue, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { IoBag, IoBook, IoFolderOpen, IoHappy } from "react-icons/io5";
 import { Sidebar, SidebarItem } from "./components";
@@ -8,6 +8,26 @@ import { ContactPage } from "./pages/ContactPage";
 function App() {
   const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
   const isLarge = useBreakpointValue({ base: true, xl: false }, { ssr: false });
+
+  const toast = useToast();
+
+  useEffect(() => {
+    const isMobile =
+      /iphone|ipad|ipod|android|webos|blackberry|iemobile|opera mini/i.test(
+        navigator.userAgent.toLowerCase()
+      );
+
+    if (isMobile) {
+      toast({
+        title: "Just a detail...",
+        description: "This website is best viewed on a large screen!",
+        status: "info",
+        duration: 10000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  }, [toast]);
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
