@@ -56,7 +56,7 @@ function ContactForm() {
           toast({
             title: "This is embarrasing... Something went wrong",
             description:
-              "Highly probably I forgot something. Please, contact me through other way!",
+              "Highly probably I run out of money to support this webpage. Please, contact me through other way!",
             status: "error",
             duration: 9000,
             isClosable: true,

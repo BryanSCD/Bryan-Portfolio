@@ -43,7 +43,7 @@ export const projects: ProjectsProps[] = [
       "Android Studio",
       "JAVA",
       "Adobe Photoshop (design)",
-      "Adobe After Effects (marketing)",
+      "Adobe After Effects (video edition)",
     ],
     platform: "Android",
     logoSrc: "./main_projects/zrmadrid_logo.png",
@@ -64,10 +64,10 @@ export const projects: ProjectsProps[] = [
       </Text>
     ),
     architecture: "TCP",
-    mainTechnologies: ["CSharp", "C#", "WinForms", "JavaScript"],
+    mainTechnologies: ["C#", "CefSharp", "WinForms", "JavaScript"],
     platform: "Windows",
     logoSrc: "./main_projects/wcourier_logo.png",
-    screenSrc: "./main_projects/wcourier_screenshot.png",
+    screenSrc: "./main_projects/wcourier_screenshot.gif",
     screenSrcOrientation: "horizontal",
     mainHexColor: "#01675B",
     colorScheme: "green",
@@ -79,8 +79,8 @@ export const projects: ProjectsProps[] = [
         <Text width='100%' fontSize='md'>
           Made from scratch. Unique.
         </Text>
-        <Box bgColor='blackAlpha.200' p='2' mt='2'>
-          <Text width='100%' fontSize='md'>
+        <Box bgColor='blackAlpha.200' p='2' mt='2' fontSize='sm'>
+          <Text width='100%'>
             <strong>Acknowledgements:</strong>
           </Text>
 
@@ -116,14 +116,18 @@ export const projects: ProjectsProps[] = [
       "React",
       "Typescript",
       "Figma",
+      "ChakraUI",
       "Firebase",
+      "FramerMotion",
       "ReadyMePlayer",
     ],
     platform: "Web",
     logoSrc: "./main_projects/bcv_logo.png",
-    screenSrc: "./main_projects/bcv_screenshot.png",
+    screenSrc: "./main_projects/bcv_screenshot.gif",
     screenSrcOrientation: "horizontal",
     mainHexColor: "#665cb2",
     colorScheme: "purple",
+    figmaURL: "https://www.figma.com/file/PaY3WT9sDKJBrmmyZU3B6d/Bryan-Website?node-id=2102%3A2110&t=FUloXkdhJZ1CvIsG-1",
+    githubURL: "https://github.com/BryanSCD/Bryan-Portfolio"
   },
 ];

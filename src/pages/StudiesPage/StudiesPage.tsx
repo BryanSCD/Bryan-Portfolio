@@ -18,7 +18,7 @@ export interface StudiesPageProps extends PageProps {
 
 export const StudiesPage = forwardRef<StudiesPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
-    const isMedium = useBreakpointValue({ base: true, lg: false });
+    const isMedium = useBreakpointValue({ base: true, lg: false }, { ssr: false });
     return (
       <Page
         ref={ref}

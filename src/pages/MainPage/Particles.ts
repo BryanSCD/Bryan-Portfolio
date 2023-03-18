@@ -1,7 +1,7 @@
 import { IOptions, RecursivePartial } from "tsparticles-engine";
 
 export const particlesJSON: RecursivePartial<IOptions> = {
-  fpsLimit: 120,
+  fpsLimit: 60,
   interactivity: {
     events: {
       onClick: {
@@ -65,6 +65,9 @@ export const particlesJSON: RecursivePartial<IOptions> = {
     size: {
       value: { min: 1, max: 5 },
     },
+  },
+  fullScreen: {
+    enable: false,
   },
   detectRetina: true,
   pauseOnOutsideViewport: true,

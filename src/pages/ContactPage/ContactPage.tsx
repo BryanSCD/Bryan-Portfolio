@@ -1,4 +1,9 @@
-import { forwardRef, SystemProps, VStack } from "@chakra-ui/react";
+import {
+  forwardRef,
+  SystemProps,
+  useBreakpointValue,
+  VStack,
+} from "@chakra-ui/react";
 import { Page, PageProps } from "../../components";
 import { ContactComponent } from "./ContactComponent";
 import { BryanContactDetails } from "./ContactDetails";
@@ -9,6 +14,10 @@ export type ContactPageProps = {
 
 export const ContactPage = forwardRef<ContactPageProps, "div">(
   ({ separatorColor, ...rest }, ref) => {
+    const isMedium = useBreakpointValue(
+      { base: true, lg: false },
+      { ssr: false }
+    );
     return (
       <Page
         ref={ref}
@@ -20,7 +29,7 @@ export const ContactPage = forwardRef<ContactPageProps, "div">(
         }}
         bg='url(/contact/background.png)'
         backgroundSize='cover'
-        backgroundPosition='center'
+        backgroundPosition={isMedium ? "left" : "center"}
         backgroundRepeat='no-repeat'
         childrenSeparatorSpacing='-60'
         {...rest}
