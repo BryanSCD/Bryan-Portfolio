@@ -32,11 +32,6 @@ export function SeparatorDesktopComponent({
     ["-10%", "10%"]
   );
 
-  const translateXHeading = useTransform(
-    smoothScrollYProgress,
-    [0, 1],
-    ["-20%", "20%"]
-  );
   return (
     <CloudsComponent
       ref={separatorRef}
@@ -45,7 +40,7 @@ export function SeparatorDesktopComponent({
       separatorCloudsBackground={separatorCloudsBackground}
       separatorColor={separatorColor}
       translateXCloud={translateXCloud}
-      translateXHeading={translateXHeading}
+      translateXHeading={translateXCloud}
     ></CloudsComponent>
   );
 }
