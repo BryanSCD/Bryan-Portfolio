@@ -1,8 +1,4 @@
-import {
-  Flex,
-  FlexProps,
-  forwardRef
-} from "@chakra-ui/react";
+import { Flex, FlexProps, forwardRef } from "@chakra-ui/react";
 
 export const Sidebar = forwardRef<FlexProps, "div">(
   ({ children, ...rest }, ref) => {
@@ -17,6 +13,7 @@ export const Sidebar = forwardRef<FlexProps, "div">(
         alignContent='center'
         rounded='3xl'
         ref={ref}
+        shadow='dark-lg'
       >
         {children}
       </Flex>

@@ -138,6 +138,7 @@ export function ProjectsComponent({
         bgColor={mainHexColor}
         color='white'
         zIndex='10'
+        shadow='dark-lg'
       >
         <CardHeader pl={cardChildPaddingLeft} pr={cardChildPaddingRight}>
           <Heading
