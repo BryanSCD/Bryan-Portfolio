@@ -1,6 +1,6 @@
 import { Avatar } from "@readyplayerme/visage";
 
-import { Box, forwardRef, position } from "@chakra-ui/react";
+import { Box, forwardRef, VStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useCallback, useRef, useState } from "react";
 import Particles from "react-particles";
@@ -23,7 +23,12 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
   const particlesLayer = (
     <motion.div
       ref={divParticles}
-      style={{ position: "relative", width: "100%", height: "100%" }}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        zIndex: 10,
+      }}
     >
       <Particles
         id='tsparticles'
@@ -40,7 +45,15 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
   );
 
   const avatar = (
-    <motion.div ref={divAvatar}>
+    <motion.div
+      ref={divAvatar}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        zIndex: 20,
+      }}
+    >
       <Avatar
         ambientLightColor='#fff5b6'
         ambientLightIntensity={0.25}
@@ -57,9 +70,10 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
         spotLightIntensity={1}
         style={{
           background: "transparent",
+          position: "absolute",
+          width: "100%",
           height: "100%",
           visibility: `${optimize ? "visible" : "hidden"}`,
-          position: "absolute",
         }}
       />
     </motion.div>
@@ -69,6 +83,7 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
     <Box
       width='100%'
       height='100%'
+      zIndex='30'
       onClickCapture={(e) => {
         const event = new MouseEvent("click", e.nativeEvent);
         divAvatar.current?.lastChild?.dispatchEvent(event);
@@ -90,9 +105,11 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
 
   return (
     <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
-      <Box height='100vh' width='100%'>
+      <VStack height='100vh' width='100%' spacing='-100vh'>
         {particlesLayer}
-      </Box>
+        {avatar}
+        {touchLayer}
+      </VStack>
     </Page>
   );
 });
