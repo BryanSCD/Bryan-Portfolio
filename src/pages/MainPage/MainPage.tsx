@@ -1,8 +1,6 @@
 import { Avatar } from "@readyplayerme/visage";
-import { ParallaxBanner } from "react-scroll-parallax";
-import { BannerLayer } from "react-scroll-parallax/dist/components/ParallaxBanner/types";
 
-import { Box, forwardRef } from "@chakra-ui/react";
+import { Box, forwardRef, position } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useCallback, useRef, useState } from "react";
 import Particles from "react-particles";
@@ -22,73 +20,79 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
     await loadFull(engine);
   }, []);
 
-  const particlesLayer: BannerLayer = {
-    children: (
-      <motion.div ref={divParticles}>
-        <Particles
-          id='tsparticles'
-          options={particlesJSON}
-          init={particlesInit}
-          ref={particles}
-        />
-      </motion.div>
-    ),
-  };
+  const particlesLayer = (
+    <motion.div
+      ref={divParticles}
+      style={{ position: "relative", width: "100%", height: "100%" }}
+    >
+      <Particles
+        id='tsparticles'
+        options={particlesJSON}
+        init={particlesInit}
+        ref={particles}
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+        }}
+      />
+    </motion.div>
+  );
 
-  const avatar: BannerLayer = {
-    children: (
-      <motion.div ref={divAvatar}>
-        <Avatar
-          ambientLightColor='#fff5b6'
-          ambientLightIntensity={0.25}
-          animationSrc='/main_page/male-idle.glb'
-          cameraInitialDistance={0.9}
-          cameraTarget={1.59}
-          dirLightColor='#002aff'
-          dirLightIntensity={5}
-          headMovement
-          modelSrc='/main_page/bryanavatar.glb'
-          scale={1}
-          spotLightAngle={0.314}
-          spotLightColor='#fff5b6'
-          spotLightIntensity={1}
-          style={{
-            background: "transparent",
-            height: "100%",
-            visibility: `${optimize ? "visible" : "hidden"}`,
-            position: "absolute",
-          }}
-        />
-      </motion.div>
-    ),
-  };
+  const avatar = (
+    <motion.div ref={divAvatar}>
+      <Avatar
+        ambientLightColor='#fff5b6'
+        ambientLightIntensity={0.25}
+        animationSrc='/main_page/male-idle.glb'
+        cameraInitialDistance={0.9}
+        cameraTarget={1.59}
+        dirLightColor='#002aff'
+        dirLightIntensity={5}
+        headMovement
+        modelSrc='/main_page/bryanavatar.glb'
+        scale={1}
+        spotLightAngle={0.314}
+        spotLightColor='#fff5b6'
+        spotLightIntensity={1}
+        style={{
+          background: "transparent",
+          height: "100%",
+          visibility: `${optimize ? "visible" : "hidden"}`,
+          position: "absolute",
+        }}
+      />
+    </motion.div>
+  );
 
-  const touchLayer: BannerLayer = {
-    children: <Box width='100%' height='100%' />,
-    onClickCapture: (e) => {
-      const event = new MouseEvent("click", e.nativeEvent);
-      divAvatar.current?.lastChild?.dispatchEvent(event);
-      divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
-    },
-    onPointerMoveCapture: (e) => {
-      const event = new PointerEvent("pointermove", e.nativeEvent);
-      divAvatar.current?.lastChild?.dispatchEvent(event);
-      divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
-    },
-    onEnter: () => {
-      setOptimize(true);
-    },
-    onExit: () => {
-      setOptimize(false);
-    },
-  };
+  const touchLayer = (
+    <Box
+      width='100%'
+      height='100%'
+      onClickCapture={(e) => {
+        const event = new MouseEvent("click", e.nativeEvent);
+        divAvatar.current?.lastChild?.dispatchEvent(event);
+        divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
+      }}
+      onPointerMoveCapture={(e) => {
+        const event = new PointerEvent("pointermove", e.nativeEvent);
+        divAvatar.current?.lastChild?.dispatchEvent(event);
+        divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
+      }}
+      // onEnter: () => {
+      //   setOptimize(true);
+      // },
+      // onExit: () => {
+      //   setOptimize(false);
+      // },
+    />
+  );
 
   return (
     <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
-      <ParallaxBanner
-        layers={[particlesLayer, avatar, touchLayer]}
-        style={{ height: "100vh" }}
-      />
+      <Box height='100vh' width='100%'>
+        {particlesLayer}
+      </Box>
     </Page>
   );
 });

@@ -66,6 +66,9 @@ export const particlesJSON: RecursivePartial<IOptions> = {
       value: { min: 1, max: 5 },
     },
   },
+  fullScreen: {
+    enable: false,
+  },
   detectRetina: true,
   pauseOnOutsideViewport: true,
 };
