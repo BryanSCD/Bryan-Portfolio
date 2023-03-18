@@ -1,7 +1,7 @@
 import { IOptions, RecursivePartial } from "tsparticles-engine";
 
 export const particlesJSON: RecursivePartial<IOptions> = {
-  fpsLimit: 120,
+  fpsLimit: 60,
   interactivity: {
     events: {
       onClick: {

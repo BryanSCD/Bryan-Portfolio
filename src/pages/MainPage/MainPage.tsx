@@ -1,8 +1,8 @@
 import { Avatar } from "@readyplayerme/visage";
 
 import { Box, forwardRef, VStack } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { useCallback, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useCallback, useRef } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import { Engine } from "tsparticles-engine";
@@ -14,7 +14,9 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
   const divAvatar = useRef<HTMLDivElement>(null);
   const divParticles = useRef<HTMLDivElement>(null);
 
-  const [optimize, setOptimize] = useState<boolean>(true);
+  const divContainer = useRef<HTMLDivElement>(null);
+
+  const optimize = useInView(divContainer);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
@@ -94,18 +96,12 @@ export const MainPage = forwardRef<PageProps, "div">(({ ...rest }, ref) => {
         divAvatar.current?.lastChild?.dispatchEvent(event);
         divParticles.current?.lastChild?.lastChild?.dispatchEvent(event);
       }}
-      // onEnter: () => {
-      //   setOptimize(true);
-      // },
-      // onExit: () => {
-      //   setOptimize(false);
-      // },
     />
   );
 
   return (
     <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
-      <VStack height='100vh' width='100%' spacing='-100vh'>
+      <VStack height='100vh' width='100%' spacing='-100vh' ref={divContainer}>
         {particlesLayer}
         {avatar}
         {touchLayer}
