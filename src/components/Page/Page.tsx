@@ -48,7 +48,6 @@ export const Page = forwardRef<PageProps, 'div'>(
       }
     }, [separatorProps, isSmall]);
 
-    
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;
       childrenPaddingRight = childrenPaddingX;
@@ -61,7 +60,7 @@ export const Page = forwardRef<PageProps, 'div'>(
       <VStack ref={ref} spacing={childrenSeparatorSpacing} {...rest}>
         {/* Separator */}
         {SeparatorComponent && (
-          <Suspense>
+          <Suspense fallback={<Box height={80} width='100%' />}>
             {separatorProps && <SeparatorComponent zIndex={20} {...separatorProps} />}
           </Suspense>
         )}
