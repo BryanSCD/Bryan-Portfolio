@@ -1,3 +1,5 @@
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+
 import {
   Heading,
   IconButton,
@@ -9,8 +11,7 @@ import {
   StackProps,
   useBreakpointValue,
   useDisclosure,
-} from "@chakra-ui/react";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+} from '@chakra-ui/react';
 
 export interface SidebarItemProps extends StackProps {
   icon: ReactJSXElement;
@@ -27,31 +28,31 @@ export function SidebarItem({ icon, label, isRound, onButtonClick }: SidebarItem
   return (
     <>
       <Popover
-        placement={isSmall ? "bottom" : "left"}
-        isOpen={isOpen}
         autoFocus={false}
+        isOpen={isOpen}
+        placement={isSmall ? 'bottom' : 'left'}
         returnFocusOnClose={false}
       >
         <PopoverTrigger>
           <IconButton
             aria-label={label}
-            icon={icon}
             color='black'
             colorScheme='gray'
-            size={isSmall ? "md" : "lg"}
-            variant='outline'
+            icon={icon}
             isRound={!!isRound}
-            onPointerEnter={!isOpen ? onToggle : undefined}
-            onPointerLeave={isOpen ? onToggle : undefined}
+            size={isSmall ? 'md' : 'lg'}
+            variant='outline'
             onClick={(e) => {
               onButtonClick(e);
             }}
+            onPointerEnter={!isOpen ? onToggle : undefined}
+            onPointerLeave={isOpen ? onToggle : undefined}
           />
         </PopoverTrigger>
         <PopoverContent bgColor='whiteAlpha.900'>
           <PopoverArrow />
           <PopoverBody py='8'>
-            <Heading size='md' textAlign='center' color='black'>
+            <Heading color='black' size='md' textAlign='center'>
               {label}
             </Heading>
           </PopoverBody>
