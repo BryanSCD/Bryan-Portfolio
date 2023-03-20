@@ -36,7 +36,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, 'div'>(
             Degree in Software Engineering
           </Heading>
           <StudiesComponent
-            alignSelf='start'
+            alignSelf='flex-start'
             backgroundColor='#3070B3'
             color='white'
             imageSrc='./studies/logo_tum_white.png'
@@ -51,7 +51,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, 'div'>(
           </StudiesComponent>
 
           <StudiesComponent
-            alignSelf='end'
+            alignSelf='flex-end'
             imageSrc='./studies/logo_upm.png'
             subtitle='2019-2022 (6 semesters)'
             title='Universidad Politécnica de Madrid'
