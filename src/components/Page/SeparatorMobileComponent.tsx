@@ -1,13 +1,11 @@
-import { useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { CloudsComponent, CloudsComponentProps } from "./CloudsComponent";
+import { useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
-export type SeparatorMobileComponentProps = Omit<
-  CloudsComponentProps,
-  "translateXCloud" | "translateXHeading" | "separatorCloudsBackground"
->;
+import { CloudsComponent, CloudsComponentProps } from './CloudsComponent';
 
-export function SeparatorMobileComponent({
+export type SeparatorMobileComponentProps = Omit<CloudsComponentProps, 'separatorCloudsBackground'>;
+
+export default function SeparatorMobileComponent({
   separatorLabel,
   separatorCloud,
   separatorColor,
@@ -16,22 +14,18 @@ export function SeparatorMobileComponent({
 
   const { scrollYProgress } = useScroll({
     target: separatorRef,
-    offset: ["start end", "end start"],
+    offset: ['start end', 'end start'],
   });
 
-  const translateXCloud = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["-8%", "8%"]
-  );
+  const translateXCloud = useTransform(scrollYProgress, [0, 1], ['-8%', '8%']);
 
   return (
     <CloudsComponent
       ref={separatorRef}
-      separatorLabel={separatorLabel}
       separatorCloud={separatorCloud}
       separatorColor={separatorColor}
+      separatorLabel={separatorLabel}
       translateXCloud={translateXCloud}
-    ></CloudsComponent>
+    />
   );
 }

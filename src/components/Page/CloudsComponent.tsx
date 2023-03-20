@@ -1,41 +1,39 @@
-import {
-  forwardRef,
-  Heading,
-  Image,
-  SystemProps,
-  VStack,
-} from "@chakra-ui/react";
-import { motion, MotionValue } from "framer-motion";
+import { MotionValue, motion } from 'framer-motion';
+
+import { Heading, Image, SystemProps, VStack, forwardRef } from '@chakra-ui/react';
 
 export type CloudsComponentProps = {
   separatorLabel: string;
   separatorCloud: string;
-  separatorColor: SystemProps["color"];
+  separatorColor: SystemProps['color'];
   separatorCloudsBackground?: string;
-  translateXCloud?: string | MotionValue;
-  translateXHeading?: string | MotionValue;
 };
 
-export const CloudsComponent = forwardRef<CloudsComponentProps, "div">(
+export type TranslateCloudsComponentProps = {
+  translateXCloud?: string | MotionValue;
+  translateXHeading?: string | MotionValue;
+} & CloudsComponentProps;
+
+export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
   (
     {
       separatorLabel,
       separatorCloud,
-      separatorCloudsBackground,
       separatorColor,
-      translateXCloud = "0",
-      translateXHeading = "0",
+      separatorCloudsBackground,
+      translateXCloud = '0',
+      translateXHeading = '0',
       ...rest
     },
-    ref
+    ref,
   ) => {
     return (
       <VStack
-        width='100%'
-        height='80'
-        position='relative'
-        overflow='hidden'
         ref={ref}
+        height='80'
+        overflow='hidden'
+        position='relative'
+        width='100%'
         zIndex={50}
         {...rest}
       >
@@ -43,43 +41,43 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, "div">(
           <motion.div
             style={{
               x: translateXCloud,
-              position: "absolute",
-              zIndex: "40",
+              position: 'absolute',
+              zIndex: '40',
               margin: 0,
-              width: "128rem",
-              height: "20rem",
+              width: '128rem',
+              height: '20rem',
             }}
           >
             <Image
-              as={motion.img}
-              src={separatorCloudsBackground}
               alt='cloud separator background'
-              opacity='0.3'
-              width='100%'
+              as={motion.img}
               height='100%'
               objectFit='fill'
+              opacity='0.3'
+              src={separatorCloudsBackground}
+              width='100%'
             />
           </motion.div>
         )}
 
         <motion.div
           style={{
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            height: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
             x: translateXHeading,
-            position: "absolute",
+            position: 'absolute',
             zIndex: 30,
             margin: 0,
           }}
         >
           <Heading
             as={motion.h1}
-            fontSize='6xl'
             color={separatorColor}
-            textAlign='center'
             display='inline-block'
+            fontSize='6xl'
+            textAlign='center'
           >
             {separatorLabel}
           </Heading>
@@ -87,23 +85,23 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, "div">(
         <motion.div
           style={{
             x: translateXCloud,
-            position: "absolute",
-            zIndex: "20",
+            position: 'absolute',
+            zIndex: '20',
             margin: 0,
-            width: "64rem",
-            height: "20rem",
+            width: '64rem',
+            height: '20rem',
           }}
         >
           <Image
-            as={motion.img}
-            src={separatorCloud}
             alt='cloud separator'
-            width='100%'
+            as={motion.img}
             height='100%'
             objectFit='fill'
+            src={separatorCloud}
+            width='100%'
           />
         </motion.div>
       </VStack>
     );
-  }
+  },
 );

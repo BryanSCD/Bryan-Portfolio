@@ -1,45 +1,53 @@
+import { Suspense, lazy, useMemo } from 'react';
+
 import {
   Box,
-  forwardRef,
   StackProps,
   SystemProps,
-  useBreakpointValue,
   VStack,
-} from "@chakra-ui/react";
+  forwardRef,
+  useBreakpointValue,
+} from '@chakra-ui/react';
 
-import {
-  SeparatorDesktopComponent,
-  SeparatorDesktopComponentProps,
-} from "./SeparatorDesktopComponent";
-import { SeparatorMobileComponent } from "./SeparatorMobileComponent";
+import { CloudsComponentProps } from './CloudsComponent';
 
 export type PageProps = {
-  childrenPaddingX?: SystemProps["padding"];
-  childrenPaddingLeft?: SystemProps["padding"];
-  childrenPaddingRight?: SystemProps["padding"];
-  childrenPaddingY?: SystemProps["padding"];
-  childrenSeparatorSpacing?: SystemProps["margin"];
-  separatorProps?: SeparatorDesktopComponentProps;
+  childrenPaddingX?: SystemProps['padding'];
+  childrenPaddingLeft?: SystemProps['padding'];
+  childrenPaddingRight?: SystemProps['padding'];
+  childrenPaddingY?: SystemProps['padding'];
+  childrenSeparatorSpacing?: SystemProps['margin'];
+  separatorProps?: CloudsComponentProps;
 } & StackProps;
 
-export const Page = forwardRef<PageProps, "div">(
+export const Page = forwardRef<PageProps, 'div'>(
   (
     {
       children,
       childrenPaddingX,
-      childrenPaddingLeft = "8",
-      childrenPaddingRight = "8",
+      childrenPaddingLeft = '8',
+      childrenPaddingRight = '8',
       childrenPaddingY,
-      childrenSeparatorSpacing = "0",
+      childrenSeparatorSpacing = '0',
       separatorProps,
       ...rest
     },
-    ref
+    ref,
   ) => {
-    const isSmall = useBreakpointValue(
-      { base: true, md: false },
-      { ssr: false }
-    );
+    const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
+
+    const SeparatorComponent = useMemo(() => {
+      if (!separatorProps) {
+        return;
+      }
+      if (isSmall) {
+        return lazy(() => import('./SeparatorMobileComponent'));
+      } else {
+        return lazy(() => import('./SeparatorDesktopComponent'));
+      }
+    }, [separatorProps, isSmall]);
+
+    console.log('render');
 
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;
@@ -47,23 +55,18 @@ export const Page = forwardRef<PageProps, "div">(
     }
 
     if (!childrenPaddingY) {
-      childrenPaddingY = isSmall ? "10" : "20";
+      childrenPaddingY = isSmall ? '10' : '20';
     }
-
     return (
       <VStack ref={ref} spacing={childrenSeparatorSpacing} {...rest}>
-        {separatorProps && !isSmall && (
-          <SeparatorDesktopComponent {...separatorProps} />
-        )}
-
-        {separatorProps && isSmall && (
-          <SeparatorMobileComponent {...separatorProps} />
+        {separatorProps && SeparatorComponent && (
+          <Suspense>{<SeparatorComponent {...separatorProps} />}</Suspense>
         )}
         <Box
+          overflow='hidden'
           paddingLeft={childrenPaddingLeft}
           paddingRight={childrenPaddingRight}
           paddingY={childrenPaddingY}
-          overflow='hidden'
           width='100%'
           zIndex={10}
         >
@@ -71,5 +74,5 @@ export const Page = forwardRef<PageProps, "div">(
         </Box>
       </VStack>
     );
-  }
+  },
 );
