@@ -74,7 +74,6 @@ export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
               width: 'auto',
               height: '100%',
               opacity: '0.3',
-              // zIndex: 30,
             }}
           />
         )}
