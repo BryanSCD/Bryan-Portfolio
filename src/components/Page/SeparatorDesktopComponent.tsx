@@ -8,6 +8,7 @@ export default function SeparatorDesktopComponent({
   separatorCloud,
   separatorCloudsBackground,
   separatorColor,
+  ...rest
 }: CloudsComponentProps) {
   const separatorRef = useRef(null);
 
@@ -33,6 +34,7 @@ export default function SeparatorDesktopComponent({
       separatorLabel={separatorLabel}
       translateXCloud={translateXCloud}
       translateXHeading={translateXCloud}
+      {...rest}
     />
   );
 }

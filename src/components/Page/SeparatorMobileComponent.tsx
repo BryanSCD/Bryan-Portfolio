@@ -9,6 +9,7 @@ export default function SeparatorMobileComponent({
   separatorLabel,
   separatorCloud,
   separatorColor,
+  ...rest
 }: SeparatorMobileComponentProps) {
   const separatorRef = useRef(null);
 
@@ -26,6 +27,7 @@ export default function SeparatorMobileComponent({
       separatorColor={separatorColor}
       separatorLabel={separatorLabel}
       translateXCloud={translateXCloud}
+      {...rest}
     />
   );
 }

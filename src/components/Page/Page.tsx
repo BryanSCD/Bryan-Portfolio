@@ -58,7 +58,9 @@ export const Page = forwardRef<PageProps, 'div'>(
       <VStack ref={ref} spacing={childrenSeparatorSpacing} {...rest}>
         {/* Separator */}
         {SeparatorComponent && (
-          <Suspense>{separatorProps && <SeparatorComponent {...separatorProps} />}</Suspense>
+          <Suspense>
+            {separatorProps && <SeparatorComponent zIndex={20} {...separatorProps} />}
+          </Suspense>
         )}
         {/* Page content */}
         <Box

@@ -1,20 +1,17 @@
 import { MotionValue, motion } from 'framer-motion';
 
-import { Heading, SystemProps, VStack, forwardRef } from '@chakra-ui/react';
+import { Heading, StackProps, SystemProps, VStack, forwardRef } from '@chakra-ui/react';
 
 export type CloudsComponentProps = {
   separatorLabel: string;
   separatorCloud: string;
   separatorColor: SystemProps['color'];
   separatorCloudsBackground?: string;
-};
-
-export type TranslateCloudsComponentProps = {
   translateXCloud?: string | MotionValue;
   translateXHeading?: string | MotionValue;
-} & CloudsComponentProps;
+} & StackProps;
 
-export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
+export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
   (
     {
       separatorLabel,
@@ -35,7 +32,6 @@ export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
           style={{
             x: translateXCloud,
             position: 'absolute',
-            margin: 0,
             width: 'auto',
             height: '100%',
           }}
@@ -49,7 +45,6 @@ export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
             alignItems: 'center',
             x: translateXHeading,
             position: 'absolute',
-            margin: 0,
           }}
         >
           <Heading
@@ -70,7 +65,6 @@ export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
             style={{
               x: translateXCloud,
               position: 'absolute',
-              margin: 0,
               width: 'auto',
               height: '100%',
               opacity: '0.3',
