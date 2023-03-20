@@ -91,7 +91,7 @@ export const projects: ProjectsProps[] = [
               <Text>
                 <strong>Madrid Landscape:</strong>
               </Text>
-              <Link href='https://resourceboy.com/textures/cloud-textures/' isExternal>
+              <Link href='https://www.instagram.com/jaime_mad01/' isExternal>
                 https://www.instagram.com/jaime_mad01/
               </Link>{' '}
             </ListItem>
