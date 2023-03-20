@@ -1,6 +1,6 @@
 import { MotionValue, motion } from 'framer-motion';
 
-import { Heading, Image, SystemProps, VStack, forwardRef } from '@chakra-ui/react';
+import { Heading, SystemProps, VStack, forwardRef } from '@chakra-ui/react';
 
 export type CloudsComponentProps = {
   separatorLabel: string;
