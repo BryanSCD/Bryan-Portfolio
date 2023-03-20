@@ -14,10 +14,10 @@ export const ContactPage = forwardRef<ContactPageProps, 'div'>(
     return (
       <Page
         ref={ref}
-        backgroundPosition={isMedium ? 'left' : 'center'}
-        backgroundRepeat='no-repeat'
-        backgroundSize='cover'
         bg='url(/contact/background.png)'
+        bgPos={isMedium ? 'left' : 'center'}
+        bgRepeat='no-repeat'
+        bgSize='cover'
         childrenSeparatorSpacing='-60'
         separatorProps={{
           separatorLabel: 'Contact',
