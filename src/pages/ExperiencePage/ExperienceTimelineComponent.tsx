@@ -113,6 +113,7 @@ export function ExperienceTimelineComponent({
               spacing='5'
               width='100%'
             >
+              {/* Description */}
               <Text
                 color='gray.800'
                 fontSize='md'
@@ -122,6 +123,7 @@ export function ExperienceTimelineComponent({
                 {description}
               </Text>
 
+              {/* Skills */}
               <UnorderedList
                 color='black'
                 fontSize='md'

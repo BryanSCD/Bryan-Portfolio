@@ -70,7 +70,7 @@ export function ProjectsComponent({
     setCardVertical(screenSrcOrientation == 'vertical' ? !!isMedium : !!isLarge);
   }, [screenSrcOrientation, isMedium, isLarge]);
 
-  const renderImage = useMemo(() => {
+  const screenshotImage = useMemo(() => {
     return (
       <Image
         borderStyle='none'
@@ -104,7 +104,7 @@ export function ProjectsComponent({
       spacing={!cardVertical ? '-8' : screenSrcOrientation == 'vertical' ? '-72' : '-20'}
       {...rest}
     >
-      {((!cardVertical && imageLocation == 'left') || cardVertical) && renderImage}
+      {((!cardVertical && imageLocation == 'left') || cardVertical) && screenshotImage}
       <Card
         bgColor={mainHexColor}
         borderRadius='2rem'
@@ -234,7 +234,7 @@ export function ProjectsComponent({
         </CardFooter>
       </Card>
 
-      {imageLocation == 'right' && !cardVertical && renderImage}
+      {imageLocation == 'right' && !cardVertical && screenshotImage}
     </Stack>
   );
 }
