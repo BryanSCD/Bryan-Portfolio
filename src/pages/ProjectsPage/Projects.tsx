@@ -26,7 +26,7 @@ export const projects: ProjectsProps[] = [
   {
     title: 'Zona Restringida - Madrid',
     description: (
-      <Text width='100%' fontSize='md'>
+      <Text fontSize='md' width='100%'>
         {
           "At the begining of COVID pandemic the Madrid's governors ordered to confine people by areas, without giving quality information to the citizens. That is the reason why I created Zona Restringida - Madrid."
         }
@@ -70,10 +70,10 @@ export const projects: ProjectsProps[] = [
     title: 'This portfolio',
     description: (
       <>
-        <Text width='100%' fontSize='md'>
+        <Text fontSize='md' width='100%'>
           Made from scratch. Unique.
         </Text>
-        <Box bgColor='blackAlpha.200' p='2' mt='2' fontSize='sm'>
+        <Box bgColor='blackAlpha.200' fontSize='sm' mt='2' p='2'>
           <Text width='100%'>
             <strong>Acknowledgements:</strong>
           </Text>

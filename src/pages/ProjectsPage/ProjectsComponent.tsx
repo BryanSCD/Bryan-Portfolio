@@ -73,6 +73,12 @@ export function ProjectsComponent({
   const renderImage = useMemo(() => {
     return (
       <Image
+        borderStyle='none'
+        height='auto'
+        maxHeight={screenSrcOrientation == 'vertical' ? '34rem' : '31rem'}
+        objectFit='contain'
+        objectPosition={cardVertical ? 'center' : imageLocation == 'left' ? 'right' : 'left'}
+        src={screenSrc}
         width={
           cardVertical
             ? screenSrcOrientation == 'vertical'
@@ -82,12 +88,6 @@ export function ProjectsComponent({
             ? '18rem'
             : '54rem'
         }
-        height='auto'
-        maxHeight={screenSrcOrientation == 'vertical' ? '34rem' : '31rem'}
-        borderStyle='none'
-        objectFit='contain'
-        objectPosition={cardVertical ? 'center' : imageLocation == 'left' ? 'right' : 'left'}
-        src={screenSrc}
         zIndex='20'
       />
     );
@@ -98,23 +98,23 @@ export function ProjectsComponent({
 
   return (
     <Stack
+      align='center'
+      direction={cardVertical ? 'column' : 'row'}
       height='fit-content'
       spacing={!cardVertical ? '-8' : screenSrcOrientation == 'vertical' ? '-72' : '-20'}
-      direction={cardVertical ? 'column' : 'row'}
-      align='center'
       {...rest}
     >
       {((!cardVertical && imageLocation == 'left') || cardVertical) && renderImage}
       <Card
+        bgColor={mainHexColor}
+        borderRadius='2rem'
+        color='white'
+        height='fit-content'
+        overflow='hidden'
+        shadow='dark-lg'
         size='sm'
         width={cardVertical ? '100%' : 'container.sm'}
-        height='fit-content'
-        borderRadius='2rem'
-        overflow='hidden'
-        bgColor={mainHexColor}
-        color='white'
         zIndex='10'
-        shadow='dark-lg'
       >
         <CardHeader pl={cardChildPaddingLeft} pr={cardChildPaddingRight}>
           <Heading
@@ -125,17 +125,17 @@ export function ProjectsComponent({
             {title}
           </Heading>
         </CardHeader>
-        <CardBody width='100%' pt='0' pl={cardChildPaddingLeft} pr={cardChildPaddingRight}>
-          <VStack spacing='4' p='2.5'>
+        <CardBody pl={cardChildPaddingLeft} pr={cardChildPaddingRight} pt='0' width='100%'>
+          <VStack p='2.5' spacing='4'>
             <Box width='100%'>{description}</Box>
 
             <Stack
+              alignItems='center'
+              direction={cardVertical ? 'column' : 'row'}
               spacing='4'
               width='100%'
-              direction={cardVertical ? 'column' : 'row'}
-              alignItems='center'
             >
-              <UnorderedList fontSize='md' width='100%' listStylePos='inside' alignSelf='stretch'>
+              <UnorderedList alignSelf='stretch' fontSize='md' listStylePos='inside' width='100%'>
                 <ListItem>
                   <strong>Architecture: </strong> {architecture}
                 </ListItem>
@@ -149,30 +149,30 @@ export function ProjectsComponent({
                 </ListItem>
               </UnorderedList>
 
-              <Image maxW='32' maxH='32' src={logoSrc} />
+              <Image maxH='32' maxW='32' src={logoSrc} />
             </Stack>
           </VStack>
         </CardBody>
         <CardFooter
           bgColor='blackAlpha.400'
-          py='0'
           pl={cardChildPaddingLeft}
           pr={cardChildPaddingRight}
+          py='0'
         >
           <Flex
-            justifyContent={cardVertical ? 'center' : 'flex-end'}
-            width='100%'
-            p='2.5'
             flexWrap='wrap'
+            justifyContent={cardVertical ? 'center' : 'flex-end'}
+            p='2.5'
+            width='100%'
           >
             {videoURL && (
               <Link href={videoURL} isExternal>
                 <Button
-                  variant='solid'
                   colorScheme='red'
-                  size='md'
-                  m='1'
                   leftIcon={<IoLogoYoutube />}
+                  m='1'
+                  size='md'
+                  variant='solid'
                 >
                   Video
                 </Button>
@@ -181,11 +181,11 @@ export function ProjectsComponent({
             {websiteURL && (
               <Link href={websiteURL} isExternal>
                 <Button
-                  variant='solid'
                   colorScheme={colorScheme}
-                  size='md'
-                  m='1'
                   leftIcon={<IoLogoChrome />}
+                  m='1'
+                  size='md'
+                  variant='solid'
                 >
                   Website
                 </Button>
@@ -194,12 +194,12 @@ export function ProjectsComponent({
             {githubURL && (
               <Link href={githubURL} isExternal>
                 <Button
-                  variant='solid'
-                  colorScheme='gray'
                   color='black'
-                  size='md'
-                  m='1'
+                  colorScheme='gray'
                   leftIcon={<IoLogoGithub />}
+                  m='1'
+                  size='md'
+                  variant='solid'
                 >
                   Github
                 </Button>
@@ -208,12 +208,12 @@ export function ProjectsComponent({
             {figmaURL && (
               <Link href={figmaURL} isExternal>
                 <Button
-                  variant='solid'
-                  colorScheme='purple'
                   color='white'
-                  size='md'
-                  m='1'
+                  colorScheme='purple'
                   leftIcon={<IoLogoFigma />}
+                  m='1'
+                  size='md'
+                  variant='solid'
                 >
                   Figma
                 </Button>
@@ -221,10 +221,10 @@ export function ProjectsComponent({
             )}
             {showMe && (
               <Button
-                variant='solid'
                 colorScheme={colorScheme}
-                size='md'
                 m='1'
+                size='md'
+                variant='solid'
                 width={cardVertical ? '100%' : 'auto'}
               >
                 Show me!

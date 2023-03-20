@@ -23,15 +23,15 @@ export const experience: ExperienceProps[] = [
     footer: (
       <Button
         as='a'
+        bgColor='gray.300'
+        color='black'
+        colorScheme='gray'
         href='./experience/mercedes_paper.pdf'
+        leftIcon={<IoBookSharp />}
+        m='1'
+        size='md'
         target='_blank'
         variant='solid'
-        color='black'
-        bgColor='gray.300'
-        colorScheme='gray'
-        size='md'
-        m='1'
-        leftIcon={<IoBookSharp />}
       >
         Learn more!
       </Button>
@@ -53,14 +53,14 @@ export const experience: ExperienceProps[] = [
     footer: (
       <Button
         as='a'
-        href='https://interimage.es/'
-        target='_blank'
-        rel='external'
-        variant='solid'
         colorScheme='purple'
-        size='md'
-        m='1'
+        href='https://interimage.es/'
         leftIcon={<IoDesktopSharp />}
+        m='1'
+        rel='external'
+        size='md'
+        target='_blank'
+        variant='solid'
       >
         Company website
       </Button>

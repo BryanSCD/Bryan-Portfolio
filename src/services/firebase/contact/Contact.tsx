@@ -7,7 +7,7 @@ import ContactBody from './ContactHTMLBody';
 export const addContact = (emailTo: string, name: string, email: string, message: string) =>
   new Promise<void>(async (resolve, reject) => {
     const contactBody = ReactDOMServer.renderToStaticMarkup(
-      <ContactBody name={name} email={email} message={message} />,
+      <ContactBody email={email} message={message} name={name} />,
     );
 
     try {

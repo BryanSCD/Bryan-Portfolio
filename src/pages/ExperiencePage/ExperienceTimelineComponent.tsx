@@ -53,78 +53,78 @@ export function ExperienceTimelineComponent({
     <VStack spacing='0' width='100%'>
       {/* Extra upper divider */}
       {extraUpperDivider && !isLarge && (
-        <HStack justify='center' align='center' spacing='20'>
-          <Box width='64'></Box>
+        <HStack align='center' justify='center' spacing='20'>
+          <Box width='64' />
 
-          <Stack justify='center' align='center' spacing='0'>
-            <Divider orientation='vertical' height='44' {...extraUpperDivider} />
+          <Stack align='center' justify='center' spacing='0'>
+            <Divider height='44' orientation='vertical' {...extraUpperDivider} />
           </Stack>
 
-          <Box width='xl'></Box>
+          <Box width='xl' />
         </HStack>
       )}
 
       {/* Dot divider */}
       <Stack
+        align='center'
         direction={isLarge ? 'column' : 'row'}
         justify='center'
-        align='center'
         spacing='20'
         width='100%'
       >
-        <VStack justify='flex-start' align='center' spacing='4' width={isLarge ? '70%' : '64'}>
-          <Heading fontSize='xl' color='white' textAlign='center'>
+        <VStack align='center' justify='flex-start' spacing='4' width={isLarge ? '70%' : '64'}>
+          <Heading color='white' fontSize='xl' textAlign='center'>
             {title}
           </Heading>
-          <Text fontSize='md' color='whiteAlpha.800' textAlign='center'>
+          <Text color='whiteAlpha.800' fontSize='md' textAlign='center'>
             {subtitle}
           </Text>
         </VStack>
 
         {!isLarge && (
-          <Stack justify='center' align='center' spacing='0'>
-            <Divider orientation='vertical' height='44' {...upperDivider} />
-            <Circle size='8' background='white' {...circleProps} />
-            <Divider orientation='vertical' height='44' {...bottomDivider} />
+          <Stack align='center' justify='center' spacing='0'>
+            <Divider height='44' orientation='vertical' {...upperDivider} />
+            <Circle background='white' size='8' {...circleProps} />
+            <Divider height='44' orientation='vertical' {...bottomDivider} />
           </Stack>
         )}
 
         <Card background='#FFFFFF' boxShadow='base' width={isLarge ? '100%' : 'xl'}>
           <CardHeader>
-            <Stack justify='center' align='center' spacing='0'>
+            <Stack align='center' justify='center' spacing='0'>
               <Image
-                width='100%'
                 height='8'
-                src={logo}
                 objectFit='scale-down'
                 objectPosition='center'
+                src={logo}
+                width='100%'
               />
             </Stack>
           </CardHeader>
           <CardBody>
             <Stack
-              direction={isLarge ? 'column' : 'row'}
-              justify='center'
               align='center'
+              direction={isLarge ? 'column' : 'row'}
+              divider={<StackDivider />}
+              justify='center'
               spacing='5'
               width='100%'
-              divider={<StackDivider />}
             >
               <Text
-                fontSize='md'
                 color='gray.800'
-                width={isLarge ? '100%' : '60'}
+                fontSize='md'
                 textAlign='center'
+                width={isLarge ? '100%' : '60'}
               >
                 {description}
               </Text>
 
               <UnorderedList
-                fontSize='md'
                 color='black'
-                width={isLarge ? '100%' : '60'}
-                textAlign='center'
+                fontSize='md'
                 listStylePos='inside'
+                textAlign='center'
+                width={isLarge ? '100%' : '60'}
               >
                 {skills.map((value, index) => (
                   <ListItem key={index}>{value}</ListItem>
@@ -138,14 +138,14 @@ export function ExperienceTimelineComponent({
 
       {/* Extra bottom divider */}
       {extraBottomDivider && !isLarge && (
-        <HStack justify='center' align='center' spacing='20'>
-          <Box width='64'></Box>
+        <HStack align='center' justify='center' spacing='20'>
+          <Box width='64' />
 
-          <Stack justify='center' align='center' spacing='0'>
-            <Divider orientation='vertical' height='44' {...extraBottomDivider} />
+          <Stack align='center' justify='center' spacing='0'>
+            <Divider height='44' orientation='vertical' {...extraBottomDivider} />
           </Stack>
 
-          <Box width='xl'></Box>
+          <Box width='xl' />
         </HStack>
       )}
     </VStack>

@@ -65,7 +65,7 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>
-      <VStack padding='4' spacing='2.5' width='100%' align='start' color='white'>
+      <VStack align='start' color='white' padding='4' spacing='2.5' width='100%'>
         <FormControl isInvalid={!!errors.name} isRequired>
           <FormLabel fontSize='md' htmlFor='name'>
             Your name / Your company
@@ -75,10 +75,10 @@ function ContactForm() {
               <IoPersonOutline />
             </InputLeftElement>
             <Input
-              type='text'
+              autoComplete='name'
               focusBorderColor='#665cb2'
               id='name'
-              autoComplete='name'
+              type='text'
               {...register('name', {
                 required: 'This is required',
                 minLength: {
@@ -98,10 +98,10 @@ function ContactForm() {
               <IoMailOutline />
             </InputLeftElement>
             <Input
-              type='email'
+              autoComplete='email'
               focusBorderColor='#665cb2'
               id='email'
-              autoComplete='email'
+              type='email'
               {...register('email', {
                 required: 'This is required',
                 pattern: {
@@ -117,9 +117,9 @@ function ContactForm() {
         <FormControl isInvalid={!!errors.message} isRequired>
           <FormLabel fontSize='md'>Message</FormLabel>
           <Textarea
-            placeholder='Hey Bryan!'
             focusBorderColor='#665cb2'
             id='message'
+            placeholder='Hey Bryan!'
             {...register('message', {
               required: "Write me something! I'm not a monster, believe me. (min. 10 characters)",
               minLength: {
@@ -127,22 +127,22 @@ function ContactForm() {
                 message: "Write me something longer! It's not that difficult. (min. 10 characters)",
               },
             })}
-            resize='none'
             height='9rem'
+            resize='none'
           />
           <FormErrorMessage>
             {!!errors.message && errors.message.message?.toString()}
           </FormErrorMessage>
         </FormControl>
 
-        <Flex height='100%' width='100%' justifyContent='end'>
+        <Flex height='100%' justifyContent='end' width='100%'>
           <Button
-            color='white'
             bgColor='whiteAlpha.500'
+            color='white'
             colorScheme='purple'
-            type='submit'
-            isLoading={isSubmitting}
             isDisabled={!isDirty || !isValid || isSubmitting}
+            isLoading={isSubmitting}
+            type='submit'
           >
             Send message!
           </Button>

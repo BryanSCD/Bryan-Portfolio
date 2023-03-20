@@ -58,12 +58,12 @@ function App() {
     <>
       <Sidebar
         ref={sidebarRef}
-        left={isSmall ? '50%' : 'auto'}
-        top={isSmall ? 'auto' : '50%'}
-        right={isSmall ? 'auto' : '4'}
         bottom={isSmall ? '4' : 'auto'}
-        transform={isSmall ? 'translate(-50%, 0)' : 'translate(0, -50%)'}
         direction={isSmall ? 'row' : 'column'}
+        left={isSmall ? '50%' : 'auto'}
+        right={isSmall ? 'auto' : '4'}
+        top={isSmall ? 'auto' : '50%'}
+        transform={isSmall ? 'translate(-50%, 0)' : 'translate(0, -50%)'}
         zIndex='1000'
       >
         {/* Item ref to Main Page */}
@@ -95,12 +95,12 @@ function App() {
         <SidebarItem
           icon={
             <Image
-              width='100%'
               height='100%'
-              src='./sidebar/BryanSCD.png'
               objectFit='scale-down'
               objectPosition='center'
               rounded='full'
+              src='./sidebar/BryanSCD.png'
+              width='100%'
             />
           }
           isRound
@@ -114,26 +114,26 @@ function App() {
         <MainPage ref={mainPageRef} />
         <ExperiencePage
           ref={experiencePageRef}
-          separatorColor='black'
-          marginTop='-20'
           childrenPaddingRight={sidebarOffsetWidth}
+          marginTop='-20'
+          separatorColor='black'
         />
         <ProjectsPage
           ref={projectsPageRef}
-          separatorColor='#030F1B'
-          marginTop={isLarge ? '0' : '-40'}
           childrenPaddingRight={sidebarOffsetWidth}
+          marginTop={isLarge ? '0' : '-40'}
+          separatorColor='#030F1B'
         />
         <StudiesPage
           ref={studiesPageRef}
-          separatorColor='#282E58'
           childrenPaddingRight={sidebarOffsetWidth}
+          separatorColor='#282E58'
         />
         <ContactPage
           ref={contactPageRef}
-          separatorColor='#564EA2'
           childrenPaddingRight={isLarge ? sidebarOffsetWidth : undefined}
           paddingBottom={isSmall ? '20' : undefined}
+          separatorColor='#564EA2'
         />
       </Box>
     </>
