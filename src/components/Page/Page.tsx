@@ -46,9 +46,6 @@ export const Page = forwardRef<PageProps, 'div'>(
         return lazy(() => import('./SeparatorDesktopComponent'));
       }
     }, [separatorProps, isSmall]);
-
-    console.log('render');
-
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;
       childrenPaddingRight = childrenPaddingX;
@@ -59,9 +56,11 @@ export const Page = forwardRef<PageProps, 'div'>(
     }
     return (
       <VStack ref={ref} spacing={childrenSeparatorSpacing} {...rest}>
-        {separatorProps && SeparatorComponent && (
-          <Suspense>{<SeparatorComponent {...separatorProps} />}</Suspense>
+        {/* Separator */}
+        {SeparatorComponent && (
+          <Suspense>{separatorProps && <SeparatorComponent {...separatorProps} />}</Suspense>
         )}
+        {/* Page content */}
         <Box
           overflow='hidden'
           paddingLeft={childrenPaddingLeft}

@@ -28,21 +28,13 @@ export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
     ref,
   ) => {
     return (
-      <VStack
-        ref={ref}
-        height='80'
-        overflow='hidden'
-        position='relative'
-        width='100%'
-        zIndex={50}
-        {...rest}
-      >
+      <VStack ref={ref} height='80' overflow='hidden' position='relative' width='100%' {...rest}>
         {separatorCloudsBackground && (
           <motion.div
             style={{
               x: translateXCloud,
               position: 'absolute',
-              zIndex: '40',
+              zIndex: 40,
               margin: 0,
               width: '128rem',
               height: '20rem',
@@ -86,7 +78,7 @@ export const CloudsComponent = forwardRef<TranslateCloudsComponentProps, 'div'>(
           style={{
             x: translateXCloud,
             position: 'absolute',
-            zIndex: '20',
+            zIndex: 20,
             margin: 0,
             width: '64rem',
             height: '20rem',
