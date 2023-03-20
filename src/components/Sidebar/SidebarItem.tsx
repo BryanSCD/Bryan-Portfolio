@@ -40,6 +40,7 @@ export function SidebarItem({ icon, label, isRound, onButtonClick }: SidebarItem
             colorScheme='gray'
             icon={icon}
             isRound={!!isRound}
+            maxW={isSmall ? '1rem' : '1.125rem'}
             size={isSmall ? 'md' : 'lg'}
             variant='outline'
             onClick={(e) => {
