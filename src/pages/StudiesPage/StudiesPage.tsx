@@ -1,41 +1,38 @@
 import {
-  forwardRef,
   Heading,
   ListItem,
   Stack,
   SystemProps,
   Text,
   UnorderedList,
-  useBreakpointValue,
   VStack,
-} from "@chakra-ui/react";
-import { Page, PageProps } from "../../components";
-import { StudiesComponent } from "./StudiesComponent";
+  forwardRef,
+  useBreakpointValue,
+} from '@chakra-ui/react';
+
+import { Page, PageProps } from '../../components';
+import { StudiesComponent } from './StudiesComponent';
 
 export interface StudiesPageProps extends PageProps {
-  separatorColor: SystemProps["color"];
+  separatorColor: SystemProps['color'];
 }
 
-export const StudiesPage = forwardRef<StudiesPageProps, "div">(
+export const StudiesPage = forwardRef<StudiesPageProps, 'div'>(
   ({ separatorColor, ...rest }, ref) => {
     const isMedium = useBreakpointValue({ base: true, lg: false }, { ssr: false });
     return (
       <Page
         ref={ref}
         separatorProps={{
-          separatorLabel: "Studies",
-          separatorCloud: "./studies/cloud.png",
-          separatorCloudsBackground: "./studies/clouds_background.png",
+          separatorLabel: 'Studies',
+          separatorCloud: './studies/cloud.png',
+          separatorCloudsBackgroundSrc: './studies/clouds_background.png',
           separatorColor,
         }}
         {...rest}
       >
-        <VStack spacing={isMedium ? "14" : "28"}>
-          <Heading
-            fontSize={isMedium ? "4xl" : "5xl"}
-            color='white'
-            textAlign='center'
-          >
+        <VStack spacing={isMedium ? '14' : '28'}>
+          <Heading fontSize={isMedium ? '4xl' : '5xl'} color='white' textAlign='center'>
             Degree in Software Engineering
           </Heading>
           <StudiesComponent
@@ -45,7 +42,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             backgroundColor='#3070B3'
             imageSrc='./studies/logo_tum_white.png'
             alignSelf='start'
-            width={isMedium ? "100%" : "50%"}
+            width={isMedium ? '100%' : '50%'}
           >
             <Text fontSize='md' align='center'>
               <strong>Remarkable grades:</strong>
@@ -58,7 +55,7 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             subtitle='2019-2022 (6 semesters)'
             imageSrc='./studies/logo_upm.png'
             alignSelf='end'
-            width={isMedium ? "100%" : "60%"}
+            width={isMedium ? '100%' : '60%'}
           >
             <Text fontSize='lg' textAlign='center'>
               <strong>Academic Excellence Scholarship 2020</strong>
@@ -80,22 +77,18 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
             </UnorderedList>
           </StudiesComponent>
 
-          <Heading fontSize={isMedium ? "3xl" : "4xl"} color='white'>
+          <Heading fontSize={isMedium ? '3xl' : '4xl'} color='white'>
             Complementary
           </Heading>
 
           <Stack
-            direction={isMedium ? "column" : "row"}
-            spacing={isMedium ? "14" : "28"}
+            direction={isMedium ? 'column' : 'row'}
+            spacing={isMedium ? '14' : '28'}
             width='100%'
             alignItems='center'
             justifyContent='center'
           >
-            <StudiesComponent
-              title='Languages'
-              color='white'
-              backgroundColor='gray.600'
-            >
+            <StudiesComponent title='Languages' color='white' backgroundColor='gray.600'>
               <UnorderedList textAlign='center' listStylePos='inside'>
                 <ListItem>
                   <strong>English:</strong> Full professional proficiency
@@ -106,16 +99,12 @@ export const StudiesPage = forwardRef<StudiesPageProps, "div">(
               </UnorderedList>
             </StudiesComponent>
 
-            <StudiesComponent
-              title='Driving license'
-              color='white'
-              backgroundColor='gray.600'
-            >
+            <StudiesComponent title='Driving license' color='white' backgroundColor='gray.600'>
               <Text>European B</Text>
             </StudiesComponent>
           </Stack>
         </VStack>
       </Page>
     );
-  }
+  },
 );

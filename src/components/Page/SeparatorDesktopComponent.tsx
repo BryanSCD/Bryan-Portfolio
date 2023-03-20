@@ -6,7 +6,7 @@ import { CloudsComponent, CloudsComponentProps } from './CloudsComponent';
 export default function SeparatorDesktopComponent({
   separatorLabel,
   separatorCloud,
-  separatorCloudsBackground,
+  separatorCloudsBackgroundSrc: separatorCloudsBackground,
   separatorColor,
   ...rest
 }: CloudsComponentProps) {
@@ -29,9 +29,10 @@ export default function SeparatorDesktopComponent({
     <CloudsComponent
       ref={separatorRef}
       separatorCloud={separatorCloud}
-      separatorCloudsBackground={separatorCloudsBackground}
+      separatorCloudsBackgroundSrc={separatorCloudsBackground}
       separatorColor={separatorColor}
       separatorLabel={separatorLabel}
+      showSeparatorCloudsBackground
       translateXCloud={translateXCloud}
       translateXHeading={translateXCloud}
       {...rest}

@@ -6,7 +6,8 @@ export type CloudsComponentProps = {
   separatorLabel: string;
   separatorCloud: string;
   separatorColor: SystemProps['color'];
-  separatorCloudsBackground?: string;
+  showSeparatorCloudsBackground?: boolean;
+  separatorCloudsBackgroundSrc?: string;
   translateXCloud?: string | MotionValue;
   translateXHeading?: string | MotionValue;
 } & StackProps;
@@ -17,7 +18,8 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
       separatorLabel,
       separatorCloud,
       separatorColor,
-      separatorCloudsBackground,
+      showSeparatorCloudsBackground = false,
+      separatorCloudsBackgroundSrc,
       translateXCloud = '0',
       translateXHeading = '0',
       ...rest
@@ -34,6 +36,9 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
             position: 'absolute',
             width: 'auto',
             height: '100%',
+            minWidth: '64rem',
+            minHeight: '20rem',
+            objectFit: 'cover',
           }}
         />
 
@@ -58,16 +63,19 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
           </Heading>
         </motion.div>
 
-        {separatorCloudsBackground && (
+        {showSeparatorCloudsBackground && (
           <motion.img
             alt='cloud separator background'
-            src={separatorCloudsBackground}
+            src={separatorCloudsBackgroundSrc}
             style={{
               x: translateXCloud,
               position: 'absolute',
               width: 'auto',
               height: '100%',
+              minWidth: '128rem',
+              minHeight: '20rem',
               opacity: '0.3',
+              objectFit: 'cover',
             }}
           />
         )}

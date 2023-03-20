@@ -3,14 +3,12 @@ import { useRef } from 'react';
 
 import { CloudsComponent, CloudsComponentProps } from './CloudsComponent';
 
-export type SeparatorMobileComponentProps = Omit<CloudsComponentProps, 'separatorCloudsBackground'>;
-
 export default function SeparatorMobileComponent({
   separatorLabel,
   separatorCloud,
   separatorColor,
   ...rest
-}: SeparatorMobileComponentProps) {
+}: CloudsComponentProps) {
   const separatorRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
