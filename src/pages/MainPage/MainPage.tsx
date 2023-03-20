@@ -1,5 +1,5 @@
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { VStack, forwardRef } from '@chakra-ui/react';
 
@@ -13,13 +13,17 @@ export const MainPage = forwardRef<PageProps, 'div'>(({ ...rest }, ref) => {
 
   const divContainer = useRef<HTMLDivElement>(null);
 
-  const optimize = useInView(divContainer);
+  const pageInView = useInView(divContainer);
+
+  const AvatarLayerRendered = useMemo<JSX.Element>(() => {
+    return <AvatarLayer ref={divAvatar} zIndex={20} />;
+  }, []);
 
   return (
     <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
       <VStack ref={divContainer} height='100vh' spacing='-100vh' width='100%'>
-        <ParticlesLayer zIndex={10} />
-        <AvatarLayer ref={divAvatar} optimize={optimize} zIndex={20} />
+        <ParticlesLayer optimize={!pageInView} zIndex={10} />
+        {pageInView && AvatarLayerRendered}
         {/* Touch layer */}
         <Layer
           zIndex={30}

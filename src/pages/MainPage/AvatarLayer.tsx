@@ -4,11 +4,7 @@ import { BoxProps, forwardRef } from '@chakra-ui/react';
 
 import { Layer } from './Layer';
 
-export type AvatarLayerProps = {
-  optimize: boolean;
-} & BoxProps;
-
-export const AvatarLayer = forwardRef<AvatarLayerProps, 'div'>(({ optimize, ...rest }, ref) => {
+export const AvatarLayer = forwardRef<BoxProps, 'div'>(({ ...rest }, ref) => {
   return (
     <Layer ref={ref} {...rest}>
       <Avatar
@@ -30,7 +26,6 @@ export const AvatarLayer = forwardRef<AvatarLayerProps, 'div'>(({ optimize, ...r
           position: 'absolute',
           width: '100%',
           height: '100%',
-          visibility: `${optimize ? 'visible' : 'hidden'}`,
         }}
       />
     </Layer>

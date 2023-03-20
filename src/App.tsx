@@ -8,6 +8,18 @@ import { ExperiencePage, MainPage, ProjectsPage, StudiesPage } from './pages';
 import { ContactPage } from './pages/ContactPage';
 
 function App() {
+  const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
+  const isLarge = useBreakpointValue({ base: true, xl: false }, { ssr: false });
+
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const [sidebarOffsetWidth, setSidebarOffsetWidth] = useState<string | undefined>(undefined);
+
+  const mainPageRef = useRef<HTMLDivElement>(null);
+  const experiencePageRef = useRef<HTMLDivElement>(null);
+  const projectsPageRef = useRef<HTMLDivElement>(null);
+  const studiesPageRef = useRef<HTMLDivElement>(null);
+  const contactPageRef = useRef<HTMLDivElement>(null);
+
   const toast = useToast();
 
   useEffect(() => {
@@ -26,18 +38,6 @@ function App() {
       });
     }
   }, [toast]);
-
-  const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
-  const isLarge = useBreakpointValue({ base: true, xl: false }, { ssr: false });
-
-  const sidebarRef = useRef<HTMLDivElement>(null);
-  const [sidebarOffsetWidth, setSidebarOffsetWidth] = useState<string | undefined>(undefined);
-
-  const mainPageRef = useRef<HTMLDivElement>(null);
-  const experiencePageRef = useRef<HTMLDivElement>(null);
-  const projectsPageRef = useRef<HTMLDivElement>(null);
-  const studiesPageRef = useRef<HTMLDivElement>(null);
-  const contactPageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isSmall && sidebarRef.current) {
