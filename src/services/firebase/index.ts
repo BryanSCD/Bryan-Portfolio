@@ -1,1 +1,1 @@
-export { addContact } from "./contact/Contact";
+export { addContact } from './contact/Contact';

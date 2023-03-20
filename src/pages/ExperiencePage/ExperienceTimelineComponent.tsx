@@ -7,8 +7,8 @@ import {
   Circle,
   Divider,
   DividerProps,
-  Heading,
   HStack,
+  Heading,
   Image,
   ListItem,
   SquareProps,
@@ -17,10 +17,11 @@ import {
   StackProps,
   Text,
   UnorderedList,
-  useBreakpointValue,
   VStack,
-} from "@chakra-ui/react";
-import { ExperienceProps } from "./Experience";
+  useBreakpointValue,
+} from '@chakra-ui/react';
+
+import { ExperienceProps } from './Experience';
 
 export interface ExperienceTimelineCustomProps {
   extraUpperDivider?: DividerProps;
@@ -56,11 +57,7 @@ export function ExperienceTimelineComponent({
           <Box width='64'></Box>
 
           <Stack justify='center' align='center' spacing='0'>
-            <Divider
-              orientation='vertical'
-              height='44'
-              {...extraUpperDivider}
-            />
+            <Divider orientation='vertical' height='44' {...extraUpperDivider} />
           </Stack>
 
           <Box width='xl'></Box>
@@ -69,18 +66,13 @@ export function ExperienceTimelineComponent({
 
       {/* Dot divider */}
       <Stack
-        direction={isLarge ? "column" : "row"}
+        direction={isLarge ? 'column' : 'row'}
         justify='center'
         align='center'
         spacing='20'
         width='100%'
       >
-        <VStack
-          justify='flex-start'
-          align='center'
-          spacing='4'
-          width={isLarge ? "70%" : "64"}
-        >
+        <VStack justify='flex-start' align='center' spacing='4' width={isLarge ? '70%' : '64'}>
           <Heading fontSize='xl' color='white' textAlign='center'>
             {title}
           </Heading>
@@ -97,11 +89,7 @@ export function ExperienceTimelineComponent({
           </Stack>
         )}
 
-        <Card
-          background='#FFFFFF'
-          boxShadow='base'
-          width={isLarge ? "100%" : "xl"}
-        >
+        <Card background='#FFFFFF' boxShadow='base' width={isLarge ? '100%' : 'xl'}>
           <CardHeader>
             <Stack justify='center' align='center' spacing='0'>
               <Image
@@ -115,7 +103,7 @@ export function ExperienceTimelineComponent({
           </CardHeader>
           <CardBody>
             <Stack
-              direction={isLarge ? "column" : "row"}
+              direction={isLarge ? 'column' : 'row'}
               justify='center'
               align='center'
               spacing='5'
@@ -125,7 +113,7 @@ export function ExperienceTimelineComponent({
               <Text
                 fontSize='md'
                 color='gray.800'
-                width={isLarge ? "100%" : "60"}
+                width={isLarge ? '100%' : '60'}
                 textAlign='center'
               >
                 {description}
@@ -134,7 +122,7 @@ export function ExperienceTimelineComponent({
               <UnorderedList
                 fontSize='md'
                 color='black'
-                width={isLarge ? "100%" : "60"}
+                width={isLarge ? '100%' : '60'}
                 textAlign='center'
                 listStylePos='inside'
               >
@@ -144,9 +132,7 @@ export function ExperienceTimelineComponent({
               </UnorderedList>
             </Stack>
           </CardBody>
-          <CardFooter justifyContent='flex-end'>
-            {!!footer && footer}
-          </CardFooter>
+          <CardFooter justifyContent='flex-end'>{!!footer && footer}</CardFooter>
         </Card>
       </Stack>
 
@@ -156,11 +142,7 @@ export function ExperienceTimelineComponent({
           <Box width='64'></Box>
 
           <Stack justify='center' align='center' spacing='0'>
-            <Divider
-              orientation='vertical'
-              height='44'
-              {...extraBottomDivider}
-            />
+            <Divider orientation='vertical' height='44' {...extraBottomDivider} />
           </Stack>
 
           <Box width='xl'></Box>

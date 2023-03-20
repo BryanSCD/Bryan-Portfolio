@@ -1,14 +1,8 @@
-import {
-  Box,
-  Link,
-  ListItem,
-  Text,
-  ThemeTypings,
-  UnorderedList,
-} from "@chakra-ui/react";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
-export type ImageOrientation = "vertical" | "horizontal";
+import { Box, Link, ListItem, Text, ThemeTypings, UnorderedList } from '@chakra-ui/react';
+
+export type ImageOrientation = 'vertical' | 'horizontal';
 
 export interface ProjectsProps {
   title: string;
@@ -20,7 +14,7 @@ export interface ProjectsProps {
   screenSrc: string;
   screenSrcOrientation: ImageOrientation;
   mainHexColor: string;
-  colorScheme: ThemeTypings["colorSchemes"];
+  colorScheme: ThemeTypings['colorSchemes'];
   githubURL?: string;
   figmaURL?: string;
   videoURL?: string;
@@ -30,7 +24,7 @@ export interface ProjectsProps {
 
 export const projects: ProjectsProps[] = [
   {
-    title: "Zona Restringida - Madrid",
+    title: 'Zona Restringida - Madrid',
     description: (
       <Text width='100%' fontSize='md'>
         {
@@ -38,42 +32,42 @@ export const projects: ProjectsProps[] = [
         }
       </Text>
     ),
-    architecture: "Client-Server",
+    architecture: 'Client-Server',
     mainTechnologies: [
-      "Android Studio",
-      "JAVA",
-      "Adobe Photoshop (design)",
-      "Adobe After Effects (video edition)",
+      'Android Studio',
+      'JAVA',
+      'Adobe Photoshop (design)',
+      'Adobe After Effects (video edition)',
     ],
-    platform: "Android",
-    logoSrc: "./main_projects/zrmadrid_logo.png",
-    screenSrc: "./main_projects/zrmadrid_screenshot.gif",
-    screenSrcOrientation: "vertical",
-    videoURL: "https://www.youtube.com/watch?v=v4A88dVV1UA",
-    websiteURL: "https://sites.google.com/view/zonarestringidamadrid/",
-    mainHexColor: "#5216D7",
-    colorScheme: "purple",
+    platform: 'Android',
+    logoSrc: './main_projects/zrmadrid_logo.png',
+    screenSrc: './main_projects/zrmadrid_screenshot.gif',
+    screenSrcOrientation: 'vertical',
+    videoURL: 'https://www.youtube.com/watch?v=v4A88dVV1UA',
+    websiteURL: 'https://sites.google.com/view/zonarestringidamadrid/',
+    mainHexColor: '#5216D7',
+    colorScheme: 'purple',
   },
   {
-    title: "WCourier",
+    title: 'WCourier',
     description: (
       <Text fontSize='md'>
-        Nowadays everything needs to be automated. WCourier is a tool (bot) that
-        would help companies to send messages via Whatsapp automatically.
-        Messages are queued and sent in the background.
+        Nowadays everything needs to be automated. WCourier is a tool (bot) that would help
+        companies to send messages via Whatsapp automatically. Messages are queued and sent in the
+        background.
       </Text>
     ),
-    architecture: "TCP",
-    mainTechnologies: ["C#", "CefSharp", "WinForms", "JavaScript"],
-    platform: "Windows",
-    logoSrc: "./main_projects/wcourier_logo.png",
-    screenSrc: "./main_projects/wcourier_screenshot.gif",
-    screenSrcOrientation: "horizontal",
-    mainHexColor: "#01675B",
-    colorScheme: "green",
+    architecture: 'TCP',
+    mainTechnologies: ['C#', 'CefSharp', 'WinForms', 'JavaScript'],
+    platform: 'Windows',
+    logoSrc: './main_projects/wcourier_logo.png',
+    screenSrc: './main_projects/wcourier_screenshot.gif',
+    screenSrcOrientation: 'horizontal',
+    mainHexColor: '#01675B',
+    colorScheme: 'green',
   },
   {
-    title: "This portfolio",
+    title: 'This portfolio',
     description: (
       <>
         <Text width='100%' fontSize='md'>
@@ -89,10 +83,7 @@ export const projects: ProjectsProps[] = [
               <Text>
                 <strong>Clouds textures:</strong>
               </Text>
-              <Link
-                href='https://resourceboy.com/textures/cloud-textures/'
-                isExternal
-              >
+              <Link href='https://resourceboy.com/textures/cloud-textures/' isExternal>
                 https://resourceboy.com/
               </Link>
             </ListItem>
@@ -100,34 +91,32 @@ export const projects: ProjectsProps[] = [
               <Text>
                 <strong>Madrid Landscape:</strong>
               </Text>
-              <Link
-                href='https://resourceboy.com/textures/cloud-textures/'
-                isExternal
-              >
+              <Link href='https://resourceboy.com/textures/cloud-textures/' isExternal>
                 https://www.instagram.com/jaime_mad01/
-              </Link>{" "}
+              </Link>{' '}
             </ListItem>
           </UnorderedList>
         </Box>
       </>
     ),
-    architecture: "MVC",
+    architecture: 'MVC',
     mainTechnologies: [
-      "React",
-      "Typescript",
-      "Figma",
-      "ChakraUI",
-      "Firebase",
-      "FramerMotion",
-      "ReadyMePlayer",
+      'React',
+      'Typescript',
+      'Figma',
+      'ChakraUI',
+      'Firebase',
+      'FramerMotion',
+      'ReadyMePlayer',
     ],
-    platform: "Web",
-    logoSrc: "./main_projects/bcv_logo.png",
-    screenSrc: "./main_projects/bcv_screenshot.gif",
-    screenSrcOrientation: "horizontal",
-    mainHexColor: "#665cb2",
-    colorScheme: "purple",
-    figmaURL: "https://www.figma.com/file/PaY3WT9sDKJBrmmyZU3B6d/Bryan-Website?node-id=2102%3A2110&t=FUloXkdhJZ1CvIsG-1",
-    githubURL: "https://github.com/BryanSCD/Bryan-Portfolio"
+    platform: 'Web',
+    logoSrc: './main_projects/bcv_logo.png',
+    screenSrc: './main_projects/bcv_screenshot.gif',
+    screenSrcOrientation: 'horizontal',
+    mainHexColor: '#665cb2',
+    colorScheme: 'purple',
+    figmaURL:
+      'https://www.figma.com/file/PaY3WT9sDKJBrmmyZU3B6d/Bryan-Website?node-id=2102%3A2110&t=FUloXkdhJZ1CvIsG-1',
+    githubURL: 'https://github.com/BryanSCD/Bryan-Portfolio',
   },
 ];

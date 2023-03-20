@@ -5,9 +5,9 @@ import {
   Image,
   Stack,
   StackProps,
-  useBreakpointValue,
   VStack,
-} from "@chakra-ui/react";
+  useBreakpointValue,
+} from '@chakra-ui/react';
 
 export interface StudiesProps {
   title: string;
@@ -24,30 +24,27 @@ export function StudiesComponent({
   children,
   ...rest
 }: ProjectsComponentProps) {
-  const isMedium = useBreakpointValue(
-    { base: true, lg: false },
-    { ssr: false }
-  );
+  const isMedium = useBreakpointValue({ base: true, lg: false }, { ssr: false });
   return (
-    <Card width={isMedium ? "100%" : "40%"} shadow='dark-lg' {...rest}>
-      <CardBody px={isMedium ? "6" : "12"} py={isMedium ? "10" : "16"}>
+    <Card width={isMedium ? '100%' : '40%'} shadow='dark-lg' {...rest}>
+      <CardBody px={isMedium ? '6' : '12'} py={isMedium ? '10' : '16'}>
         <VStack>
           <Stack
-            direction={isMedium ? "column" : "row"}
-            spacing={isMedium ? "4" : "8"}
+            direction={isMedium ? 'column' : 'row'}
+            spacing={isMedium ? '4' : '8'}
             align='center'
           >
             {imageSrc && (
               <Image
-                width={isMedium ? "100%" : "48"}
-                height={isMedium ? "32" : "48"}
+                width={isMedium ? '100%' : '48'}
+                height={isMedium ? '32' : '48'}
                 src={imageSrc}
                 objectPosition='center'
                 objectFit='scale-down'
               />
             )}
             <VStack spacing='2.5'>
-              <Heading fontSize={isMedium ? "2xl" : "3xl"} textAlign='center'>
+              <Heading fontSize={isMedium ? '2xl' : '3xl'} textAlign='center'>
                 {title}
               </Heading>
               {subtitle && (

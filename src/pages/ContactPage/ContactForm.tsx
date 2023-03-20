@@ -1,3 +1,6 @@
+import { FieldValues, useForm } from 'react-hook-form';
+import { IoMailOutline, IoPersonOutline } from 'react-icons/io5';
+
 import {
   Button,
   Flex,
@@ -8,13 +11,12 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
-  useToast,
   VStack,
-} from "@chakra-ui/react";
-import { FieldValues, useForm } from "react-hook-form";
-import { IoMailOutline, IoPersonOutline } from "react-icons/io5";
-import { addContact } from "../../services/firebase";
-import { BryanContactDetails } from "./ContactDetails";
+  useToast,
+} from '@chakra-ui/react';
+
+import { addContact } from '../../services/firebase';
+import { BryanContactDetails } from './ContactDetails';
 
 interface formValues {
   name: string;
@@ -27,25 +29,20 @@ function ContactForm() {
     handleSubmit,
     register,
     formState: { errors, isSubmitting, isDirty, isValid },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: 'onChange' });
 
   const toast = useToast();
 
   const onSubmitForm = (values: FieldValues): Promise<void> => {
     return new Promise<void>((resolve) => {
       const formValues = values as formValues;
-      addContact(
-        BryanContactDetails.email,
-        formValues.name,
-        formValues.email,
-        formValues.message
-      )
+      addContact(BryanContactDetails.email, formValues.name, formValues.email, formValues.message)
         .then(() => {
           {
             toast({
-              title: "Message sent!",
-              description: "I will contact you as soon as posible!",
-              status: "success",
+              title: 'Message sent!',
+              description: 'I will contact you as soon as posible!',
+              status: 'success',
               duration: 9000,
               isClosable: true,
             });
@@ -54,10 +51,10 @@ function ContactForm() {
         })
         .catch(() => {
           toast({
-            title: "This is embarrasing... Something went wrong",
+            title: 'This is embarrasing... Something went wrong',
             description:
-              "Highly probably I run out of money to support this webpage. Please, contact me through other way!",
-            status: "error",
+              'Highly probably I run out of money to support this webpage. Please, contact me through other way!',
+            status: 'error',
             duration: 9000,
             isClosable: true,
           });
@@ -68,13 +65,7 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmitForm)}>
-      <VStack
-        padding='4'
-        spacing='2.5'
-        width='100%'
-        align='start'
-        color='white'
-      >
+      <VStack padding='4' spacing='2.5' width='100%' align='start' color='white'>
         <FormControl isInvalid={!!errors.name} isRequired>
           <FormLabel fontSize='md' htmlFor='name'>
             Your name / Your company
@@ -88,18 +79,16 @@ function ContactForm() {
               focusBorderColor='#665cb2'
               id='name'
               autoComplete='name'
-              {...register("name", {
-                required: "This is required",
+              {...register('name', {
+                required: 'This is required',
                 minLength: {
                   value: 3,
-                  message: "Minimum length should be 3",
+                  message: 'Minimum length should be 3',
                 },
               })}
             />
           </InputGroup>
-          <FormErrorMessage>
-            {!!errors.name && errors.name.message?.toString()}
-          </FormErrorMessage>
+          <FormErrorMessage>{!!errors.name && errors.name.message?.toString()}</FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={!!errors.email} isRequired>
@@ -113,18 +102,16 @@ function ContactForm() {
               focusBorderColor='#665cb2'
               id='email'
               autoComplete='email'
-              {...register("email", {
-                required: "This is required",
+              {...register('email', {
+                required: 'This is required',
                 pattern: {
                   value: /\S+@\S+\.\S+/,
-                  message: "Invalid email address",
+                  message: 'Invalid email address',
                 },
               })}
             />
           </InputGroup>
-          <FormErrorMessage>
-            {!!errors.email && errors.email.message?.toString()}
-          </FormErrorMessage>
+          <FormErrorMessage>{!!errors.email && errors.email.message?.toString()}</FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={!!errors.message} isRequired>
@@ -133,13 +120,11 @@ function ContactForm() {
             placeholder='Hey Bryan!'
             focusBorderColor='#665cb2'
             id='message'
-            {...register("message", {
-              required:
-                "Write me something! I'm not a monster, believe me. (min. 10 characters)",
+            {...register('message', {
+              required: "Write me something! I'm not a monster, believe me. (min. 10 characters)",
               minLength: {
                 value: 10,
-                message:
-                  "Write me something longer! It's not that difficult. (min. 10 characters)",
+                message: "Write me something longer! It's not that difficult. (min. 10 characters)",
               },
             })}
             resize='none'

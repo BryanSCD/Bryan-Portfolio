@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
 interface ContactBodyProps {
   name: string;
@@ -6,11 +6,7 @@ interface ContactBodyProps {
   message: string;
 }
 
-const ContactBody: FunctionComponent<ContactBodyProps> = ({
-  name,
-  email,
-  message,
-}) => {
+const ContactBody: FunctionComponent<ContactBodyProps> = ({ name, email, message }) => {
   return (
     <>
       <h2>{name}</h2>

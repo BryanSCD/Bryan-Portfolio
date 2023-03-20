@@ -1,4 +1,4 @@
-import { IOptions, RecursivePartial } from "tsparticles-engine";
+import { IOptions, RecursivePartial } from 'tsparticles-engine';
 
 export const particlesJSON: RecursivePartial<IOptions> = {
   fpsLimit: 60,
@@ -6,11 +6,11 @@ export const particlesJSON: RecursivePartial<IOptions> = {
     events: {
       onClick: {
         enable: true,
-        mode: "push",
+        mode: 'push',
       },
       onHover: {
         enable: true,
-        mode: "repulse",
+        mode: 'repulse',
       },
       resize: true,
     },
@@ -26,10 +26,10 @@ export const particlesJSON: RecursivePartial<IOptions> = {
   },
   particles: {
     color: {
-      value: "#ffffff",
+      value: '#ffffff',
     },
     links: {
-      color: "#ffffff",
+      color: '#ffffff',
       distance: 150,
       enable: true,
       opacity: 0.5,
@@ -39,10 +39,10 @@ export const particlesJSON: RecursivePartial<IOptions> = {
       enable: true,
     },
     move: {
-      direction: "none",
+      direction: 'none',
       enable: true,
       outModes: {
-        default: "bounce",
+        default: 'bounce',
       },
       random: false,
       speed: 1,
@@ -60,7 +60,7 @@ export const particlesJSON: RecursivePartial<IOptions> = {
       value: 0.5,
     },
     shape: {
-      type: "circle",
+      type: 'circle',
     },
     size: {
       value: { min: 1, max: 5 },

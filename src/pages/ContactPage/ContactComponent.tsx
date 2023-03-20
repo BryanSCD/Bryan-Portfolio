@@ -1,24 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardHeader,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  IconButton,
-  Image,
-  Link,
-  Stack,
-  StackProps,
-  Text,
-  useBreakpointValue,
-  useClipboard,
-  VStack,
-} from "@chakra-ui/react";
-import { HiCake } from "react-icons/hi";
+import { HiCake } from 'react-icons/hi';
 import {
   IoCallSharp,
   IoClipboardSharp,
@@ -26,9 +6,31 @@ import {
   IoLogoGithub,
   IoLogoLinkedin,
   IoMailSharp,
-} from "react-icons/io5";
-import { ContactProps } from "./ContactDetails";
-import ContactForm from "./ContactForm";
+} from 'react-icons/io5';
+
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardHeader,
+  Flex,
+  HStack,
+  Heading,
+  Icon,
+  IconButton,
+  Image,
+  Link,
+  Stack,
+  StackProps,
+  Text,
+  VStack,
+  useBreakpointValue,
+  useClipboard,
+} from '@chakra-ui/react';
+
+import { ContactProps } from './ContactDetails';
+import ContactForm from './ContactForm';
 
 export type ContactcomponentProps = ContactProps & StackProps;
 
@@ -47,9 +49,9 @@ export function ContactComponent({
 
   return (
     <Card
-      paddingX={isLarge ? "0" : "14"}
-      paddingY={isLarge ? "4" : "9"}
-      width={isLarge ? "100%" : "container.lg"}
+      paddingX={isLarge ? '0' : '14'}
+      paddingY={isLarge ? '4' : '9'}
+      width={isLarge ? '100%' : 'container.lg'}
       bgColor='blackAlpha.700'
       overflow='hidden'
     >
@@ -62,12 +64,7 @@ export function ContactComponent({
         </Text>
       </CardHeader>
       <CardBody pb='0'>
-        <Stack
-          spacing='4'
-          width='100%'
-          align='top'
-          direction={isLarge ? "column" : "row"}
-        >
+        <Stack spacing='4' width='100%' align='top' direction={isLarge ? 'column' : 'row'}>
           <VStack spacing='2.5' width='100%'>
             <Image
               width='auto'
@@ -76,8 +73,8 @@ export function ContactComponent({
               objectFit='scale-down'
               objectPosition='center'
               bgColor='whiteAlpha.800'
-              rounded="xl"
-              shadow="xl"
+              rounded='xl'
+              shadow='xl'
             />
 
             <Text fontSize='lg' width='100%' color='white' textAlign='center'>
@@ -125,7 +122,7 @@ export function ContactComponent({
                 colorScheme='purple'
                 width='100%'
               >
-                {clipboardEmail.hasCopied ? "Copied!" : email}
+                {clipboardEmail.hasCopied ? 'Copied!' : email}
               </Button>
 
               <IconButton
@@ -159,7 +156,7 @@ export function ContactComponent({
                 colorScheme='purple'
                 width='100%'
               >
-                {clipboardNumber.hasCopied ? "Copied!" : numberLabel}
+                {clipboardNumber.hasCopied ? 'Copied!' : numberLabel}
               </Button>
               <IconButton
                 as='a'
@@ -177,23 +174,11 @@ export function ContactComponent({
                 }}
               />
             </ButtonGroup>
-            <Flex
-              justifyContent='center'
-              alignItems='center'
-              width='100%'
-              color='white'
-              p='1'
-            >
+            <Flex justifyContent='center' alignItems='center' width='100%' color='white' p='1'>
               <Icon as={HiCake} mr='2' />
               <Text fontSize='md'>29/09/2001 (21 yo)</Text>
             </Flex>
-            <Flex
-              justifyContent='center'
-              alignItems='center'
-              width='100%'
-              color='white'
-              p='1'
-            >
+            <Flex justifyContent='center' alignItems='center' width='100%' color='white' p='1'>
               <Icon as={IoLocationSharp} mr='2' />
               <Text fontSize='md'>
                 Munich, <strong>Germany</strong>
@@ -209,14 +194,7 @@ export function ContactComponent({
             </Card>
 
             <Flex alignItems='center' height='100%'>
-              <Heading
-                margin='auto'
-                fontSize='2xl'
-                color='white'
-                textAlign='center'
-                pt='8'
-                pb='4'
-              >
+              <Heading margin='auto' fontSize='2xl' color='white' textAlign='center' pt='8' pb='4'>
                 {"Let's make it work."}
               </Heading>
             </Flex>
