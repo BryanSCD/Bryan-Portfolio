@@ -36,6 +36,7 @@ export const Page = forwardRef<PageProps, 'div'>(
   ) => {
     const isSmall = useBreakpointValue({ base: true, md: false }, { ssr: false });
 
+    // The cloud separator depends on the screen size
     const SeparatorComponent = useMemo(() => {
       if (!separatorProps) {
         return;
@@ -46,6 +47,8 @@ export const Page = forwardRef<PageProps, 'div'>(
         return lazy(() => import('./SeparatorDesktopComponent'));
       }
     }, [separatorProps, isSmall]);
+
+    
     if (childrenPaddingX) {
       childrenPaddingLeft = childrenPaddingX;
       childrenPaddingRight = childrenPaddingX;

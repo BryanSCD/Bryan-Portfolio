@@ -72,6 +72,7 @@ export function ExperienceTimelineComponent({
         spacing='20'
         width='100%'
       >
+        {/* Left side */}
         <VStack align='center' justify='flex-start' spacing='4' width={isLarge ? '70%' : '64'}>
           <Heading color='white' fontSize='xl' textAlign='center'>
             {title}
@@ -81,6 +82,7 @@ export function ExperienceTimelineComponent({
           </Text>
         </VStack>
 
+        {/* Divider */}
         {!isLarge && (
           <Stack align='center' justify='center' spacing='0'>
             <Divider height='44' orientation='vertical' {...upperDivider} />
@@ -89,6 +91,7 @@ export function ExperienceTimelineComponent({
           </Stack>
         )}
 
+        {/* Right side */}
         <Card background='#FFFFFF' boxShadow='base' width={isLarge ? '100%' : 'xl'}>
           <CardHeader>
             <Stack align='center' justify='center' spacing='0'>

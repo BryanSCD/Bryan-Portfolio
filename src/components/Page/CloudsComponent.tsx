@@ -28,8 +28,9 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
   ) => {
     return (
       <VStack ref={ref} height='80' overflow='hidden' position='relative' width='100%' {...rest}>
+        {/* Main cloud */}
         <motion.img
-          alt='cloud separator'
+          alt='Main cloud'
           src={separatorCloud}
           style={{
             x: translateXCloud,
@@ -42,6 +43,7 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
           }}
         />
 
+        {/* Heading label  */}
         <motion.div
           style={{
             height: '100%',
@@ -63,6 +65,7 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
           </Heading>
         </motion.div>
 
+        {/* Background cloud separator */}
         {showSeparatorCloudsBackground && (
           <motion.img
             alt='cloud separator background'
