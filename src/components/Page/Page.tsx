@@ -64,7 +64,6 @@ export const Page = forwardRef<PageProps, 'div'>(
         )}
         {/* Page content */}
         <Box
-          overflow='hidden'
           paddingLeft={childrenPaddingLeft}
           paddingRight={childrenPaddingRight}
           paddingY={childrenPaddingY}

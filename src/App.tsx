@@ -110,7 +110,12 @@ function App() {
       </Sidebar>
 
       {/* Pages controller */}
-      <Box bgGradient='linear-gradient(180deg, #09090b 0%, #021120 33%, #665cb2 80%)' zIndex='10'>
+      <Box
+        bgGradient='linear-gradient(180deg, #09090b 0%, #021120 33%, #665cb2 80%)'
+        overflowX='hidden'
+        width='100%'
+        zIndex='10'
+      >
         <MainPage ref={mainPageRef} />
         <ExperiencePage
           ref={experiencePageRef}
