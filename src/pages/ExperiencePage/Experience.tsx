@@ -39,7 +39,7 @@ export const experience: ExperienceProps[] = [
   },
   {
     title: 'IT Consulting & Architect',
-    subtitle: 'Sep 2020 - Aug 2022 · 2 yrs 1 mo',
+    subtitle: 'Sep 2020 - Aug 2022 · 2 yrs',
     description:
       'As an IT Consultant & Architect, my role was to assist InterImage in improving their technology systems and processes to make them more efficient.',
     skills: [
