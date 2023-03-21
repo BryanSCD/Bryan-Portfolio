@@ -18,8 +18,10 @@ export const ExperiencePage = forwardRef<ExperiencePageProps, 'div'>(
         separatorProps={{
           separatorLabel: 'Experience',
           separatorColor,
-          separatorCloud: './experience/cloud.png',
-          separatorCloudsBackgroundSrc: './experience/clouds_background.png',
+          separatorCloud: './experience/ufo.png',
+          showSeparatorCloudsBackground: false,
+          translateXCloud: '0',
+          translateXHeading: '0',
         }}
         {...rest}
       >

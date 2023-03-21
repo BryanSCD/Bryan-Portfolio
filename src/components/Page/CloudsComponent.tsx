@@ -39,7 +39,7 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
             height: '100%',
             minWidth: '64rem',
             minHeight: '20rem',
-            objectFit: 'cover',
+            objectFit: 'scale-down',
           }}
         />
 
@@ -78,7 +78,7 @@ export const CloudsComponent = forwardRef<CloudsComponentProps, 'div'>(
               minWidth: '128rem',
               minHeight: '20rem',
               opacity: '0.3',
-              objectFit: 'cover',
+              objectFit: 'scale-down',
             }}
           />
         )}

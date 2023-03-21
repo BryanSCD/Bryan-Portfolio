@@ -81,10 +81,21 @@ export const projects: ProjectsProps[] = [
           <UnorderedList>
             <ListItem>
               <Text>
-                <strong>Clouds textures:</strong>
+                <strong>Cloud textures:</strong>
               </Text>
               <Link href='https://resourceboy.com/textures/cloud-textures/' isExternal>
                 https://resourceboy.com/
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Text>
+                <strong>UFO texture:</strong>
+              </Text>
+              <Link
+                href='https://pixabay.com/illustrations/ufo-extraterrestrial-space-5118239/'
+                isExternal
+              >
+                https://pixabay.com/
               </Link>
             </ListItem>
             <ListItem>

@@ -121,7 +121,7 @@ function App() {
           ref={experiencePageRef}
           childrenPaddingRight={sidebarOffsetWidth}
           marginTop='-20'
-          separatorColor='black'
+          separatorColor='gray.50'
         />
         <ProjectsPage
           ref={projectsPageRef}

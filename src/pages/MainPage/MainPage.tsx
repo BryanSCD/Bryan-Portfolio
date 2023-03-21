@@ -22,7 +22,9 @@ export const MainPage = forwardRef<PageProps, 'div'>(({ ...rest }, ref) => {
   return (
     <Page ref={ref} childrenPaddingX='0' childrenPaddingY='0' {...rest}>
       <VStack ref={divContainer} height='100vh' spacing='-100vh' width='100%'>
+        {/* Particles layer */}
         <ParticlesLayer optimize={!pageInView} zIndex={10} />
+        {/* Avatar layer */}
         {pageInView && AvatarLayerRendered}
         {/* Touch layer */}
         <Layer
