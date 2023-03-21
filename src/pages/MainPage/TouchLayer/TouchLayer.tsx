@@ -1,6 +1,6 @@
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
-import { BoxProps, Skeleton, forwardRef, useBreakpointValue } from '@chakra-ui/react';
+import { BoxProps, Heading, Skeleton, forwardRef, useBreakpointValue } from '@chakra-ui/react';
 
 import { Layer } from '../Layer';
 import { ScrollDownIcon } from './ScrollDownIcon';
@@ -78,12 +78,12 @@ export const TouchLayer = forwardRef<TouchLayerProps, 'div'>(({ showIcons, ...re
             <ScrollDownIcon as={motion.div} />
           </motion.div>
         )}
-        {/* {!showIcons && (
-          <Heading color='whiteAlpha.500' position='absolute' size='lg'>
-            {"Loading Bryan's avatar..."}
-          </Heading>
-        )} */}
       </AnimatePresence>
+      {!showIcons && (
+        <Heading color='whiteAlpha.500' position='absolute' size='lg'>
+          {"Loading Bryan's avatar..."}
+        </Heading>
+      )}
     </Layer>
   );
 });
