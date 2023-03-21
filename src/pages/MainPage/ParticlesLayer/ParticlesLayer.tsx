@@ -5,7 +5,7 @@ import { Container, Engine } from 'tsparticles-engine';
 
 import { BoxProps, forwardRef } from '@chakra-ui/react';
 
-import { Layer } from './Layer';
+import { Layer } from '../Layer';
 import { particlesJSON } from './Particles';
 
 export type ParticlesLayerProps = {

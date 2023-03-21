@@ -1,12 +1,12 @@
 import { useInView } from 'framer-motion';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { VStack, forwardRef } from '@chakra-ui/react';
 
 import { Page, PageProps } from '../../components';
-import { AvatarLayer } from './AvatarLayer';
-import { ParticlesLayer } from './ParticlesLayer';
-import { TouchLayer } from './TouchLayer';
+import { AvatarLayer } from './AvatarLayer/AvatarLayer';
+import { ParticlesLayer } from './ParticlesLayer/ParticlesLayer';
+import { TouchLayer } from './TouchLayer/TouchLayer';
 
 export const MainPage = forwardRef<PageProps, 'div'>(({ ...rest }, ref) => {
   const divAvatar = useRef<HTMLDivElement>(null);
@@ -15,8 +15,21 @@ export const MainPage = forwardRef<PageProps, 'div'>(({ ...rest }, ref) => {
 
   const pageInView = useInView(divContainer);
 
+  const [avatarLoaded, setAvatarLoaded] = useState(false);
+
   const AvatarLayerRendered = useMemo<JSX.Element>(() => {
-    return <AvatarLayer ref={divAvatar} zIndex={20} />;
+    return (
+      <AvatarLayer
+        ref={divAvatar}
+        zIndex={20}
+        onLoadedAvatar={() => {
+          setAvatarLoaded(true);
+        }}
+        onLoadingAvatar={() => {
+          setAvatarLoaded(false);
+        }}
+      />
+    );
   }, []);
 
   return (
@@ -28,6 +41,7 @@ export const MainPage = forwardRef<PageProps, 'div'>(({ ...rest }, ref) => {
         {pageInView && AvatarLayerRendered}
         {/* Touch layer */}
         <TouchLayer
+          showIcons={avatarLoaded}
           zIndex={30}
           onClickCapture={(e) => {
             const event = new MouseEvent('click', e.nativeEvent);
