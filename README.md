@@ -3,8 +3,6 @@
 *** Adapted from https://github.com/othneildrew/Best-README-Template/blob/master/README.md
 -->
 
-
-[![Contributors][contributors-shield]][contributors-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -43,8 +41,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -58,10 +54,15 @@
 
 [![BCV Screenshot][bcv-screenshot]](/public/main_projects/bcv_screenshot.gif)
 
+Live preview: [https://cv.bryanscduran.dev/](https://cv.bryanscduran.dev/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![Typescript][Typescript]][Typescript-url]
+* [![ChakraUI][ChakraUI]][ChakraUI-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,8 +109,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Bryan Smith Collazos Duran - bryanscduran@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -131,9 +130,13 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: 
+[license-url]: https://github.com/BryanSCD/Bryan-Portfolio/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/bryansduran/
 [bcv-screenshot]: /public/main_projects/bcv_screenshot.gif
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[Typescript]: https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square
+[Typescript-url]: https://www.typescriptlang.org/
+[ChakraUI]: https://shields.io/badge/chakra--ui-black?logo=chakraui&style=for-the-badge%22
+[ChakraUI-url]: https://chakra-ui.com/
