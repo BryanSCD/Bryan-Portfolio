@@ -45,8 +45,13 @@ export const StudiesPage = forwardRef<StudiesPageProps, 'div'>(
             width={isMedium ? '100%' : '50%'}
           >
             <Text align='center' fontSize='md'>
+              <strong>Average grade:</strong> 2.12
+            </Text>
+
+            <Text align='center' fontSize='md'>
               <strong>Remarkable grades:</strong>
               <br /> Patterns in Software Engineering: 1.0
+              <br /> Advanced Seminar Course JavaScript Technology: 1.0
             </Text>
           </StudiesComponent>
 
