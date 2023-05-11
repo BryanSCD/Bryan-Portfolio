@@ -14,8 +14,30 @@ export interface ExperienceProps {
 
 export const experience: ExperienceProps[] = [
   {
+    title: 'Support Software Engineering',
+    subtitle: 'Jun 2023 - X · Current job (Munich, DE)',
+    description: '',
+    skills: [],
+    logo: './experience/siemens_logo.png',
+    footer: (
+      <Button
+        as='a'
+        colorScheme='teal'
+        href='https://www.siemens.com/de/de.html'
+        leftIcon={<IoDesktopSharp />}
+        m='1'
+        rel='external'
+        size='md'
+        target='_blank'
+        variant='solid'
+      >
+        Company website
+      </Button>
+    ),
+  },
+  {
     title: 'Back-end Developer in SCRUM Project',
-    subtitle: 'Sep 2022 - Dec 2022 · 4 mos',
+    subtitle: 'Sep 2022 - Dec 2022 · 4 mos (Munich, DE)',
     description:
       "As a Back-end developer, my role was to contribute to the project's objective of revolutionizing the vehicle purchasing process by addressing a significant technological challenge.",
     skills: ['Database Design', 'Back-End Web Development'],
@@ -39,7 +61,7 @@ export const experience: ExperienceProps[] = [
   },
   {
     title: 'IT Consulting & Architect',
-    subtitle: 'Sep 2020 - Aug 2022 · 2 yrs',
+    subtitle: 'Sep 2020 - Aug 2022 · 2 yrs (Madrid, ES)',
     description:
       'As an IT Consultant & Architect, my role was to assist InterImage in improving their technology systems and processes to make them more efficient.',
     skills: [
