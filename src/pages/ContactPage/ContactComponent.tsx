@@ -57,7 +57,7 @@ export function ContactComponent({
     >
       <CardHeader pt='0'>
         <Heading color='white' fontSize='3xl'>
-          Hire me!
+          Contact me!
         </Heading>
         <Text color='whiteAlpha.900' fontSize='lg'>
           Fill up the form below to contact
