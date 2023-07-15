@@ -16,14 +16,15 @@ export const experience: ExperienceProps[] = [
   {
     title: 'Support Software Engineering - Working Student',
     subtitle: 'Jun 2023 - X · Current job (Munich, DE)',
-    description: 'Yes, my official role is "Support Software Engineering"',
-    skills: ['Software engineering'],
+    description:
+      'My official role is "Support Software Engineering". I finance my studies with this job.',
+    skills: ['NDA'],
     logo: './experience/siemens_logo.png',
     footer: (
       <Button
         as='a'
         colorScheme='teal'
-        href='https://www.siemens.com/de/de.html'
+        href='https://eda.sw.siemens.com/en-US/'
         leftIcon={<IoDesktopSharp />}
         m='1'
         rel='external'
